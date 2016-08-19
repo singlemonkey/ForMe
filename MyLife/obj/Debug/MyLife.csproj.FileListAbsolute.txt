@@ -14,6 +14,9 @@ F:\MyLife\MyLife\bin\MyLife.dll.config
 F:\MyLife\MyLife\bin\MyLife.dll
 F:\MyLife\MyLife\bin\MyLife.pdb
 F:\MyLife\MyLife\bin\Antlr3.Runtime.dll
+F:\MyLife\MyLife\bin\EntityFramework.dll
+F:\MyLife\MyLife\bin\EntityFramework.SqlServer.dll
+F:\MyLife\MyLife\bin\log4net.dll
 F:\MyLife\MyLife\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\MyLife\MyLife\bin\Microsoft.Web.Infrastructure.dll
 F:\MyLife\MyLife\bin\Newtonsoft.Json.dll
@@ -25,6 +28,9 @@ F:\MyLife\MyLife\bin\System.Web.WebPages.Deployment.dll
 F:\MyLife\MyLife\bin\System.Web.WebPages.dll
 F:\MyLife\MyLife\bin\System.Web.WebPages.Razor.dll
 F:\MyLife\MyLife\bin\WebGrease.dll
+F:\MyLife\MyLife\bin\EntityFramework.xml
+F:\MyLife\MyLife\bin\EntityFramework.SqlServer.xml
+F:\MyLife\MyLife\bin\log4net.xml
 F:\MyLife\MyLife\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\MyLife\MyLife\bin\System.Web.Helpers.xml
 F:\MyLife\MyLife\bin\System.Web.Mvc.xml
@@ -35,12 +41,6 @@ F:\MyLife\MyLife\bin\System.Web.WebPages.Deployment.xml
 F:\MyLife\MyLife\bin\System.Web.WebPages.Razor.xml
 F:\MyLife\MyLife\bin\Antlr3.Runtime.pdb
 F:\MyLife\MyLife\bin\Newtonsoft.Json.xml
-F:\MyLife\MyLife\obj\Debug\MyLife.dll
-F:\MyLife\MyLife\obj\Debug\MyLife.pdb
-F:\MyLife\MyLife\bin\EntityFramework.dll
-F:\MyLife\MyLife\bin\EntityFramework.SqlServer.dll
-F:\MyLife\MyLife\bin\EntityFramework.xml
-F:\MyLife\MyLife\bin\EntityFramework.SqlServer.xml
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.Helpers.resources.dll
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.Mvc.resources.dll
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.Optimization.resources.dll
@@ -48,3 +48,6 @@ F:\MyLife\MyLife\bin\zh-Hans\System.Web.Razor.resources.dll
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\MyLife\MyLife\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+F:\MyLife\MyLife\obj\Debug\MyLife.dll
+F:\MyLife\MyLife\obj\Debug\MyLife.pdb
+F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
