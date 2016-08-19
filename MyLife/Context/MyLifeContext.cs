@@ -11,13 +11,14 @@ namespace MyLife.Context
 {
     public class MyLifeContext:DbContext
     {
-        public MyLifeContext() : base("MyLifeContext") {
+        public MyLifeContext() : base("MyLifeConnection") {
 
         }
         public DbSet<AdminModel> Administrators { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<AdminModel>().ToTable("Admin");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
