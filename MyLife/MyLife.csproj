@@ -193,14 +193,21 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Frontend\js\jquery-3.1.0.min.js" />
-    <Content Include="Global.asax" />
+    <Content Include="Frontend\config.rb" />
+    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css" />
+    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Frontend\css\bootstrap\bootstrap.css" />
+    <Content Include="Frontend\css\bootstrap\bootstrap.css.map" />
+    <Content Include="Frontend\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Frontend\css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Frontend\css\Index.css" />
     <Content Include="Frontend\js\bootstrap.min.js" />
+    <Content Include="Frontend\js\jquery-3.1.0.min.js" />
+    <Content Include="Frontend\scss\Index.scss" />
+    <Content Include="Global.asax" />
     <Content Include="logs\log.txt" />
     <Content Include="obj\Debug\MyLife.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\MyLife.dll" />
@@ -233,24 +240,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Frontend\css\bootstrap\bootstrap.min.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\css\bootstrap\bootstrap.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\config.rb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\scss\Index.scss" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Frontend\images\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
@@ -269,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frontend\.sass-cache\07e851c4bc285a24ec523fc9f68c4024ca2e5eb4\Index.scssc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
