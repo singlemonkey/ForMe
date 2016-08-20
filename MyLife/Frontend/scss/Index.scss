@@ -1,2 +1,38 @@
-﻿body {
+﻿body{
+    padding:0;
+    margin:0;
+}
+.main-container{
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    bottom: 0px;
+    background-color: #1ABC9C;
+    z-index: 100;
+    .sidebar{
+        width:180px;
+        display:block;
+        position:fixed;
+        top:50px;
+        bottom:0;
+        background-color:#293038;
+        z-index:102;
+        overflow-x:hidden;
+        .sidebar-content{
+            width:200px;
+            height:100%;
+            overflow:auto;
+            overflow-x:hidden;
+        }
+    }
+    .content{
+        left:180px;
+        background-color:#eaedf1;
+        width:auto;
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        overflow:hidden;
+    }
 }

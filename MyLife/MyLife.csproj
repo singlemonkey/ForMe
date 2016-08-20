@@ -136,11 +136,14 @@
     <Compile Include="Context\MyLifeContext.cs" />
     <Compile Include="Context\MyLifeInitializer.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\BlogModel.cs" />
+    <Compile Include="Models\DictionaryModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -204,6 +207,7 @@
     <Content Include="Frontend\css\bootstrap\bootstrap.min.css" />
     <Content Include="Frontend\css\bootstrap\bootstrap.min.css.map" />
     <Content Include="Frontend\css\Index.css" />
+    <Content Include="Frontend\js\app\index.js" />
     <Content Include="Frontend\js\bootstrap.min.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
     <Content Include="Frontend\scss\Index.scss" />
