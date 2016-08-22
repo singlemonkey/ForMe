@@ -1,10 +1,12 @@
-/* line 1, ../scss/Index.scss */
+/* line 3, ../scss/Index.scss */
 body {
   padding: 0;
   margin: 0;
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+  font-size: 12px;
 }
 
-/* line 5, ../scss/Index.scss */
+/* line 9, ../scss/Index.scss */
 .main-container {
   position: absolute;
   width: 100%;
@@ -13,7 +15,7 @@ body {
   background-color: #1ABC9C;
   z-index: 100;
 }
-/* line 12, ../scss/Index.scss */
+/* line 16, ../scss/Index.scss */
 .main-container .sidebar {
   width: 180px;
   display: block;
@@ -24,14 +26,14 @@ body {
   z-index: 102;
   overflow-x: hidden;
 }
-/* line 21, ../scss/Index.scss */
+/* line 25, ../scss/Index.scss */
 .main-container .sidebar .sidebar-content {
   width: 200px;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
 }
-/* line 28, ../scss/Index.scss */
+/* line 32, ../scss/Index.scss */
 .main-container .content {
   left: 180px;
   background-color: #eaedf1;
@@ -40,5 +42,102 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
+  overflow: hidden;
+}
+
+/* line 44, ../scss/Index.scss */
+.sidebar-nav {
+  width: 180px;
+}
+/* line 46, ../scss/Index.scss */
+.sidebar-nav .sidebar-title {
+  height: 40px;
+  background: #22282e;
+  color: #fff;
+  line-height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+/* line 53, ../scss/Index.scss */
+.sidebar-nav .sidebar-title:hover {
+  background-color: #414d5c;
+}
+/* line 57, ../scss/Index.scss */
+.sidebar-nav .sidebar-title-icon {
+  display: inline-block;
+  margin: 0 8px 8px 20px;
+  vertical-align: middle;
+  -moz-transition: -moz-transform 0.25s;
+  -o-transition: -o-transform 0.25s;
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+}
+/* line 63, ../scss/Index.scss */
+.sidebar-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+/* line 69, ../scss/Index.scss */
+.sidebar-nav .sidebar-trans {
+  -moz-transition: all 0.25s ease, ease 0.25s;
+  -o-transition: all 0.25s ease, ease 0.25s;
+  -webkit-transition: all 0.25s ease, ease 0.25s;
+  transition: all 0.25s ease, ease 0.25s;
+}
+/* line 72, ../scss/Index.scss */
+.sidebar-nav .nav-item {
+  position: relative;
+}
+/* line 76, ../scss/Index.scss */
+.sidebar-nav li a {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+}
+/* line 82, ../scss/Index.scss */
+.sidebar-nav li a:hover {
+  background: #37424f;
+}
+/* line 84, ../scss/Index.scss */
+.sidebar-nav li a:hover .nav-icon, .sidebar-nav li a:hover .nav-title {
+  color: #fff;
+}
+/* line 90, ../scss/Index.scss */
+.sidebar-nav .nav-icon {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  float: left;
+  color: #aeb9c2;
+}
+/* line 97, ../scss/Index.scss */
+.sidebar-nav .nav-title {
+  float: left;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  width: 130px;
+}
+/* line 107, ../scss/Index.scss */
+.sidebar-nav.sidebar-nav-fold .sidebar-title {
+  background-color: #37424f;
+  border-bottom: 1px solid #414d5c;
+}
+/* line 111, ../scss/Index.scss */
+.sidebar-nav.sidebar-nav-fold .sidebar-title-icon {
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+/* line 114, ../scss/Index.scss */
+.sidebar-nav.sidebar-nav-fold ul {
+  height: 0 !important;
   overflow: hidden;
 }

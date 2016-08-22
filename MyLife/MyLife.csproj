@@ -206,7 +206,10 @@
     <Content Include="Frontend\css\bootstrap\bootstrap.css.map" />
     <Content Include="Frontend\css\bootstrap\bootstrap.min.css" />
     <Content Include="Frontend\css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
+    <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
     <Content Include="Frontend\js\app\index.js" />
     <Content Include="Frontend\js\bootstrap.min.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
@@ -265,6 +268,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frontend\.sass-cache\07e851c4bc285a24ec523fc9f68c4024ca2e5eb4\Index.scssc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frontend\fonts\fontawesome-webfont.eot" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.woff" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Frontend\fonts\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
