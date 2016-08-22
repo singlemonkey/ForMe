@@ -14,11 +14,12 @@
                 sidebarNav.toggleClass("sidebar-nav-fold");
                 var self=this;
                 let menusStorage = JSON.parse(window.localStorage.getItem("menuItems")).map((item) => {
-                    if (item.title == this.innerHtml) {
-                        menu.isFold = true;
+                    if (item.title == this.textContent) {
+                        item.isFold =!item.isFold;
                     }
+                    return item;
                 });
-                window.localStorage.setItem(JSON.stringify(menusStorage));
+                window.localStorage.setItem("menuItems", JSON.stringify(menusStorage));
             }
         });
         let sidebarTitleInner = $("<div></div>", {
@@ -82,18 +83,21 @@ jQuery(document).ready(function () {
                 modules: [
                     {
                         title: "说说",
-                        url: "",
+                        url: "/Home/Index",
                         icon: "",
+                        isActive:false
                     },
                     {
                         title: "博客",
-                        url: "",
+                        url: "/Home/Index",
                         icon: "",
+                        isActive: false
                     },
                     {
                         title: "设置",
-                        url: "",
+                        url: "/Home/Index",
                         icon: "",
+                        isActive: false
                     },
                 ]
             },
@@ -103,13 +107,15 @@ jQuery(document).ready(function () {
                 modules: [
                     {
                         title: "购物车",
-                        url: "",
+                        url: "/Home/Index",
                         icon: "",
+                        isActive: false
                     },
                     {
                         title: "资债统计",
-                        url: "",
+                        url: "/Home/Index",
                         icon: "",
+                        isActive: false
                     },
                 ]
             }
