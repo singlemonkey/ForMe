@@ -1,6 +1,10 @@
-﻿body{
+﻿@import "Compass/css3";
+@import "compass/css3/transform";
+body{
     padding:0;
     margin:0;
+    font-family:"Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+    font-size:12px;
 }
 .main-container{
     position: absolute;
@@ -34,5 +38,82 @@
         bottom:0;
         right:0;
         overflow:hidden;
+    }
+}
+//菜单栏组件
+.sidebar-nav{
+    width:180px;
+    .sidebar-title{
+        height: 40px;
+        background: #22282e;
+        color: #fff;
+        line-height: 40px;
+        position: relative;
+        cursor: pointer;
+        &:hover{
+            background-color:#414d5c
+        }
+    }
+    .sidebar-title-icon{
+        display:inline-block;
+        margin:0 8px 8px 20px;
+        vertical-align:middle;
+        @include transition(transform 0.25s);
+    }
+    ul{
+        margin:0;
+        padding:0;
+        list-style:none;
+        overflow:hidden;
+    }
+    .sidebar-trans{
+        @include transition(all 0.25s ease,0.25s ease);
+    }
+    .nav-item{
+        position:relative;
+    }
+    li{
+        a{
+            display:block;
+            width:100%;
+            height:40px;
+            line-height:40px;
+            overflow:hidden;
+            &:hover{
+                background:#37424f;
+                .nav-icon,.nav-title{
+                    color:#fff;
+                }
+            }
+        }
+    }
+    .nav-icon{
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+        float: left;
+        color: #aeb9c2;
+    }
+    .nav-title{
+        float: left;
+        overflow: hidden;
+        color: #fff;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        width: 130px;
+    }
+    &.sidebar-nav-fold{
+        .sidebar-title{
+            background-color:#37424f;
+            border-bottom:1px solid #414d5c;
+        }
+        .sidebar-title-icon{
+            @include rotate(-90deg);
+        }
+        ul{
+            height:0 !important;
+            overflow:hidden;
+        }
     }
 }
