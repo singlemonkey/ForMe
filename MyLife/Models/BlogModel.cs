@@ -13,6 +13,8 @@ namespace MyLife.Models
         public string Content { get; set; }
         public bool IsPublish { get; set; }
         public bool IsStar { get; set; }
+        public string FileType { get; set; }
+        public int ParentID { get; set; }
         public DateTime PublishDate { get; set; }
     }
 }

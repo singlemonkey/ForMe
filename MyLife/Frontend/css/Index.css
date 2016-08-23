@@ -52,14 +52,15 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* line 52, ../scss/Index.scss */
+/* line 53, ../scss/Index.scss */
 .sidebar-nav {
   width: 180px;
 }
-/* line 54, ../scss/Index.scss */
+/* line 55, ../scss/Index.scss */
 .sidebar-nav .sidebar-title {
   height: 40px;
   background: #22282e;
@@ -68,11 +69,11 @@ body {
   position: relative;
   cursor: pointer;
 }
-/* line 61, ../scss/Index.scss */
+/* line 62, ../scss/Index.scss */
 .sidebar-nav .sidebar-title:hover {
   background-color: #414d5c;
 }
-/* line 65, ../scss/Index.scss */
+/* line 66, ../scss/Index.scss */
 .sidebar-nav .sidebar-title-icon {
   display: inline-block;
   margin: 0 8px 8px 20px;
@@ -82,25 +83,25 @@ body {
   -webkit-transition: -webkit-transform 0.25s;
   transition: transform 0.25s;
 }
-/* line 71, ../scss/Index.scss */
+/* line 72, ../scss/Index.scss */
 .sidebar-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
 }
-/* line 77, ../scss/Index.scss */
+/* line 78, ../scss/Index.scss */
 .sidebar-nav .sidebar-trans {
   -moz-transition: all 0.25s ease, ease 0.25s;
   -o-transition: all 0.25s ease, ease 0.25s;
   -webkit-transition: all 0.25s ease, ease 0.25s;
   transition: all 0.25s ease, ease 0.25s;
 }
-/* line 80, ../scss/Index.scss */
+/* line 81, ../scss/Index.scss */
 .sidebar-nav .nav-item {
   position: relative;
 }
-/* line 84, ../scss/Index.scss */
+/* line 85, ../scss/Index.scss */
 .sidebar-nav li a {
   display: block;
   width: 100%;
@@ -108,23 +109,23 @@ body {
   line-height: 40px;
   overflow: hidden;
 }
-/* line 90, ../scss/Index.scss */
+/* line 91, ../scss/Index.scss */
 .sidebar-nav li a:hover {
   background: #37424f;
 }
-/* line 92, ../scss/Index.scss */
+/* line 93, ../scss/Index.scss */
 .sidebar-nav li a:hover .nav-icon, .sidebar-nav li a:hover .nav-title {
   color: #fff;
 }
-/* line 98, ../scss/Index.scss */
+/* line 99, ../scss/Index.scss */
 .sidebar-nav li.active a {
   background: #0099cc;
 }
-/* line 100, ../scss/Index.scss */
+/* line 101, ../scss/Index.scss */
 .sidebar-nav li.active a .nav-icon, .sidebar-nav li.active a .nav-title {
   color: #fff;
 }
-/* line 106, ../scss/Index.scss */
+/* line 107, ../scss/Index.scss */
 .sidebar-nav .nav-icon {
   width: 50px;
   text-align: center;
@@ -132,7 +133,7 @@ body {
   float: left;
   color: #aeb9c2;
 }
-/* line 113, ../scss/Index.scss */
+/* line 114, ../scss/Index.scss */
 .sidebar-nav .nav-title {
   float: left;
   overflow: hidden;
@@ -142,19 +143,19 @@ body {
   display: block;
   width: 130px;
 }
-/* line 123, ../scss/Index.scss */
+/* line 124, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title {
   background-color: #37424f;
   border-bottom: 1px solid #414d5c;
 }
-/* line 127, ../scss/Index.scss */
+/* line 128, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title-icon {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-/* line 130, ../scss/Index.scss */
+/* line 131, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold ul {
   height: 0 !important;
   overflow: hidden;

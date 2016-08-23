@@ -26,7 +26,9 @@ namespace MyLife.Context
                     Introduction="这些年空空如也",
                     Content="个人博客系统正式启动，将作为技术与生活的新载体",
                     IsPublish=true,
-                    IsStar=false,                    
+                    IsStar=false,  
+                    FileType="document",
+                    ParentID=0,                  
                     PublishDate=DateTime.Now
                 }
             };
