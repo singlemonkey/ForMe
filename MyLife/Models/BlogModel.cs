@@ -12,6 +12,7 @@ namespace MyLife.Models
         public string Introduction { get; set; }
         public string Content { get; set; }
         public bool IsPublish { get; set; }
+        public bool IsStar { get; set; }
         public DateTime PublishDate { get; set; }
     }
 }

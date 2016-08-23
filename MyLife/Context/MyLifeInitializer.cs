@@ -25,7 +25,8 @@ namespace MyLife.Context
                     Title="第一条博客",
                     Introduction="这些年空空如也",
                     Content="个人博客系统正式启动，将作为技术与生活的新载体",
-                    IsPublish=true,                    
+                    IsPublish=true,
+                    IsStar=false,                    
                     PublishDate=DateTime.Now
                 }
             };

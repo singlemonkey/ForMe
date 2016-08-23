@@ -20,9 +20,9 @@ namespace MyLife.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult GetAllBlogs() {
-            return Json(db.Blogs.ToList());
+        public ActionResult Edit()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

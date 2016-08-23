@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Markdown";
+}
+<link rel="stylesheet" href="~/Frontend/assets/editor/css/editormd.min.css" />
+
+<div id="editormd">
+    <textarea style="display:none;"></textarea>
+</div>
+
+@section scripts{
+    <script src="~/Frontend/assets/editor/editormd.min.js"></script>
+    <script>
+        $(function () {
+            var editor = editormd("editormd", {
+                path: "/Frontend/assets/editor/lib/"
+            });
+        });
+    </script>
+}
