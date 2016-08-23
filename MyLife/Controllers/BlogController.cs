@@ -15,6 +15,16 @@ namespace MyLife.Controllers
     {
         private MyLifeContext db = new MyLifeContext();
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetAllBlogs() {
+            return Json(db.Blogs.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

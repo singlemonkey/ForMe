@@ -1,10 +1,37 @@
 ﻿class Sidebar {
 
     constructor(menus) {
-        this.menus = menus;
+        this.menus =JSON.parse(window.localStorage.getItem("menuItems"));
+    }
+
+    setIsFold(e) {
+        let menusStorage = this.menus.map((menu) => {
+            if (menu.title == e.textContent) {
+                menu.isFold = !menu.isFold;
+            }
+            return menu;
+        });
+        window.localStorage.setItem("menuItems", JSON.stringify(menusStorage));
+    }
+
+    setIsActive(e) {
+        let title = e.textContent;
+        let menusStorage=this.menus.map((menu) => {
+            menu.modules.map((module) => {
+                if (module.title == title) {
+                    module.isActive = true;
+                } else {
+                    module.isActive = false;
+                }
+                return module;
+            });
+            return menu;
+        });
+        window.localStorage.setItem("menuItems", JSON.stringify(menusStorage));
     }
 
     createDom(menu) {
+        var self = this;
         let sidebarNav = $("<div></div>", {
             "class": menu.isFold ? "sidebar-nav sidebar-nav-fold" : "sidebar-nav"
         });
@@ -12,14 +39,7 @@
             "class": "sidebar-title",
             click: function () {
                 sidebarNav.toggleClass("sidebar-nav-fold");
-                var self=this;
-                let menusStorage = JSON.parse(window.localStorage.getItem("menuItems")).map((item) => {
-                    if (item.title == this.textContent) {
-                        item.isFold =!item.isFold;
-                    }
-                    return item;
-                });
-                window.localStorage.setItem("menuItems", JSON.stringify(menusStorage));
+                self.setIsFold(this);
             }
         });
         let sidebarTitleInner = $("<div></div>", {
@@ -39,11 +59,14 @@
         let ulHeight = 0;
         menu.modules.map((module) => {
             let navItem = $("<li></li>", {
-                "class": "nav-item"
+                "class": module.isActive ? "nav-item active" : "nav-item "
             });
             let a = $("<a></a>", {
                 href: module.url,
-                "class":"sidebar-trans"
+                "class": "sidebar-trans",
+                click: function () {
+                    self.setIsActive(this);
+                }
             });
             let navIcon = $("<div></div>", {
                 "class": "nav-icon sidebar-trans"
@@ -82,14 +105,14 @@ jQuery(document).ready(function () {
                 isFold:false,
                 modules: [
                     {
-                        title: "说说",
+                        title: "心情",
                         url: "/Home/Index",
                         icon: "",
                         isActive:false
                     },
                     {
                         title: "博客",
-                        url: "/Home/Index",
+                        url: "/Blog/Index",
                         icon: "",
                         isActive: false
                     },
@@ -122,7 +145,6 @@ jQuery(document).ready(function () {
         ]));
     }    
     //左侧菜单项设置
-    let menuItems =JSON.parse(localStorage.getItem("menuItems"));
-    let menu= new Sidebar(menuItems);
+    let menu= new Sidebar();
     $("#sidebar").append(menu.render());
 });

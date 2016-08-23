@@ -6,6 +6,14 @@ body{
     font-family:"Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
     font-size:12px;
 }
+.navbar{
+    background-color:#09C;    
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 .main-container{
     position: absolute;
     width: 100%;
@@ -81,6 +89,14 @@ body{
             overflow:hidden;
             &:hover{
                 background:#37424f;
+                .nav-icon,.nav-title{
+                    color:#fff;
+                }
+            }
+        }
+        &.active{
+            a{
+                background:#0099cc;
                 .nav-icon,.nav-title{
                     color:#fff;
                 }

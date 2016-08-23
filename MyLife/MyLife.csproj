@@ -198,20 +198,11 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
     <Content Include="favicon.ico" />
     <Content Include="Frontend\config.rb" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.css.map" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap-theme.min.css.map" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.css.map" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.min.css" />
-    <Content Include="Frontend\css\bootstrap\bootstrap.min.css.map" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
     <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
     <Content Include="Frontend\js\app\index.js" />
-    <Content Include="Frontend\js\bootstrap.min.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Global.asax" />
@@ -275,6 +266,9 @@
     <Content Include="Frontend\fonts\fontawesome-webfont.woff" />
     <Content Include="Frontend\fonts\fontawesome-webfont.woff2" />
     <Content Include="Frontend\fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
