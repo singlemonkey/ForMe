@@ -659,12 +659,22 @@
     <Content Include="Frontend\assets\editor\tests\marked-todo-list-test.html" />
     <Content Include="Frontend\assets\editor\tests\qunit\qunit-1.16.0.css" />
     <Content Include="Frontend\assets\editor\tests\qunit\qunit-1.16.0.js" />
+    <Content Include="Frontend\assets\nprogress\.gitignore" />
+    <Content Include="Frontend\assets\nprogress\index.html" />
+    <Content Include="Frontend\assets\nprogress\nprogress.css" />
+    <Content Include="Frontend\assets\nprogress\nprogress.js" />
+    <Content Include="Frontend\assets\nprogress\support\extras.css" />
+    <Content Include="Frontend\assets\nprogress\support\style.css" />
+    <Content Include="Frontend\assets\nprogress\test\component.html" />
+    <Content Include="Frontend\assets\nprogress\test\index.html" />
+    <Content Include="Frontend\assets\nprogress\test\test.js" />
     <Content Include="Frontend\config.rb" />
     <Content Include="Frontend\css\Blog.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
     <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
+    <Content Include="Frontend\js\app\app.js" />
     <Content Include="Frontend\js\app\blog.js" />
     <Content Include="Frontend\js\app\index.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
@@ -797,6 +807,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frontend\scss\Blog.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frontend\assets\nprogress\.npmignore" />
+    <Content Include="Frontend\assets\nprogress\.travis.yml" />
+    <Content Include="Frontend\assets\nprogress\bower.json" />
+    <Content Include="Frontend\assets\nprogress\component.json" />
+    <Content Include="Frontend\assets\nprogress\History.md" />
+    <Content Include="Frontend\assets\nprogress\License.md" />
+    <Content Include="Frontend\assets\nprogress\Notes.md" />
+    <Content Include="Frontend\assets\nprogress\package.json" />
+    <Content Include="Frontend\assets\nprogress\Readme.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

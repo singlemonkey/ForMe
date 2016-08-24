@@ -1,4 +1,21 @@
-﻿.container{
+﻿div,ul,li{
+    margin:0;
+    padding:0;
+}
+ul,li{
+    list-style:none;
+}
+.clearfix{
+    height:1%;
+    &:after{
+        content:".";
+        display:block;
+        height:0;
+        clear:both;
+        visibility:hidden
+    }
+}
+.container{
     width:896px;
     padding:34px 115px 140px 165px;
     margin:0 auto;

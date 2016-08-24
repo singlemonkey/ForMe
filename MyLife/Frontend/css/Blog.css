@@ -1,4 +1,28 @@
 /* line 1, ../scss/Blog.scss */
+div, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 5, ../scss/Blog.scss */
+ul, li {
+  list-style: none;
+}
+
+/* line 8, ../scss/Blog.scss */
+.clearfix {
+  height: 1%;
+}
+/* line 10, ../scss/Blog.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 18, ../scss/Blog.scss */
 .container {
   width: 896px;
   padding: 34px 115px 140px 165px;
