@@ -21,3 +21,33 @@ ul,li{
     margin:0 auto;
     position:relative;
 }
+
+//页面头部导航
+.list-crumb{
+    position:relative;
+    .crumb-item{
+        color:#6886aa;
+        padding:5px;
+        font-size:14px;
+        &:hover{
+            color:#6093bb;
+            cursor:pointer;
+        }
+    }
+    .now-crumb{
+        color:#666;
+        padding:5px;
+        font-size:14px;
+    }
+}
+.list-container{
+    color:#333;
+    .list-item{
+        position: relative;
+        float: left;
+        height: 127px;
+        width: 122px;
+        margin-top: 24px;
+        margin-right: 6px;
+    }
+}

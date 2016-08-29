@@ -673,7 +673,17 @@
     <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.eot" />
     <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.woff" />
+    <Content Include="Frontend\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Frontend\fonts\FontAwesome.otf" />
+    <Content Include="Frontend\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Frontend\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frontend\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Frontend\js\app\app.js" />
     <Content Include="Frontend\js\app\blog.js" />
     <Content Include="Frontend\js\app\index.js" />
@@ -733,13 +743,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frontend\.sass-cache\07e851c4bc285a24ec523fc9f68c4024ca2e5eb4\Index.scssc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frontend\fonts\fontawesome-webfont.eot" />
-    <Content Include="Frontend\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Frontend\fonts\fontawesome-webfont.woff" />
-    <Content Include="Frontend\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Frontend\fonts\FontAwesome.otf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Blog\Index.cshtml" />

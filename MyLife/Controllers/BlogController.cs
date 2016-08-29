@@ -33,16 +33,12 @@ namespace MyLife.Controllers
             if (id != 0) {
                 crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.PublishDate).ToList();
             }
-            var FolderList = from blog in db.Blogs
-                                where blog.ParentID==id && blog.FileType=="floder" && blog.ID!=0 orderby blog.PublishDate
+            var ContainerList = from blog in db.Blogs
+                                where blog.ParentID==id && blog.ID!=0 orderby blog.PublishDate
                                 select blog;
-            var DocumentList = from blog in db.Blogs
-                                      where blog.ParentID == id && blog.FileType == "document" orderby blog.PublishDate
-                               select blog;
             return Json(new {
-                crumList = crumbList,
-                FolderList = FolderList.ToList(),
-                DocumentList = DocumentList.ToList(),
+                crumbList = crumbList,
+                ContainerList = ContainerList.ToList()
             });            
         }
 
