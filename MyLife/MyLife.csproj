@@ -688,6 +688,7 @@
     <Content Include="Frontend\js\app\blog.js" />
     <Content Include="Frontend\js\app\index.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
+    <Content Include="Frontend\js\JsRender.js" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Global.asax" />
     <Content Include="logs\log.txt" />
@@ -722,7 +723,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Frontend\images\" />
+    <Folder Include="Frontend\images\blog\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

@@ -8,8 +8,37 @@
     <ul class="list-container"></ul>
 </div>
 @section scripts{
-    <script src="~/Frontend/js/app/blog.js"></script>
-    <script type="text/javascript">
-
+    <script id="blog-item" type="text/x-jsrender">
+        <li class="list-item">
+            <div class="list-box">
+                <a data-id="{{:ID}}">
+                    <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}">
+                        <div class="file {{if FileType=="folder"}} folder {{else}} doc {{/if}} "></div>
+                        <div class="item-title">{{:Title}}</div>
+                        <div class="item-setting">
+                            <span class="icon-setting"></span>
+                        </div>
+                    </div>
+                </a>
+                <div draggable="false" class="file-operations">
+                    <div class="trangle">
+                        <span class="list-trangle-item top"></span>
+                        <span class="list-trangle-item down"></span>
+                    </div>
+                    <div class="menu-list">
+                        <div class="menu-title">
+                            <input class="title-input" placeholder="{{if FileType=="folder"}} 文件夹名称 {{else}} 文档名称 {{/if}}" value="{{:Title}}" />
+                        </div>
+                        <hr />
+                        <div class="menu-item">
+                            <span class="icon-delete"></span>
+                            <span>删除</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
     </script>
+    <script src="~/Frontend/js/JsRender.js"></script>
+    <script src="~/Frontend/js/app/blog.js"></script>
 }

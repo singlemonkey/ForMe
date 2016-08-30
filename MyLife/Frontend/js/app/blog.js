@@ -61,11 +61,15 @@ class Bloglist {
         let l = result.length;
         if (l != 0) {
             for (let i = 0; i < l; i++) {
-                let listItem = $("<li></li>", {
-                    "class":"list-item"
-                });
+                this.renderListItem(result[i]);
             }
         }
+    }
+
+    renderListItem(item) {
+        let tmpl = $.templates("#blog-item");
+        let liItem = tmpl.render(item);
+        this.containerList.append(liItem);
     }
 };
 jQuery(document).ready(function () {
