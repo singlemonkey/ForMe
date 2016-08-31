@@ -71,11 +71,56 @@ class Bloglist {
         let liItem = tmpl.render(item);
         this.containerList.append(liItem);
     }
+
+    updateTitle(id) {
+
+    }
+
 };
 jQuery(document).ready(function () {
     let blog = new Bloglist();    
-    blog._init =localStorage.getItem("blogInit");
+    blog._init = localStorage.getItem("blogInit");
+    //调用blog._init方法rerender整个blog
     $(".list-crumb").on("click", ".crumb-item", function () {
         blog._init = $(this).attr("data-id");
+    });
+    $(".list-container").on("click", "a", function () {
+        if ($(this).children().hasClass("folder-content")) {
+            blog._init = $(this).attr("data-id");
+        } else {
+            alert("跳转文档");
+        }        
+    });
+    //点击空白处隐藏所有active窗体
+    $(document).on("click", function (e) {
+        if ($(".file-operations.active").length != 0) {
+            if ($(e.target).parents(".file-operations.active").length == 0) {
+                $(".file-operations.active").removeClass("active");
+                $(".item-content.hover").removeClass("hover");
+            }
+        }        
+    });
+    //移入移出添加hover样式
+    $(".list-container").on("mouseover mouseout",".item-content", function (event) {
+        if (event.type == "mouseover") {
+            $(this).addClass("hover");
+        } else if (event.type == "mouseout") {
+            if ($(this).parents(".list-box").children(".file-operations.active").length == 0) {
+                $(this).removeClass("hover");
+            }
+        }
+    });
+    //点击设置图标显示设置项
+    $(".list-container").on("click", ".item-setting", function (e) {
+        let id = $(this).parents("a").attr("data-id");
+        $(".file-operations.active").filter(function () {
+            return $(this).attr("data-id") != id;
+        }).removeClass("active");
+        $(".item-content.hover").filter(function () {
+            return $(this).attr("data-id") != id;
+        }).removeClass("hover");
+
+        $(this).parents(".list-box").children(".file-operations").toggleClass("active");
+        e.stopPropagation();
     });
 });

@@ -1,6 +1,8 @@
 ﻿@import "compass/css3";
 @import "compass/utilities/sprites";
 @import "blog/*.png";
+
+@import "base";
 div,ul,li{
     margin:0;
     padding:0;
@@ -69,13 +71,64 @@ ul,li{
         text-align:center;
         border:1px solid transparent;
         border-radius:2px;
-        .file{
-
+        .blog-folder{
+            width:80px;
+            height:60px;
+            position:relative;
+            margin:16px auto 10px auto;
+            @include blog-sprite(folder);
         }
-        &:hover{
+        .blog-doc{
+            display:block;
+            width:60px;
+            height:80px;
+            position:relative;
+            margin:6px auto 0 auto;
+            @include blog-sprite(doc);
+        }
+        .item-title{
+            text-align: center;
+            font-size: 12px;
+            overflow: hidden;
+            color: #666;
+            width: 106px;
+            word-break: break-all;
+            line-height: 18px;
+            max-height: 40px;
+            margin: 0 auto;
+        }
+        .item-setting{
+            height: 26px;
+            width: 26px;
+            position: absolute;
+            right: 1px;
+            line-height: 20px;
+            top: 100px;
+            display: none;
+            cursor:pointer;
+            .blog-icon-setting{
+                width: 12px;
+                height: 12px;
+                display: block;
+                position: absolute;
+                top: 7px;
+                left: 7px;
+                cursor:pointer;
+                 @include blog-sprite(icon-setting);
+            }
+            &:hover{
+                .blog-icon-setting{
+                     @include blog-sprite(icon-setting-hover);
+                }
+            }
+        }
+        &.hover{
             border:1px solid #d0d0d0;
             border-radius:2px;
             background:#e0e0e0;
+            .item-setting{
+                display:block;
+            }
         }
     }
     .file-operations{
@@ -93,5 +146,75 @@ ul,li{
         &.active{
             display:block;
         }
+    }
+    .trangle{
+        .list-trangle-item{
+            border-left-color:transparent;
+            border-right-color:transparent;
+            border-bottom-color:#fff;
+            position:absolute;
+            width:0;
+            height:0;
+            border-width:7px;
+            border-style:solid;
+            top:-7px;
+            left:102px;
+            background:none;
+             border-top:none;
+            &.top{
+                top:-8px;
+                border-bottom-color:rgba(136,136,136,0.2);
+                z-index:10;
+            }
+            &.down{
+                z-index:11;
+            }
+        }
+    }
+    .menu-item{
+        height: 36px;
+        line-height: 36px;
+        text-align: left;
+        font-size: 12px;
+        cursor: pointer;
+        color: #41464b;
+        padding-left: 14px;
+        &.delete{
+            margin-top:4px;
+        }
+        &:hover{
+            @include background-image(linear-gradient(top, #e7e8e9, #eeeff0));
+        }
+    }
+    .menu-list{
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background-color: #fff;
+        border-radius: 3px;
+    }
+    .menu-title{
+        padding: 0 10px 8px 10px;
+        .title-input{
+            height: 20px;
+            line-height: 20px;
+            padding: 3px 9px;
+            margin-right: 0px;
+            width: 180px;
+            border-radius: 2px;
+            border: 1px solid #e5e5e5;
+            @include box-shadow(0px 1px 3px 0px #e5e5e5 inset);
+        }
+    }
+    .icon-delete{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin-top: 7px;
+        margin-right: 10px;
+        @include blog-sprite(delete);
+    }
+    hr{
+        width:192px;
     }
 }

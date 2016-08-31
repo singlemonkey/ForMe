@@ -5,32 +5,32 @@
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
 <div class="container">
     <div class="list-crumb"></div>
-    <ul class="list-container"></ul>
+    <ul class="list-container clearfix"></ul>
 </div>
 @section scripts{
     <script id="blog-item" type="text/x-jsrender">
         <li class="list-item">
             <div class="list-box">
                 <a data-id="{{:ID}}">
-                    <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}">
-                        <div class="file {{if FileType=="folder"}} folder {{else}} doc {{/if}} "></div>
+                    <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}" data-id="{{:ID}}">
+                        <div class="{{if FileType=="folder"}} blog-folder {{else}} blog-doc {{/if}} "></div>
                         <div class="item-title">{{:Title}}</div>
                         <div class="item-setting">
-                            <span class="icon-setting"></span>
+                            <span class="blog-icon-setting"></span>
                         </div>
                     </div>
                 </a>
-                <div draggable="false" class="file-operations">
+                <div draggable="false" class="file-operations" data-id="{{:ID}}">
                     <div class="trangle">
                         <span class="list-trangle-item top"></span>
                         <span class="list-trangle-item down"></span>
                     </div>
                     <div class="menu-list">
                         <div class="menu-title">
-                            <input class="title-input" placeholder="{{if FileType=="folder"}} 文件夹名称 {{else}} 文档名称 {{/if}}" value="{{:Title}}" />
+                            <input class="title-input input" placeholder="{{if FileType=="folder"}} 文件夹名称 {{else}} 文档名称 {{/if}}" value="{{:Title}}" />
                         </div>
                         <hr />
-                        <div class="menu-item">
+                        <div class="menu-item delete">
                             <span class="icon-delete"></span>
                             <span>删除</span>
                         </div>
