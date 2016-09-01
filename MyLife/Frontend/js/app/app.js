@@ -5,18 +5,13 @@
                 showProgress: true
             };
             let obj = Object.assign(defaultObj, config);
-            if (obj.showProgress) {
-                $(document).ajaxStart(() => {
-                    NProgress.start();
-                });
-                $(document).ajaxComplete(() => {
-                    NProgress.done();
-                });
-            }
             $.ajax({
                 type: "POST",
                 url: obj.url,
                 data: JSON.stringify(obj.data),
+                dataType: 'json',
+                contentType: "application/json",
+                global:obj.showProgress?true:false,
                 success: function (result) {
                     obj.success(result);
                 },
@@ -48,5 +43,13 @@
             var dateString = "\/Date(" + (i + 8 * 60 * 60 * 1000) + ")\/";
             return dateString;
         },
+    });
+    //注册全局ajax事件，
+    //在发起请求时可传入showProgress为false更改ajax的global参数来禁用此事件
+    $(document).ajaxStart(() => {
+        NProgress.start();
+    });
+    $(document).ajaxComplete(() => {
+        NProgress.done();
     });
 });

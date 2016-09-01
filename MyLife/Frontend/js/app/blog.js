@@ -32,7 +32,7 @@ class Bloglist {
 
     render(data) {
         this.renderCrumb(data.crumbList);
-        this.renderContainer(data.ContainerList);
+        this.renderContainer(data.containerList);
     }
 
     renderCrumb(result) {
@@ -73,13 +73,32 @@ class Bloglist {
     }
 
     updateTitle(id) {
-
+        let oTitle=$("a[data-id=" + id + "] .item-title");
+        let nTitle = $(".file-operations[data-id=" + id + "] .title-input");
+        if (oTitle.text() != nTitle.val()) {
+            let obj = {
+                url: "/Blog/UpdateTitle/",
+                data: {
+                    ID: id,
+                    Title: nTitle.val()
+                },
+                showProgress:false,
+                success: function (result) {
+                    oTitle.text(result.Title);
+                },
+                error: function (error) {
+                    $("html").html(error.responseText);
+                }
+            }
+            $.Ajaxobj(obj);
+        }
     }
 
 };
 jQuery(document).ready(function () {
     let blog = new Bloglist();    
     blog._init = localStorage.getItem("blogInit");
+
     //调用blog._init方法rerender整个blog
     $(".list-crumb").on("click", ".crumb-item", function () {
         blog._init = $(this).attr("data-id");
@@ -91,15 +110,17 @@ jQuery(document).ready(function () {
             alert("跳转文档");
         }        
     });
+
     //点击空白处隐藏所有active窗体
     $(document).on("click", function (e) {
-        if ($(".file-operations.active").length != 0) {
+        if ($(".file-operations.active").length == 1) {
             if ($(e.target).parents(".file-operations.active").length == 0) {
                 $(".file-operations.active").removeClass("active");
-                $(".item-content.hover").removeClass("hover");
+                $(".item-content.hover").removeClass("hover");                
             }
         }        
     });
+
     //移入移出添加hover样式
     $(".list-container").on("mouseover mouseout",".item-content", function (event) {
         if (event.type == "mouseover") {
@@ -110,6 +131,9 @@ jQuery(document).ready(function () {
             }
         }
     });
+
+    let MutationObserver = window.WebKitMutationObserver;
+    let mutationObserverSupport = !!MutationObserver;
     //点击设置图标显示设置项
     $(".list-container").on("click", ".item-setting", function (e) {
         let id = $(this).parents("a").attr("data-id");
@@ -119,8 +143,29 @@ jQuery(document).ready(function () {
         $(".item-content.hover").filter(function () {
             return $(this).attr("data-id") != id;
         }).removeClass("hover");
-
-        $(this).parents(".list-box").children(".file-operations").toggleClass("active");
+        //监听元素class变化，触发回调函数更新title
+        let operation = $(this).parents(".list-box").children(".file-operations");
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.type === "attributes") {
+                    blog.updateTitle(id);
+                }
+            });
+            observer.disconnect();
+        });
+        if (operation.hasClass("active")) {
+            operation.removeClass("active");            
+        } else {
+            operation.addClass("active");            
+            let DomOperation = operation.get(0);
+            let options = {
+                attributes: true,
+                childList: true,
+                attributesFilter:["class"]
+            }
+            observer.observe(DomOperation, options);
+        }
         e.stopPropagation();
     });
+
 });

@@ -36,9 +36,9 @@ namespace MyLife.Controllers
             var ContainerList = from blog in db.Blogs
                                 where blog.ParentID==id && blog.ID!=0 orderby blog.PublishDate
                                 select blog;
-            return Json(new {
+            return Json( new {
                 crumbList = crumbList,
-                ContainerList = ContainerList.ToList()
+                containerList = ContainerList.ToList()
             });            
         }
 
@@ -50,6 +50,13 @@ namespace MyLife.Controllers
                 list = GetCrumbList(parentBlog.ParentID, list);
             }
             return list;
+        }
+
+        [HttpPost]
+        public JsonResult UpdateTitle(BlogModel model) {
+            db.Entry(model).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(model);
         }
 
         protected override void Dispose(bool disposing)

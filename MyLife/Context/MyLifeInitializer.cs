@@ -54,7 +54,7 @@ namespace MyLife.Context
                 new BlogModel {
                     ID=3,
                     Title="第一个文件夹",
-                    Content="个人博客系统正式启动，将作为技术与生活的新载体",
+                    Content="",
                     IsPublish=true,
                     IsStar=false,
                     FileType="folder",
@@ -70,7 +70,17 @@ namespace MyLife.Context
                     FileType="document",
                     ParentID=3,
                     PublishDate=DateTime.Parse("2016-09-01")
-                }
+                },
+                new BlogModel {
+                    ID=5,
+                    Title="文件夹",
+                    Content="",
+                    IsPublish=true,
+                    IsStar=false,
+                    FileType="folder",
+                    ParentID=3,
+                    PublishDate=DateTime.Parse("2016-08-30")
+                },
             };
             blogs.ForEach(b=>context.Blogs.Add(b));
             context.SaveChanges();
