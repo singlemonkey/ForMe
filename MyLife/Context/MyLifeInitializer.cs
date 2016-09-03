@@ -29,7 +29,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-08-24")
+                    PublishDate=DateTime.Parse("2016-06-24")
                 },
                 new BlogModel {
                     ID=1,
@@ -39,7 +39,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-08-26")
+                    PublishDate=DateTime.Parse("2016-06-26")
                 },
                 new BlogModel {
                     ID=2,
@@ -49,7 +49,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-08-28")
+                    PublishDate=DateTime.Parse("2016-07-28")
                 },
                 new BlogModel {
                     ID=3,
@@ -59,7 +59,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-08-30")
+                    PublishDate=DateTime.Parse("2016-07-30")
                 },
                 new BlogModel {
                     ID=4,
@@ -69,7 +69,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=3,
-                    PublishDate=DateTime.Parse("2016-09-01")
+                    PublishDate=DateTime.Parse("2016-08-01")
                 },
                 new BlogModel {
                     ID=5,
@@ -79,7 +79,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=3,
-                    PublishDate=DateTime.Parse("2016-08-30")
+                    PublishDate=DateTime.Parse("2016-08-10")
                 },
             };
             blogs.ForEach(b=>context.Blogs.Add(b));

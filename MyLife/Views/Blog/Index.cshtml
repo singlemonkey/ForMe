@@ -3,9 +3,24 @@
     ViewBag.Title = "Blog";
 }
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
+<link rel="stylesheet"  href="~/Frontend/assets/dialog/css/dialog-wilma.css"/>
 <div class="container">
     <div class="list-crumb"></div>
     <ul class="list-container clearfix"></ul>
+</div>
+<div id="dialog" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="morph-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+                <rect x="3" y="3" fill="none" width="556" height="276" />
+            </svg>
+        </div>
+        <div class="dialog-inner">
+            <h2><strong>Howdy</strong>, I'm a dialog box</h2>
+            <div><button class="action" data-dialog-close>Close</button></div>
+        </div>
+    </div>
 </div>
 @section scripts{
     <script id="blog-item" type="text/x-jsrender">

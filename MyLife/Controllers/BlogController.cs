@@ -54,9 +54,11 @@ namespace MyLife.Controllers
 
         [HttpPost]
         public JsonResult UpdateTitle(BlogModel model) {
-            db.Entry(model).State = EntityState.Modified;
+            BlogModel blog = db.Blogs.Find(model.ID);
+            blog.Title = model.Title;
+            db.Entry(blog).State = EntityState.Modified;
             db.SaveChanges();
-            return Json(model);
+            return Json(blog);
         }
 
         protected override void Dispose(bool disposing)

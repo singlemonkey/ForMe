@@ -1,4 +1,6 @@
 ﻿let localStorage = window.localStorage;
+let MutationObserver = window.WebKitMutationObserver;
+let mutationObserverSupport = !!MutationObserver;
 class Bloglist {
 
     constructor() {
@@ -6,6 +8,7 @@ class Bloglist {
         localStorage.setItem("blogInit",this.init);
         this.crumbList = $(".list-crumb");
         this.containerList = $(".list-container");
+        this.dialog = null;
     }
 
     get _init() {
@@ -72,6 +75,63 @@ class Bloglist {
         this.containerList.append(liItem);
     }
 
+    setOperation(setting) {
+        let self = this;
+        let id = $(setting).parents("a").attr("data-id");
+        $(".file-operations.active").filter(function () {
+            return $(this).attr("data-id") != id;
+        }).removeClass("active");
+        $(".item-content.hover").filter(function () {
+            return $(this).attr("data-id") != id;
+        }).removeClass("hover");
+
+        //监听元素class变化，触发回调函数更新title
+        let operation = $(setting).parents(".list-box").children(".file-operations");
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.type === "attributes") {
+                    self.updateTitle(id);
+                }
+            });
+            observer.disconnect();
+        });
+        if (operation.hasClass("active")) {
+            operation.removeClass("active");
+        } else {
+            operation.addClass("active");
+            //监听键盘事件更新title
+            $(operation).off().on("keydown", function (e) {
+                switch (e.keyCode) {
+                    case 13:
+                        $(self).trigger("click");
+                        break;
+                    default:
+                        return;
+                }
+            });
+            //监听dom变化
+            let DomOperation = operation.get(0);
+            let options = {
+                attributes: true,
+                childList: true,
+                attributesFilter: ["class"]
+            }
+            observer.observe(DomOperation, options);
+            self.dialog = self.dialog ? self.dialog : new DialogFx(document.getElementById("dialog"), {
+                onOpenDialog: function () { alert(1) },
+                onCloseDialog: function () { alert(2) }
+            });
+            self.bindDialog(operation,self.dialog);
+        }
+    }
+
+    bindDialog(operation, dialog) {
+        let dlgtrigger = $(operation).find(".delete");
+        $(dlgtrigger).off().on("click", function () {
+            dialog.toggle();
+        });
+    }
+
     updateTitle(id) {
         let oTitle=$("a[data-id=" + id + "] .item-title");
         let nTitle = $(".file-operations[data-id=" + id + "] .title-input");
@@ -92,6 +152,12 @@ class Bloglist {
             }
             $.Ajaxobj(obj);
         }
+    }
+
+    deleteItem(id) {
+        BootstrapDialog.show({
+            message: 'Hi Apple!'
+        });
     }
 
 };
@@ -132,40 +198,9 @@ jQuery(document).ready(function () {
         }
     });
 
-    let MutationObserver = window.WebKitMutationObserver;
-    let mutationObserverSupport = !!MutationObserver;
     //点击设置图标显示设置项
     $(".list-container").on("click", ".item-setting", function (e) {
-        let id = $(this).parents("a").attr("data-id");
-        $(".file-operations.active").filter(function () {
-            return $(this).attr("data-id") != id;
-        }).removeClass("active");
-        $(".item-content.hover").filter(function () {
-            return $(this).attr("data-id") != id;
-        }).removeClass("hover");
-        //监听元素class变化，触发回调函数更新title
-        let operation = $(this).parents(".list-box").children(".file-operations");
-        let observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.type === "attributes") {
-                    blog.updateTitle(id);
-                }
-            });
-            observer.disconnect();
-        });
-        if (operation.hasClass("active")) {
-            operation.removeClass("active");            
-        } else {
-            operation.addClass("active");            
-            let DomOperation = operation.get(0);
-            let options = {
-                attributes: true,
-                childList: true,
-                attributesFilter:["class"]
-            }
-            observer.observe(DomOperation, options);
-        }
+        blog.setOperation(this);   
         e.stopPropagation();
     });
-
 });
