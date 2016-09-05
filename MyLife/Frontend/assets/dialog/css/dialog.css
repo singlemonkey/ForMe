@@ -169,12 +169,15 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-.dialog,
+.dialog {
+    width: calc(100% - 180px);
+	height: calc(100% - 50px);
+	top: 50px;
+	left:180px;
+}
 .dialog__overlay {
-	width: 100%;
+	 width: 100%;
 	height: 100%;
-	top: 0;
-	left: 0;
 }
 
 .dialog {
@@ -199,12 +202,11 @@ table {
 }
 
 .dialog--open .dialog__overlay {
-	opacity: 1;
+	opacity:0.3;
 	pointer-events: auto;
 }
 
 .dialog__content {
-	width: 50%;
 	max-width: 560px;
 	min-width: 290px;
 	background: #fff;
@@ -213,6 +215,7 @@ table {
 	position: relative;
 	z-index: 5;
 	opacity: 0;
+    margin-top: -20% !important;
 }
 
 .dialog--open .dialog__content {
@@ -227,3 +230,66 @@ table {
 	padding: 0 0 2em;
 	margin: 0;
 }
+.dialog-inner {
+    width:420px;
+    background:#fff;
+    opacity: 0;
+    padding:0 !important;
+}
+.dialog-head {
+    position:relative;
+}
+.confirm-dialog-head {
+    height: auto;
+    line-height: 1em;
+    font-size: 16px;
+    color: #666;
+    padding: 30px 40px 10px 40px;
+    box-shadow: 0 0 0 transparent;
+    border-bottom: none;
+}
+.dialog-close-icon {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+.dialog-body {
+    padding: 20px 26px 45px 26px;
+    line-height: 26px;
+}
+.confirm-dialog-content {
+    padding: 20px 40px;
+    font-size: 14px;
+    color: #666;
+    word-break: break-all;
+}
+.dialog-foot {
+    padding: 10px 40px 30px 40px;
+    height: 32px;
+}
+.confirm-dialog-foot {
+    text-align: right;
+    font-size: 0;
+    white-space: nowrap;
+}
+.dialog-foot .button {
+    height:30px;
+    font-size:12px;
+    border-radius:2px;
+    float:none;
+    margin-right:8px;
+    line-height:28px;
+    display:inline-block;
+}
+.button-border {
+    border:1px solid #c3c4c6;
+}
+    .button-border:hover {
+        border-color: #9ea0a3;
+        background: #FFF;
+        background: -webkit-linear-gradient(top, #fff, #fbfbfb);
+        color:#41464b;
+    }
+

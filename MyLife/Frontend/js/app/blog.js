@@ -118,8 +118,11 @@ class Bloglist {
             }
             observer.observe(DomOperation, options);
             self.dialog = self.dialog ? self.dialog : new DialogFx(document.getElementById("dialog"), {
-                onOpenDialog: function () { alert(1) },
-                onCloseDialog: function () { alert(2) }
+                onOpenDialog: function () {
+                    $(document).trigger("click");
+                },
+                onCloseDialog: function () {
+                }
             });
             self.bindDialog(operation,self.dialog);
         }
