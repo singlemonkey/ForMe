@@ -78,6 +78,7 @@ class Bloglist {
     setOperation(setting) {
         let self = this;
         let id = $(setting).parents("a").attr("data-id");
+        let contentType=$(setting).parents(".item-content").hasClass("doc-content")?"doc":"folder";
         $(".file-operations.active").filter(function () {
             return $(this).attr("data-id") != id;
         }).removeClass("active");
@@ -117,12 +118,14 @@ class Bloglist {
                 attributesFilter: ["class"]
             }
             observer.observe(DomOperation, options);
-            self.dialog = self.dialog ? self.dialog : new DialogFx(document.getElementById("dialog"), {
+            self.dialog = new DialogFx(document.getElementById("dialog"), {
                 onOpenDialog: function () {
                     $(document).trigger("click");
                 },
                 onCloseDialog: function () {
-                }
+                    self.dialog = null;
+                },
+                message:contentType=="doc"?"确定要删除此文档么?":"确认要删除此文件夹么?<br>文件夹下的文档也将被删除。"
             });
             self.bindDialog(operation,self.dialog);
         }

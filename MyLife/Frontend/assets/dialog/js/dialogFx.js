@@ -52,14 +52,18 @@
 	DialogFx.prototype.options = {
 		// callbacks
 		onOpenDialog : function() { return false; },
-		onCloseDialog : function() { return false; }
+		onCloseDialog: function () { return false; },
+	    message:""
 	}
 
 	DialogFx.prototype._initEvents = function() {
 		var self = this;
-
-		// close action
-		this.ctrlClose.addEventListener( 'click', this.toggle.bind(this) );
+		this.el.querySelector(".dialog-body").innerHTML=this.options.message;
+	    // close action
+		$(".dialog-close-icon").off().on("click",function () {
+		    self.toggle();
+		});
+		//this.ctrlClose.addEventListener( 'click', this.toggle.bind(this) );
 
 		// esc key closes dialog
 		document.addEventListener( 'keydown', function( ev ) {
@@ -68,8 +72,10 @@
 				self.toggle();
 			}
 		} );
-
-		this.el.querySelector( '.dialog__overlay' ).addEventListener( 'click', this.toggle.bind(this) );
+		$(".dialog__overlay").off().on("click",function () {
+		    self.toggle();
+		});
+		//this.el.querySelector( '.dialog__overlay' ).addEventListener( 'click', this.toggle.bind(this) );
 	}
 
 	DialogFx.prototype.toggle = function() {
