@@ -53,17 +53,23 @@
 		// callbacks
 		onOpenDialog : function() { return false; },
 		onCloseDialog: function () { return false; },
-	    message:""
+		message: "",
+		confirmAction: function () { return false; }
 	}
 
 	DialogFx.prototype._initEvents = function() {
 		var self = this;
 		this.el.querySelector(".dialog-body").innerHTML=this.options.message;
 	    // close action
-		$(".dialog-close-icon").off().on("click",function () {
+		$(".dialog-close").off().on("click",function () {
 		    self.toggle();
 		});
 		//this.ctrlClose.addEventListener( 'click', this.toggle.bind(this) );
+
+		$(".dialog-confirm").off().on("click", function () {
+		    self.toggle();
+		    self.options.confirmAction();
+		});
 
 		// esc key closes dialog
 		document.addEventListener( 'keydown', function( ev ) {

@@ -125,7 +125,23 @@ class Bloglist {
                 onCloseDialog: function () {
                     self.dialog = null;
                 },
-                message:contentType=="doc"?"确定要删除此文档么?":"确认要删除此文件夹么?<br>文件夹下的文档也将被删除。"
+                message: contentType == "doc" ? "确定要删除此文档么?" : "确认要删除此文件夹么?<br>文件夹下的文档也将被删除。",
+                confirmAction: function () {
+                    let obj = {
+                        url: "/Blog/DeleteBlog/",
+                        data: {
+                            ID: id,
+                            FileType: contentType
+                        },
+                        success: function (result) {
+                            self.render(result);
+                        },
+                        error: function (error) {
+                            $("html").html(error.responseText);
+                        }
+                    }
+                    $.Ajaxobj(obj);
+                }
             });
             self.bindDialog(operation,self.dialog);
         }
@@ -160,12 +176,9 @@ class Bloglist {
         }
     }
 
-    deleteItem(id) {
-        BootstrapDialog.show({
-            message: 'Hi Apple!'
-        });
+    show(id) {
+        location.href = "/Blog/Edit?id=" + id;
     }
-
 };
 jQuery(document).ready(function () {
     let blog = new Bloglist();    
@@ -179,7 +192,7 @@ jQuery(document).ready(function () {
         if ($(this).children().hasClass("folder-content")) {
             blog._init = $(this).attr("data-id");
         } else {
-            alert("跳转文档");
+            blog.show($(this).attr("data-id"));
         }        
     });
 

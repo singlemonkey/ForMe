@@ -26,23 +26,27 @@ namespace MyLife.Controllers
         }
 
         [HttpPost]
-        public JsonResult BlogList(int id) {
+        public JsonResult BlogList(int id)
+        {
             BlogModel model = db.Blogs.Find(id);
             List<BlogModel> crumbList = new List<BlogModel>();
             crumbList.Add(model);
-            if (id != 0) {
+            if (id != 0)
+            {
                 crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.PublishDate).ToList();
             }
             var ContainerList = from blog in db.Blogs
                                 where blog.ParentID==id && blog.ID!=0 orderby blog.PublishDate
                                 select blog;
-            return Json( new {
+            return Json( new
+            {
                 crumbList = crumbList,
                 containerList = ContainerList.ToList()
             });            
         }
 
-        public List<BlogModel> GetCrumbList(int parentID, List<BlogModel> list) {
+        public List<BlogModel> GetCrumbList(int parentID, List<BlogModel> list)
+        {
             BlogModel parentBlog = db.Blogs.SingleOrDefault(b => b.ID == parentID);
             list.Add(parentBlog);      
             if (parentID != 0)
@@ -53,12 +57,38 @@ namespace MyLife.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateTitle(BlogModel model) {
+        public JsonResult UpdateTitle(BlogModel model)
+        {
             BlogModel blog = db.Blogs.Find(model.ID);
             blog.Title = model.Title;
             db.Entry(blog).State = EntityState.Modified;
             db.SaveChanges();
             return Json(blog);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteBlog(BlogModel model)
+        {
+            int parentID = model.ParentID;
+            BlogModel blog = db.Blogs.Find(model.ID);
+            db.Entry(blog).State = EntityState.Deleted;
+            if (model.FileType == "folder")
+            {
+                var folder = getFolder(model.ID);
+                folder.ToList().ForEach(item=> {
+                    db.Entry(item).State = EntityState.Deleted;
+                });                
+            }
+            db.SaveChanges();
+            return BlogList(parentID);
+        }
+
+        public IEnumerable<BlogModel> getFolder(int id)
+        {
+            var query = from blog in db.Blogs
+                        where blog.ParentID == id
+                        select blog;
+            return query.ToList().Concat(query.ToList().SelectMany(t=>getFolder(t.ID)));
         }
 
         protected override void Dispose(bool disposing)

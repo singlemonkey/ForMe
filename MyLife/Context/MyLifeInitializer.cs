@@ -80,7 +80,7 @@ namespace MyLife.Context
                     FileType="folder",
                     ParentID=3,
                     PublishDate=DateTime.Parse("2016-08-10")
-                },
+                },                
             };
             blogs.ForEach(b=>context.Blogs.Add(b));
             context.SaveChanges();
