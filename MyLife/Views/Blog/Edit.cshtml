@@ -1,19 +1,31 @@
-﻿
+﻿@model MyLife.Models.BlogModel
 @{
     ViewBag.Title = "Markdown";
 }
 <link rel="stylesheet" href="~/Frontend/assets/editor/css/editormd.min.css" />
-
 <div id="editormd">
-    <textarea style="display:none;"></textarea>
+    <textarea style="display:none;"></textarea>    
 </div>
-
 @section scripts{
     <script src="~/Frontend/assets/editor/editormd.js"></script>
     <script>
+        let blog=@Html.Raw(Json.Encode(Model));
         $(function () {
             var editor = editormd("editormd", {
-                path: "/Frontend/assets/editor/lib/"
+                path: "/Frontend/assets/editor/lib/",
+                toolbarIcons: function () {
+                    return [
+                        "undo", "bold", "quote",
+                        "h1", "h2", "h3", "h4", "h5", "h6", "hr",
+                        "link", "code", "preformatted-text", "code-block", "datetime",
+                        "||",
+                        "watch", "fullscreen", "preview"]
+                },
+                theme : "dark",
+                title:blog.Title,
+                onload: function () {
+                    
+                }
             });
         });
     </script>

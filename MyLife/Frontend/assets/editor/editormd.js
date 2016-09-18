@@ -103,7 +103,7 @@
         delay                : 300,            // Delay parse markdown to html, Uint : ms
         autoLoadModules      : true,           // Automatic load dependent module files
         watch                : true,
-        placeholder          : "Enjoy Markdown! coding now...",
+        placeholder          : "",
         gotoLine             : true,
         codeFold             : false,
         autoHeight           : false,
@@ -144,7 +144,7 @@
         onscroll             : function() {},
         onpreviewscroll      : function() {},
         
-        imageUpload          : false,
+        imageUpload          : true,
         imageFormats         : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL       : "",
         crossDomainUpload    : false,
@@ -320,7 +320,12 @@
                     title : "使用帮助"
                 }
             }
-        }
+        },
+        /**
+        ZQ
+        设置标题默认值
+        */
+        title:""
     };
     
     editormd.classNames  = {
@@ -480,7 +485,7 @@
             {
                 this.loadQueues();
             }
-
+            this.setTitle();
             return this;
         },
         
@@ -1881,6 +1886,7 @@
             var toolbar    = this.toolbar;
             var settings   = this.settings;
             var codeMirror = this.codeMirror;
+            let title = this.title;
             
             if (width)
             {
@@ -1906,11 +1912,11 @@
 
                 if (settings.toolbar && !settings.readOnly) 
                 {
-                    codeMirror.css("margin-top", toolbar.height() + 1).height(editor.height() - toolbar.height());
+                    codeMirror.css("margin-top", toolbar.height() +title.height()+2).height(editor.height() - toolbar.height()-title.height());
                 } 
                 else
                 {
-                    codeMirror.css("margin-top", 0).height(editor.height());
+                    codeMirror.css("margin-top", title.height()+1).height(editor.height() - title.height());
                 }
             }
             
@@ -1923,11 +1929,11 @@
                 
                 if (settings.toolbar && !settings.readOnly) 
                 {
-                    preview.css("top", toolbar.height() + 1);
+                    preview.css("top", toolbar.height() +title.height()+ 2);
                 } 
                 else 
                 {
-                    preview.css("top", 0);
+                    preview.css("top", title.height()+1);
                 }
                 
                 if (settings.autoHeight && !state.fullscreen && !state.preview)
@@ -1936,7 +1942,7 @@
                 }
                 else
                 {                
-                    var previewHeight = (settings.toolbar && !settings.readOnly) ? editor.height() - toolbar.height() : editor.height();
+                    var previewHeight = (settings.toolbar && !settings.readOnly) ? editor.height() - toolbar.height() - title.height() : editor.height() - title.height();
                     
                     preview.height(previewHeight);
                 }
@@ -2764,6 +2770,24 @@
             this.search("replaceAll");
             
             return this;
+        },
+        /**
+        ZQ
+        设置博客标题
+        */
+        setTitle: function () {
+            let editor = this.editor;
+            let settings=this.settings;
+            let titleElement = $("<div></div>", {
+                "class": "editormd-title",
+            });
+            let inputElement = $("<input/>", {
+                "type":'text',
+                "class": "editor-title-input",
+                "value":settings.title
+            });
+            editor.append(titleElement.append(inputElement));
+            this.title=titleElement;
         }
     };
     

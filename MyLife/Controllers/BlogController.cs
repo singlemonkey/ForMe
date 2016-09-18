@@ -20,9 +20,11 @@ namespace MyLife.Controllers
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            BlogModel blog = db.Blogs.Find(id);
+            ViewData["blog"] = blog;
+            return View(blog);
         }
 
         [HttpPost]
@@ -74,7 +76,7 @@ namespace MyLife.Controllers
             db.Entry(blog).State = EntityState.Deleted;
             if (model.FileType == "folder")
             {
-                var folder = getFolder(model.ID);
+                var folder = GetFolder(model.ID);
                 folder.ToList().ForEach(item=> {
                     db.Entry(item).State = EntityState.Deleted;
                 });                
@@ -83,12 +85,12 @@ namespace MyLife.Controllers
             return BlogList(parentID);
         }
 
-        public IEnumerable<BlogModel> getFolder(int id)
+        public IEnumerable<BlogModel> GetFolder(int id)
         {
             var query = from blog in db.Blogs
                         where blog.ParentID == id
                         select blog;
-            return query.ToList().Concat(query.ToList().SelectMany(t=>getFolder(t.ID)));
+            return query.ToList().Concat(query.ToList().SelectMany(t=> GetFolder(t.ID)));
         }
 
         protected override void Dispose(bool disposing)
