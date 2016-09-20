@@ -30,3 +30,8 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+/* line 23, ../scss/base.scss */
+.input:focus {
+  outline: 0;
+  border-color: #a6a6a6 !important;
+}

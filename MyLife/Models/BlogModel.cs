@@ -18,5 +18,6 @@ namespace MyLife.Models
         public string FileType { get; set; }
         public int ParentID { get; set; }
         public DateTime PublishDate { get; set; }
+        public int DisplayIndex { get; set; }
     }
 }

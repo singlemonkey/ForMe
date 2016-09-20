@@ -25,9 +25,6 @@ class Bloglist {
             url: "/Blog/BlogList/?id="+id,
             success: function (result) {
                 self.render(result);
-            },
-            error: function (error) {
-                $("html").html(error.responseText);
             }
         }
         $.Ajaxobj(obj);
@@ -135,9 +132,6 @@ class Bloglist {
                         },
                         success: function (result) {
                             self.render(result);
-                        },
-                        error: function (error) {
-                            $("html").html(error.responseText);
                         }
                     }
                     $.Ajaxobj(obj);
@@ -167,9 +161,6 @@ class Bloglist {
                 showProgress:false,
                 success: function (result) {
                     oTitle.text(result.Title);
-                },
-                error: function (error) {
-                    $("html").html(error.responseText);
                 }
             }
             $.Ajaxobj(obj);

@@ -28,8 +28,19 @@ namespace MyLife.Controllers
         }
 
         [HttpPost]
-        public JsonResult BlogList(int id)
+        public JsonResult Save(BlogModel model)
         {
+            BlogModel blog = db.Blogs.Find(model.ID);
+            blog.Content = model.Content;
+            blog.Title = model.Title;
+            db.Entry(blog).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(blog);
+        }
+
+        [HttpPost]
+        public JsonResult BlogList(int id)
+        {            
             BlogModel model = db.Blogs.Find(id);
             List<BlogModel> crumbList = new List<BlogModel>();
             crumbList.Add(model);

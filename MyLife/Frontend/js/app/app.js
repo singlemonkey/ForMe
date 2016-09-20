@@ -1,10 +1,10 @@
 ﻿$(function () {
     jQuery.extend({
         Ajaxobj: function (config) {
-            let defaultObj = {
+            let defaultConfig= {
                 showProgress: true
             };
-            let obj = Object.assign(defaultObj, config);
+            let obj = Object.assign(defaultConfig, config);
             $.ajax({
                 type: "POST",
                 url: obj.url,
@@ -16,7 +16,7 @@
                     obj.success(result);
                 },
                 error: function (error) {
-                    obj.error(error);
+                    $("html").html(error.responseText);
                 }
             });
         },

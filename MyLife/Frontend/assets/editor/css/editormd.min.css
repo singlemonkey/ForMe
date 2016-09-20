@@ -4127,6 +4127,7 @@ hr.editormd-page-break {
     left: 0;
     border: none;
     margin: 0 auto;
+    z-index:200;
 }
 
 .editormd-theme-dark {
@@ -4169,12 +4170,22 @@ hr.editormd-page-break {
     border-bottom:1px solid #ddd;
 }
     .editormd-title .editor-title-input {
+        color:#333;
         border:none;
         padding:5px 20px;
         width:100%;
         font-size:16px;
         line-height:28px;
         font-family:"Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+    }
+    .editormd-title .save-prompt {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 14px;
+        color: #666;
+        line-height: 38px;
+        opacity:0;
     }
         .editormd-title .editor-title-input:focus {
             outline:none;

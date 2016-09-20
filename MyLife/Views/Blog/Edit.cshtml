@@ -19,14 +19,13 @@
                         "h1", "h2", "h3", "h4", "h5", "h6", "hr",
                         "link", "code", "preformatted-text", "code-block", "datetime",
                         "||",
+                        "back","save",
                         "watch", "fullscreen", "preview"]
                 },
-                theme : "dark",
-                title:blog.Title,
                 markdown:blog.Content,
-                onload: function () {
-                    
-                }
+                //自定义添加的配置项
+                title:blog.Title,
+                saveUrl:"/Blog/Save/"
             });
         });
     </script>

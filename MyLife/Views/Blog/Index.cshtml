@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Blog";
 }
+<link rel="stylesheet" href="~/Frontend/assets/jquery-ui/jquery-ui.min.css" />
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
 <link rel="stylesheet"  href="~/Frontend/assets/dialog/css/dialog-wilma.css"/>
 <div class="container">
@@ -34,7 +35,7 @@
         <li class="list-item">
             <div class="list-box">
                 <a data-id="{{:ID}}">
-                    <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}" data-id="{{:ID}}">
+                    <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}" data-id="{{:ID}}" draggable="true">
                         <div class="{{if FileType=="folder"}} blog-folder {{else}} blog-doc {{/if}} "></div>
                         <div class="item-title">{{:Title}}</div>
                         <div class="item-setting">
@@ -61,6 +62,7 @@
             </div>
         </li>
     </script>
+    <script src="~/Frontend/assets/jquery-ui/jquery-ui.min.js"></script>
     <script src="~/Frontend/js/JsRender.js"></script>
     <script src="~/Frontend/js/app/blog.js"></script>
 }
