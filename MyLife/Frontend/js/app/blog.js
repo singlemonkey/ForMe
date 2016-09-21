@@ -33,6 +33,7 @@ class Bloglist {
     render(data) {
         this.renderCrumb(data.crumbList);
         this.renderContainer(data.containerList);
+        this.sortable();
     }
 
     renderCrumb(result) {
@@ -70,6 +71,18 @@ class Bloglist {
         let tmpl = $.templates("#blog-item");
         let liItem = tmpl.render(item);
         this.containerList.append(liItem);
+    }
+
+    sortable() {
+        $(".list-container").sortable({
+            placeholder: "item-placeholder",
+            activate: function (event,ui) {
+                $(this).addClass("onDrag");
+            },
+            beforeStop: function () {
+                $(this).removeClass("onDrag");
+            }
+        }).disableSelection();
     }
 
     setOperation(setting) {
@@ -213,4 +226,6 @@ jQuery(document).ready(function () {
         blog.setOperation(this);   
         e.stopPropagation();
     });
+
+
 });
