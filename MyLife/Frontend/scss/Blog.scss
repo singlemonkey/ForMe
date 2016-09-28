@@ -1,24 +1,8 @@
 ﻿@import "compass/css3";
+@import "base";
 @import "compass/utilities/sprites";
 @import "blog/*.png";
 
-div,ul,li{
-    margin:0;
-    padding:0;
-}
-ul,li{
-    list-style:none;
-}
-.clearfix{
-    height:1%;
-    &:after{
-        content:".";
-        display:block;
-        height:0;
-        clear:both;
-        visibility:hidden
-    }
-}
 .container{
     width:calc(100% - 280px);
     padding:34px 115px 140px 165px;
@@ -69,6 +53,7 @@ ul,li{
             position:relative;
             margin:16px auto 10px auto;
             @include blog-sprite(folder);
+            @include transition(0.2s,ease-in);       
         }
         .blog-doc{
             display:block;
@@ -122,6 +107,14 @@ ul,li{
                 display:block;
             }
         }
+        &.droppable{
+            @include opacity(1,1) ;
+        }
+        &.drophover{
+            .blog-folder{
+                 @include scale(1.2, 1.2);
+            }           
+        } 
     }
     .file-operations{
         position:absolute;
@@ -210,7 +203,7 @@ ul,li{
         width:192px;
     }
     &.onDrag{
-        >li{
+        .item-content{
             @include opacity(0.5);
         }
     }
@@ -224,4 +217,16 @@ ul,li{
     border-radius:2px;
     background:#f3f4f5;
     float:left;
+}
+#sortHelper-folder{
+    width:80px !important;
+    height:60px !important;
+    margin:16px auto 10px auto;
+    @include blog-sprite(folder);
+}
+#sortHelper-doc{
+    width:60px !important;
+    height:80px !important;
+    margin:6px auto 0 auto;
+    @include blog-sprite(doc);
 }

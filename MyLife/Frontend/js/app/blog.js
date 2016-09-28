@@ -33,7 +33,7 @@ class Bloglist {
     render(data) {
         this.renderCrumb(data.crumbList);
         this.renderContainer(data.containerList);
-        this.sortable();
+        this.initInteractions();
     }
 
     renderCrumb(result) {
@@ -73,16 +73,49 @@ class Bloglist {
         this.containerList.append(liItem);
     }
 
-    sortable() {
+    initInteractions() {
+        let self = this;
         $(".list-container").sortable({
+            helper:function(a,u){
+                if (u.find(".item-content").hasClass("doc-content")) {
+                    $(".list-container").sortable("option","cursorAt",{
+                        left: 30,
+                        top:32
+                    });
+                    return $("<a></a>", {
+                        id: "sortHelper-doc"
+                    });
+                } else {
+                    $(".list-container").sortable("option", "cursorAt", {
+                        left:40,
+                        top: 22
+                    });
+                    return $("<a></a>", {
+                        id: "sortHelper-folder"
+                    });
+                }
+            },
             placeholder: "item-placeholder",
-            activate: function (event,ui) {
+            start:function(event,ui){
                 $(this).addClass("onDrag");
             },
-            beforeStop: function () {
+            stop: function (event, ui) {
                 $(this).removeClass("onDrag");
-            }
+            },
         }).disableSelection();
+
+        $(".folder-content").droppable({
+            activeClass: "droppable",
+            addClasses: false,
+            hoverClass: "drophover",
+            drop: function () {
+                self.resetStructure();
+            }
+        });
+    }
+
+    resetStructure() {
+
     }
 
     setOperation(setting) {

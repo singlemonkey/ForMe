@@ -1,4 +1,23 @@
 ﻿@import "compass/css3";
+
+div,ul,li{
+    margin:0;
+    padding:0;
+}
+ul,li{
+    list-style:none;
+}
+.clearfix{
+    height:1%;
+    &:after{
+        content:".";
+        display:block;
+        height:0;
+        clear:both;
+        visibility:hidden
+    }
+}
+
 hr{
 	margin-top: 4px;
     border-bottom: 0;
@@ -24,4 +43,16 @@ hr{
         outline:0;
         border-color:#a6a6a6 !important;
     }
+}
+@mixin opacity($opacity, $important: 0) {
+  @if $important == 1 {
+    opacity: $opacity !important;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie) !important; //IE8
+  }
+  @else {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+  }
 }
