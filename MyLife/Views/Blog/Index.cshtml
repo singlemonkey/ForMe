@@ -6,7 +6,13 @@
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
 <link rel="stylesheet"  href="~/Frontend/assets/dialog/css/dialog-wilma.css"/>
 <div class="container">
-    <div class="list-crumb"></div>
+    <div >
+        <div class="list-crumb"></div>
+        <a class="list-switch" href="javascript:void(0);">
+            <i class="fa"></i>
+            <span class="list-mode-name"></span>
+        </a>
+    </div>    
     <ul class="list-container clearfix"></ul>
 </div>
 <div id="dialog" class="dialog">
@@ -31,7 +37,7 @@
     </div>
 </div>
 @section scripts{
-    <script id="blog-item" type="text/x-jsrender">
+    <script id="blog-tile" type="text/x-jsrender">
         <li class="list-item">
             <div class="list-box">
                 <a data-id="{{:ID}}">
@@ -60,6 +66,16 @@
                     </div>
                 </div>
             </div>
+        </li>
+    </script>
+    <script id="blog-list" type="text/x-jsrender">
+        <li class="list-item">
+            <a data-id="{{:ID}}">
+                <span class="list-table-cell file-name">
+                    <i class="file-icon {{if FileType=="folder"}} folder-icon {{else}} doc-icon {{/if}}"></i>
+                    <span class="file-name-text">{{:Title}}</span>
+                </span>
+            </a>
         </li>
     </script>
     <script src="~/Frontend/assets/jquery-ui/jquery-ui.min.js"></script>

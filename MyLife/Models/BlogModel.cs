@@ -17,7 +17,8 @@ namespace MyLife.Models
         public bool IsStar { get; set; }
         public string FileType { get; set; }
         public int ParentID { get; set; }
-        public DateTime PublishDate { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public int DisplayIndex { get; set; }
     }
 }

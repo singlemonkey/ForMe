@@ -28,11 +28,22 @@ namespace MyLife.Controllers
         }
 
         [HttpPost]
+        public JsonResult ResetStructure(int ID,int ParentID)
+        {
+            BlogModel blog = db.Blogs.Find(ID);
+            blog.ParentID = ParentID;
+            db.Entry(blog).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(blog);
+        }
+
+        [HttpPost]
         public JsonResult Save(BlogModel model)
         {
             BlogModel blog = db.Blogs.Find(model.ID);
             blog.Content = model.Content;
             blog.Title = model.Title;
+            blog.UpdateDate = DateTime.Now;
             db.Entry(blog).State = EntityState.Modified;
             db.SaveChanges();
             return Json(blog);
@@ -46,10 +57,10 @@ namespace MyLife.Controllers
             crumbList.Add(model);
             if (id != 0)
             {
-                crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.PublishDate).ToList();
+                crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.CreateDate).ToList();
             }
             var ContainerList = from blog in db.Blogs
-                                where blog.ParentID==id && blog.ID!=0 orderby blog.PublishDate
+                                where blog.ParentID==id && blog.ID!=0 orderby blog.CreateDate
                                 select blog;
             return Json( new
             {

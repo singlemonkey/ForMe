@@ -29,7 +29,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-06-24"),
+                    CreateDate=DateTime.Parse("2016-06-24"),
                     DisplayIndex=1
                 },
                 new BlogModel {
@@ -40,7 +40,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-06-26"),
+                    CreateDate=DateTime.Parse("2016-06-26"),
                     DisplayIndex=2
                 },
                 new BlogModel {
@@ -51,7 +51,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-07-28"),
+                    CreateDate=DateTime.Parse("2016-07-28"),
                     DisplayIndex=3
                 },
                 new BlogModel {
@@ -62,7 +62,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=0,
-                    PublishDate=DateTime.Parse("2016-07-30"),
+                    CreateDate=DateTime.Parse("2016-07-30"),
                     DisplayIndex=4
                 },
                 new BlogModel {
@@ -73,7 +73,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="document",
                     ParentID=3,
-                    PublishDate=DateTime.Parse("2016-08-01"),
+                    CreateDate=DateTime.Parse("2016-08-01"),
                     DisplayIndex=5
                 },
                 new BlogModel {
@@ -84,7 +84,7 @@ namespace MyLife.Context
                     IsStar=false,
                     FileType="folder",
                     ParentID=3,
-                    PublishDate=DateTime.Parse("2016-08-10"),
+                    CreateDate=DateTime.Parse("2016-08-10"),
                     DisplayIndex=6
                 },                
             };
