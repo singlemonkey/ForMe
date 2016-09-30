@@ -13,7 +13,13 @@
     <script>
         $(function () {
             var editor = editormd("editormd", {
-                path: "/Frontend/assets/editor/lib/"
+                path: "/Frontend/assets/editor/lib/",
+                toolbarIcons: function () {
+                    return ["undo", "bold", "hr", "datetime","quote", "code", "h1", "h2", "h3", "h4", "h5", "link", "preformatted-text", "code-block", "||", "watch", "fullscreen", "preview"]
+                },
+                onload: function () {
+                    alert(123);
+                }
             });
         });
     </script>
