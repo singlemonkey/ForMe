@@ -4,38 +4,61 @@ let mutationObserverSupport = !!MutationObserver;
 class Bloglist {
 
     constructor() {
-        this.init = localStorage.getItem("blogInit") ? localStorage.getItem("blogInit") : 0;
-        localStorage.setItem("blogInit",this.init);
+        this.data = localStorage.getItem("blogData") ? localStorage.getItem("blogData") : 0;
+        this.mode = localStorage.getItem("blogMode") ? localStorage.getItem("blogMode") : "Tile";
+        localStorage.setItem("blogData", this.data);
+        localStorage.setItem("blogMode", this.mode);
         this.crumbList = $(".list-crumb");
         this.containerList = $(".list-container");
         this.dialog = null;
+        this.result = null;
     }
 
-    get _init() {
-        return this.init;
+    Init(blogData, blogMode) {
+        localStorage.setItem("blogData", blogData);
+        localStorage.setItem("blogMode", blogMode);
+        this.setMode(blogMode);
+        this.getData(blogData);
     }
 
-    set _init(e) {
-        localStorage.setItem("blogInit", e);
-        this.getData(e);
-    }
-    getData(id) {
+    getData(dataID) {
         let self = this;
         let obj = {
-            url: "/Blog/BlogList/?id="+id,
+            url: "/Blog/BlogList/?id=" + dataID,
             success: function (result) {
+                self.result = result;
                 self.render(result);
-            },
-            error: function (error) {
-                $("html").html(error.responseText);
             }
         }
         $.Ajaxobj(obj);
     }
 
+    switchMode(e) {
+        this.mode = e;
+        localStorage.setItem("blogMode", e);
+        this.setMode(e);
+        this.render(this.result);
+    }
+
+    setMode(e) {
+        let icon = $(".list-switch>i");
+        let modeName = $(".list-switch>span");
+        if (e === "Tile") {
+            icon.removeClass("fa-th-large").addClass("fa-list-ul");
+            modeName.text("列表");            
+        }
+        else {
+            icon.removeClass("fa-list-ul").addClass("fa-th-large");
+            modeName.text("平铺");
+        }
+    }
+
     render(data) {
         this.renderCrumb(data.crumbList);
         this.renderContainer(data.containerList);
+        if (this.mode === "Tile") {
+            this.initInteractions();
+        }
     }
 
     renderCrumb(result) {
@@ -57,10 +80,11 @@ class Bloglist {
             text: result[l].Title
         });
         this.crumbList.append(nowCrumb);
+        $(".list-switch").show();
     }
 
     renderContainer(result) {
-        this.containerList.html("");
+        this.containerList.html("").addClass(this.mode);
         let l = result.length;
         if (l != 0) {
             for (let i = 0; i < l; i++) {
@@ -70,9 +94,76 @@ class Bloglist {
     }
 
     renderListItem(item) {
-        let tmpl = $.templates("#blog-item");
+        let tmpl;
+        if (this.mode === "Tile") {
+            tmpl = $.templates("#blog-tile");
+        } else {
+            tmpl = $.templates("#blog-list");
+        }
         let liItem = tmpl.render(item);
         this.containerList.append(liItem);
+    }
+
+    initInteractions() {
+        let self = this;
+        $(".list-container").sortable({
+            cursor:"pointer",
+            helper:function(a,u){
+                if (u.find(".item-content").hasClass("doc-content")) {
+                    $(".list-container").sortable("option","cursorAt",{
+                        left: 30,
+                        top:32
+                    });
+                    return $("<a></a>", {
+                        id: "sortHelper-doc"
+                    });
+                } else {
+                    $(".list-container").sortable("option", "cursorAt", {
+                        left:40,
+                        top: 22
+                    });
+                    return $("<a></a>", {
+                        id: "sortHelper-folder"
+                    });
+                }
+            },
+            placeholder: "item-placeholder",
+            start:function(event,ui){
+                $(this).addClass("onDrag");
+            },
+            stop: function (event, ui) {
+                $(this).removeClass("onDrag");
+            },
+        }).disableSelection();
+
+        $(".folder-content").droppable({
+            activeClass: "droppable",
+            addClasses: false,
+            hoverClass: "drophover",
+            drop: function (event, ui) {
+                self.resetStructure(ui.draggable, this);
+            }
+        });
+        $(".crumb-item").droppable({
+            activeClass: "droppable",
+            addClass: false,
+            hoverClass: "drophover",
+            drop: function (event, ui) {
+                self.resetStructure(ui.draggable, this);
+            }
+        });
+    }
+
+    resetStructure(drag,_this) {
+        let id = drag.find(".item-content").attr("data-id");
+        let parentId = $(_this).attr("data-id");
+        drag.remove();
+        let obj = {
+            showProgress:false,
+            url: "/Blog/ResetStructure/?ID=" + id+"&parentID="+parentId,
+            success: function (){}
+        }
+        $.Ajaxobj(obj);
     }
 
     setOperation(setting) {
@@ -135,9 +226,6 @@ class Bloglist {
                         },
                         success: function (result) {
                             self.render(result);
-                        },
-                        error: function (error) {
-                            $("html").html(error.responseText);
                         }
                     }
                     $.Ajaxobj(obj);
@@ -167,9 +255,6 @@ class Bloglist {
                 showProgress:false,
                 success: function (result) {
                     oTitle.text(result.Title);
-                },
-                error: function (error) {
-                    $("html").html(error.responseText);
                 }
             }
             $.Ajaxobj(obj);
@@ -182,15 +267,15 @@ class Bloglist {
 };
 jQuery(document).ready(function () {
     let blog = new Bloglist();    
-    blog._init = localStorage.getItem("blogInit");
+    blog.Init(localStorage.getItem("blogData"), localStorage.getItem("blogMode"));
 
-    //调用blog._init方法rerender整个blog
+    //调用blog.init方法rerender整个blog
     $(".list-crumb").on("click", ".crumb-item", function () {
-        blog._init = $(this).attr("data-id");
+        blog.Init($(this).attr("data-id"), localStorage.getItem("blogMode"));
     });
     $(".list-container").on("click", "a", function () {
         if ($(this).children().hasClass("folder-content")) {
-            blog._init = $(this).attr("data-id");
+            blog.Init($(this).attr("data-id"), localStorage.getItem("blogMode"));
         } else {
             blog.show($(this).attr("data-id"));
         }        
@@ -221,5 +306,10 @@ jQuery(document).ready(function () {
     $(".list-container").on("click", ".item-setting", function (e) {
         blog.setOperation(this);   
         e.stopPropagation();
+    });
+
+    //切换显示模式
+    $(".list-switch").on("click", function () {
+        blog.switchMode(localStorage.getItem("blogMode")==="Tile"?"List":"Tile");
     });
 });

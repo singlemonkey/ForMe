@@ -4156,3 +4156,37 @@ hr.editormd-page-break {
     .editormd-theme-dark .CodeMirror {
         border-right: 1px solid rgba(0,0,0,.1);
     }
+
+    /**
+    ZQ
+    自定义样式
+*/
+.editormd-title {
+    width:100%;
+    position:absolute;
+    top:39px;
+    left:0;
+    z-index:10;
+    border-bottom:1px solid #ddd;
+}
+    .editormd-title .editor-title-input {
+        color:#333;
+        border:none;
+        padding:5px 20px;
+        width:100%;
+        font-size:16px;
+        line-height:28px;
+        font-family:"Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+    }
+    .editormd-title .save-prompt {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 14px;
+        color: #666;
+        line-height: 38px;
+        opacity:0;
+    }
+        .editormd-title .editor-title-input:focus {
+            outline:none;
+        }

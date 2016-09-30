@@ -728,6 +728,17 @@
     <Content Include="Frontend\assets\editor\tests\marked-todo-list-test.html" />
     <Content Include="Frontend\assets\editor\tests\qunit\qunit-1.16.0.css" />
     <Content Include="Frontend\assets\editor\tests\qunit\qunit-1.16.0.js" />
+    <Content Include="Frontend\assets\jquery-ui\AUTHORS.txt" />
+    <Content Include="Frontend\assets\jquery-ui\index.html" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.css" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.js" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Frontend\assets\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Frontend\assets\jquery-ui\LICENSE.txt" />
     <Content Include="Frontend\assets\nprogress\.gitignore" />
     <Content Include="Frontend\assets\nprogress\index.html" />
     <Content Include="Frontend\assets\nprogress\nprogress.css" />
@@ -778,6 +789,7 @@
     <Content Include="Frontend\assets\editor\scss\font-awesome.scss" />
     <Content Include="Frontend\assets\editor\scss\github-markdown.scss" />
     <Content Include="Frontend\assets\editor\scss\prettify.scss" />
+    <Content Include="Frontend\assets\jquery-ui\package.json" />
     <None Include="Frontend\scss\base.scss" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Global.asax" />
@@ -813,6 +825,8 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Frontend\assets\jquery-ui\external\" />
+    <Folder Include="Frontend\assets\jquery-ui\images\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

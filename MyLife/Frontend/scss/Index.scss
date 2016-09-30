@@ -1,5 +1,7 @@
 ﻿@import "Compass/css3";
 @import "compass/css3/transform";
+
+@import "base";
 body{
     padding:0;
     margin:0;
@@ -39,7 +41,7 @@ body{
     }
     .content{
         left:180px;
-        background-color:#eaedf1;
+        background-color:#f7f7f7;
         width:auto;
         position:absolute;
         top:0;

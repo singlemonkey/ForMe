@@ -1,25 +1,31 @@
-﻿
+﻿@model MyLife.Models.BlogModel
 @{
     ViewBag.Title = "Markdown";
 }
 <link rel="stylesheet" href="~/Frontend/assets/editor/css/editormd.min.css" />
-
 <div id="editormd">
-    <textarea style="display:none;"></textarea>
+    <textarea style="display:none;"></textarea>    
 </div>
-
 @section scripts{
     <script src="~/Frontend/assets/editor/editormd.js"></script>
     <script>
+        let blog=@Html.Raw(Json.Encode(Model));
         $(function () {
             var editor = editormd("editormd", {
                 path: "/Frontend/assets/editor/lib/",
                 toolbarIcons: function () {
-                    return ["undo", "bold", "hr", "datetime","quote", "code", "h1", "h2", "h3", "h4", "h5", "link", "preformatted-text", "code-block", "||", "watch", "fullscreen", "preview"]
+                    return [
+                        "undo", "bold", "quote",
+                        "h1", "h2", "h3", "h4", "h5", "h6", "hr",
+                        "link", "code", "preformatted-text", "code-block", "datetime",
+                        "||",
+                        "back","save",
+                        "watch", "fullscreen", "preview"]
                 },
-                onload: function () {
-                    alert(123);
-                }
+                markdown:blog.Content,
+                //自定义添加的配置项
+                title:blog.Title,
+                saveUrl:"/Blog/Save/"
             });
         });
     </script>

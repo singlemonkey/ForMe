@@ -1,4 +1,66 @@
-/* line 3, ../scss/Index.scss */
+/* line 3, ../scss/base.scss */
+div, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 7, ../scss/base.scss */
+ul, li {
+  list-style: none;
+}
+
+/* line 10, ../scss/base.scss */
+.clearfix {
+  height: 1%;
+}
+/* line 12, ../scss/base.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 21, ../scss/base.scss */
+hr {
+  margin-top: 4px;
+  border-bottom: 0;
+  border-left: 0;
+  border-top: 1px solid #dedede;
+  margin-bottom: 4px;
+  height: 0;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 30, ../scss/base.scss */
+.input {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  background-image: none;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+/* line 42, ../scss/base.scss */
+.input:focus {
+  outline: 0;
+  border-color: #a6a6a6 !important;
+}
+
+/* line 5, ../scss/Index.scss */
 body {
   padding: 0;
   margin: 0;
@@ -6,7 +68,7 @@ body {
   font-size: 12px;
 }
 
-/* line 9, ../scss/Index.scss */
+/* line 11, ../scss/Index.scss */
 .navbar {
   background-color: #09C;
   position: fixed;
@@ -16,7 +78,7 @@ body {
   z-index: 1030;
 }
 
-/* line 17, ../scss/Index.scss */
+/* line 19, ../scss/Index.scss */
 .main-container {
   position: absolute;
   width: 100%;
@@ -25,7 +87,7 @@ body {
   background-color: #f0f0f0;
   z-index: 100;
 }
-/* line 24, ../scss/Index.scss */
+/* line 26, ../scss/Index.scss */
 .main-container .sidebar {
   width: 180px;
   display: block;
@@ -36,17 +98,17 @@ body {
   z-index: 102;
   overflow-x: hidden;
 }
-/* line 33, ../scss/Index.scss */
+/* line 35, ../scss/Index.scss */
 .main-container .sidebar .sidebar-content {
   width: 200px;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
 }
-/* line 40, ../scss/Index.scss */
+/* line 42, ../scss/Index.scss */
 .main-container .content {
   left: 180px;
-  background-color: #eaedf1;
+  background-color: #f7f7f7;
   width: auto;
   position: absolute;
   top: 0;
@@ -56,11 +118,11 @@ body {
   overflow-y: auto;
 }
 
-/* line 53, ../scss/Index.scss */
+/* line 55, ../scss/Index.scss */
 .sidebar-nav {
   width: 180px;
 }
-/* line 55, ../scss/Index.scss */
+/* line 57, ../scss/Index.scss */
 .sidebar-nav .sidebar-title {
   height: 40px;
   background: #22282e;
@@ -69,11 +131,11 @@ body {
   position: relative;
   cursor: pointer;
 }
-/* line 62, ../scss/Index.scss */
+/* line 64, ../scss/Index.scss */
 .sidebar-nav .sidebar-title:hover {
   background-color: #414d5c;
 }
-/* line 66, ../scss/Index.scss */
+/* line 68, ../scss/Index.scss */
 .sidebar-nav .sidebar-title-icon {
   display: inline-block;
   margin: 0 8px 8px 20px;
@@ -83,25 +145,25 @@ body {
   -webkit-transition: -webkit-transform 0.25s;
   transition: transform 0.25s;
 }
-/* line 72, ../scss/Index.scss */
+/* line 74, ../scss/Index.scss */
 .sidebar-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
 }
-/* line 78, ../scss/Index.scss */
+/* line 80, ../scss/Index.scss */
 .sidebar-nav .sidebar-trans {
   -moz-transition: all 0.25s ease, ease 0.25s;
   -o-transition: all 0.25s ease, ease 0.25s;
   -webkit-transition: all 0.25s ease, ease 0.25s;
   transition: all 0.25s ease, ease 0.25s;
 }
-/* line 81, ../scss/Index.scss */
+/* line 83, ../scss/Index.scss */
 .sidebar-nav .nav-item {
   position: relative;
 }
-/* line 85, ../scss/Index.scss */
+/* line 87, ../scss/Index.scss */
 .sidebar-nav li a {
   display: block;
   width: 100%;
@@ -109,23 +171,23 @@ body {
   line-height: 40px;
   overflow: hidden;
 }
-/* line 91, ../scss/Index.scss */
+/* line 93, ../scss/Index.scss */
 .sidebar-nav li a:hover {
   background: #37424f;
 }
-/* line 93, ../scss/Index.scss */
+/* line 95, ../scss/Index.scss */
 .sidebar-nav li a:hover .nav-icon, .sidebar-nav li a:hover .nav-title {
   color: #fff;
 }
-/* line 99, ../scss/Index.scss */
+/* line 101, ../scss/Index.scss */
 .sidebar-nav li.active a {
   background: #0099cc;
 }
-/* line 101, ../scss/Index.scss */
+/* line 103, ../scss/Index.scss */
 .sidebar-nav li.active a .nav-icon, .sidebar-nav li.active a .nav-title {
   color: #fff;
 }
-/* line 107, ../scss/Index.scss */
+/* line 109, ../scss/Index.scss */
 .sidebar-nav .nav-icon {
   width: 50px;
   text-align: center;
@@ -133,7 +195,7 @@ body {
   float: left;
   color: #aeb9c2;
 }
-/* line 114, ../scss/Index.scss */
+/* line 116, ../scss/Index.scss */
 .sidebar-nav .nav-title {
   float: left;
   overflow: hidden;
@@ -143,19 +205,19 @@ body {
   display: block;
   width: 130px;
 }
-/* line 124, ../scss/Index.scss */
+/* line 126, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title {
   background-color: #37424f;
   border-bottom: 1px solid #414d5c;
 }
-/* line 128, ../scss/Index.scss */
+/* line 130, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title-icon {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-/* line 131, ../scss/Index.scss */
+/* line 133, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold ul {
   height: 0 !important;
   overflow: hidden;

@@ -144,7 +144,7 @@
         onscroll             : function() {},
         onpreviewscroll      : function() {},
         
-        imageUpload          : false,
+        imageUpload          : true,
         imageFormats         : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL       : "",
         crossDomainUpload    : false,
@@ -221,7 +221,13 @@
             fullscreen       : "fa-arrows-alt",
             clear            : "fa-eraser",
             help             : "fa-question-circle",
-            info             : "fa-info-circle"
+            info             : "fa-info-circle",
+            /**
+            ZQ
+            添加自定义按钮图标
+            */
+            back: "fa-arrow-left",
+            save:"fa-save"
         },        
         toolbarIconTexts     : {},
         
@@ -267,7 +273,13 @@
                 clear            : "清空",
                 search           : "搜索",
                 help             : "使用帮助",
-                info             : "关于" + editormd.title
+                info             : "关于" + editormd.title,
+                /**
+                ZQ
+                添加返回，保存
+                */
+                back: "返回",
+                save:"保存"
             },
             buttons : {
                 enter  : "确定",
@@ -320,7 +332,7 @@
                     title : "使用帮助"
                 }
             }
-        }
+        },
     };
     
     editormd.classNames  = {
@@ -341,7 +353,11 @@
             watching   : false,
             loaded     : false,
             preview    : false,
-            fullscreen : false
+            fullscreen: false,
+            /**
+            ZQ
+            */
+            saving:false
         },
         
         /**
@@ -480,7 +496,7 @@
             {
                 this.loadQueues();
             }
-
+            this.setTitle();
             return this;
         },
         
@@ -1881,6 +1897,7 @@
             var toolbar    = this.toolbar;
             var settings   = this.settings;
             var codeMirror = this.codeMirror;
+            let title = this.title;
             
             if (width)
             {
@@ -1906,11 +1923,11 @@
 
                 if (settings.toolbar && !settings.readOnly) 
                 {
-                    codeMirror.css("margin-top", toolbar.height() + 1).height(editor.height() - toolbar.height());
+                    codeMirror.css("margin-top", toolbar.height() +title.height()+2).height(editor.height() - toolbar.height()-title.height());
                 } 
                 else
                 {
-                    codeMirror.css("margin-top", 0).height(editor.height());
+                    codeMirror.css("margin-top", title.height()+1).height(editor.height() - title.height());
                 }
             }
             
@@ -1923,11 +1940,11 @@
                 
                 if (settings.toolbar && !settings.readOnly) 
                 {
-                    preview.css("top", toolbar.height() + 1);
+                    preview.css("top", toolbar.height() +title.height()+ 2);
                 } 
                 else 
                 {
-                    preview.css("top", 0);
+                    preview.css("top", title.height()+1);
                 }
                 
                 if (settings.autoHeight && !state.fullscreen && !state.preview)
@@ -1936,7 +1953,7 @@
                 }
                 else
                 {                
-                    var previewHeight = (settings.toolbar && !settings.readOnly) ? editor.height() - toolbar.height() : editor.height();
+                    var previewHeight = (settings.toolbar && !settings.readOnly) ? editor.height() - toolbar.height() - title.height() : editor.height() - title.height();
                     
                     preview.height(previewHeight);
                 }
@@ -2475,7 +2492,11 @@
             var _this            = this;
             var editor           = this.editor;
             var preview          = this.preview;
-            var toolbar          = this.toolbar;
+            var toolbar = this.toolbar;
+            /**
+            ZQ
+            */
+            let title = this.title;
             var settings         = this.settings;
             var codeMirror       = this.codeMirror;
             var previewContainer = this.previewContainer;
@@ -2486,6 +2507,7 @@
             
             if (settings.toolbar && toolbar) {
                 toolbar.toggle();
+                title.toggle();
                 toolbar.find(".fa[name=preview]").toggleClass("active");
             }
             
@@ -2552,7 +2574,11 @@
             
             var editor           = this.editor;
             var preview          = this.preview;
-            var toolbar          = this.toolbar;
+            var toolbar = this.toolbar;
+            /**
+            ZQ
+            */
+            let title = this.title;
             var settings         = this.settings;
             var previewContainer = this.previewContainer;
             var previewCloseBtn  = editor.find("." + this.classPrefix + "preview-close-btn");
@@ -2563,6 +2589,7 @@
             
             if (settings.toolbar) {
                 toolbar.show();
+                title.show();
             }
             
             preview[(settings.watch) ? "show" : "hide"]();
@@ -2580,8 +2607,8 @@
                 background : null,
                 position   : "absolute",
                 width      : editor.width() / 2,
-                height     : (settings.autoHeight && !this.state.fullscreen) ? "auto" : editor.height() - toolbar.height(),
-                top        : (settings.toolbar)    ? toolbar.height() : 0
+                height     : (settings.autoHeight && !this.state.fullscreen) ? "auto" : editor.height() - toolbar.height()-title.height(),
+                top        : (settings.toolbar)    ? toolbar.height()+title.height() : 0
             });
 
             if (this.state.loaded)
@@ -2764,6 +2791,64 @@
             this.search("replaceAll");
             
             return this;
+        },
+        /**
+        ZQ
+        */
+        setTitle: function () {
+            let editor = this.editor;
+            let settings=this.settings;
+            let titleElement = $("<div></div>", {
+                "class": "editormd-title",
+            });
+            let inputElement = $("<input/>", {
+                "type":'text',
+                "class": "editor-title-input",
+                "value":blog.Title
+            });
+            let spanElement = $("<span></span>", {
+                "class": "fade-trans save-prompt",
+                text:"保存成功"
+            });
+            editor.append(titleElement.append(inputElement).append(spanElement));
+            this.title = titleElement;
+            this.saveprompt = spanElement;
+        },
+        getTitle: function () {
+            let title = $(this.title).children("input").val();
+            return title;
+        },
+        saveToServer: function () {
+            let state = this.state;
+            if (state.saving === true) {
+                return;
+            }
+            state.saving = true;
+            let setting = this.settings;
+            let cm = this.cm;
+            let title = this.title;
+            let saveprompt = this.saveprompt;
+            let obj = {
+                url: setting.saveUrl,
+                data: {
+                    ID:blog.ID,
+                    Title: this.getTitle(),
+                    Content: this.cm.getValue()
+                },
+                success: function (result) {
+                    $(saveprompt).animate({
+                        opacity: "0.8"
+                    }, "slow");
+                    setTimeout(function () {
+                        $(saveprompt).animate({
+                            opacity: "0"
+                        }, "slow");
+                        state.saving = false;
+                    }, 3000);
+                }
+            };
+            
+            $.Ajaxobj(obj);
         }
     };
     
@@ -3179,6 +3264,17 @@
 
         info : function() {
             this.showInfoDialog();
+        },
+
+        /**
+        ZQ
+        添加自定义按钮事件
+        */
+        back: function () {
+            location.href = window.history.go(-1);
+        },
+        save: function () {
+            this.saveToServer();            
         }
     };
     
@@ -3295,7 +3391,9 @@
         "Shift-Alt-P"      : "pagebreak",
         "F9"               : "watch",
         "F10"              : "preview",
-        "F11"              : "fullscreen",
+        "F11": "fullscreen",
+
+        "Ctrl-S": "save"
     };
     
     /**

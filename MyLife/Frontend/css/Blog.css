@@ -1,10 +1,28 @@
-/* line 80, blog/*.png */
-.blog-sprite, .list-container .item-content .blog-folder, .list-container .item-content .blog-doc, .list-container .item-content .item-setting .blog-icon-setting, .list-container .item-content .item-setting:hover .blog-icon-setting, .list-container .icon-delete {
-  background-image: url('/Frontend/images/blog-s7903b4c1f7.png');
-  background-repeat: no-repeat;
+/* line 3, ../scss/base.scss */
+div, ul, li {
+  margin: 0;
+  padding: 0;
 }
 
-/* line 2, ../scss/base.scss */
+/* line 7, ../scss/base.scss */
+ul, li {
+  list-style: none;
+}
+
+/* line 10, ../scss/base.scss */
+.clearfix {
+  height: 1%;
+}
+/* line 12, ../scss/base.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 21, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -17,7 +35,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 11, ../scss/base.scss */
+/* line 30, ../scss/base.scss */
 .input {
   display: block;
   width: 100%;
@@ -36,85 +54,110 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+/* line 42, ../scss/base.scss */
+.input:focus {
+  outline: 0;
+  border-color: #a6a6a6 !important;
+}
+
+/* line 80, blog/*.png */
+.blog-sprite, .list-container.Tile .item-content .blog-folder, .list-container.Tile .item-content .blog-doc, .list-container.Tile .item-content .item-setting .blog-icon-setting, .list-container.Tile .item-content .item-setting:hover .blog-icon-setting, .file-operations .icon-delete, #sortHelper-folder, #sortHelper-doc {
+  background-image: url('/Frontend/images/blog-s7903b4c1f7.png');
+  background-repeat: no-repeat;
+}
 
 /* line 6, ../scss/Blog.scss */
-div, ul, li {
-  margin: 0;
-  padding: 0;
-}
-
-/* line 10, ../scss/Blog.scss */
-ul, li {
-  list-style: none;
-}
-
-/* line 13, ../scss/Blog.scss */
-.clearfix {
-  height: 1%;
-}
-/* line 15, ../scss/Blog.scss */
-.clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-
-/* line 23, ../scss/Blog.scss */
 .container {
-  width: 896px;
+  width: calc(100% - 280px);
   padding: 34px 115px 140px 165px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 31, ../scss/Blog.scss */
+/* line 14, ../scss/Blog.scss */
 .list-crumb {
   position: relative;
+  display: inline-block;
 }
-/* line 33, ../scss/Blog.scss */
+/* line 17, ../scss/Blog.scss */
 .list-crumb .crumb-item {
   color: #6886aa;
-  padding: 5px;
-  font-size: 14px;
+  margin: 0 7px;
+  padding: 3px;
+  font-size: 12px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid transparent;
 }
-/* line 37, ../scss/Blog.scss */
+/* line 25, ../scss/Blog.scss */
 .list-crumb .crumb-item:hover {
   color: #6093bb;
   cursor: pointer;
 }
-/* line 42, ../scss/Blog.scss */
+/* line 29, ../scss/Blog.scss */
+.list-crumb .crumb-item.droppable {
+  opacity: 1;
+  background: rgba(220, 220, 220, 0.2);
+  border: 1px solid #ddd;
+}
+/* line 34, ../scss/Blog.scss */
+.list-crumb .crumb-item.drophover {
+  -moz-transition: 0.1s, ease-in;
+  -o-transition: 0.1s, ease-in;
+  -webkit-transition: 0.1s, ease-in;
+  transition: 0.1s, ease-in;
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+  background-color: rgba(233, 244, 255, 0.5);
+  border-color: #97afc9;
+}
+/* line 41, ../scss/Blog.scss */
 .list-crumb .now-crumb {
   color: #666;
-  padding: 5px;
-  font-size: 14px;
+  padding: 3px;
+  margin: 0 7px;
+  font-size: 12px;
+  border: 1px solid transparent;
 }
 
-/* line 48, ../scss/Blog.scss */
+/* line 49, ../scss/Blog.scss */
+.list-switch {
+  display: none;
+  float: right;
+  line-height: 22px;
+  outline: none;
+  cursor: pointer;
+  color: #7d7d7d;
+  text-decoration: none;
+}
+/* line 57, ../scss/Blog.scss */
+.list-switch:focus {
+  outline: none !important;
+}
+/* line 60, ../scss/Blog.scss */
+.list-switch:hover {
+  color: #333;
+}
+
+/* line 64, ../scss/Blog.scss */
 .list-container {
   color: #333;
 }
-/* line 50, ../scss/Blog.scss */
-.list-container .list-item {
-  position: relative;
-  float: left;
+/* line 67, ../scss/Blog.scss */
+.list-container.Tile .list-item {
   height: 127px;
   width: 122px;
   margin-top: 24px;
   margin-right: 6px;
-}
-/* line 58, ../scss/Blog.scss */
-.list-container .list-box {
-  float: left;
   position: relative;
+  float: left;
 }
-/* line 61, ../scss/Blog.scss */
-.list-container .list-box > a {
-  display: block;
-}
-/* line 65, ../scss/Blog.scss */
-.list-container .item-content {
+/* line 76, ../scss/Blog.scss */
+.list-container.Tile .item-content {
   width: 122px;
   height: 126px;
   cursor: pointer;
@@ -124,16 +167,20 @@ ul, li {
   border: 1px solid transparent;
   border-radius: 2px;
 }
-/* line 74, ../scss/Blog.scss */
-.list-container .item-content .blog-folder {
+/* line 85, ../scss/Blog.scss */
+.list-container.Tile .item-content .blog-folder {
   width: 80px;
   height: 60px;
   position: relative;
   margin: 16px auto 10px auto;
   background-position: 0 -100px;
+  -moz-transition: 0.2s, ease-in;
+  -o-transition: 0.2s, ease-in;
+  -webkit-transition: 0.2s, ease-in;
+  transition: 0.2s, ease-in;
 }
-/* line 81, ../scss/Blog.scss */
-.list-container .item-content .blog-doc {
+/* line 93, ../scss/Blog.scss */
+.list-container.Tile .item-content .blog-doc {
   display: block;
   width: 60px;
   height: 80px;
@@ -141,8 +188,8 @@ ul, li {
   margin: 6px auto 0 auto;
   background-position: 0 -20px;
 }
-/* line 89, ../scss/Blog.scss */
-.list-container .item-content .item-title {
+/* line 101, ../scss/Blog.scss */
+.list-container.Tile .item-content .item-title {
   text-align: center;
   font-size: 12px;
   overflow: hidden;
@@ -153,8 +200,8 @@ ul, li {
   max-height: 40px;
   margin: 0 auto;
 }
-/* line 100, ../scss/Blog.scss */
-.list-container .item-content .item-setting {
+/* line 112, ../scss/Blog.scss */
+.list-container.Tile .item-content .item-setting {
   height: 26px;
   width: 26px;
   position: absolute;
@@ -164,8 +211,8 @@ ul, li {
   display: none;
   cursor: pointer;
 }
-/* line 109, ../scss/Blog.scss */
-.list-container .item-content .item-setting .blog-icon-setting {
+/* line 121, ../scss/Blog.scss */
+.list-container.Tile .item-content .item-setting .blog-icon-setting {
   width: 12px;
   height: 12px;
   display: block;
@@ -176,25 +223,43 @@ ul, li {
   background-position: 0 -172px;
 }
 /* line 59, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
-.list-container .item-content .item-setting .blog-icon-setting:hover, .list-container .item-content .item-setting .blog-icon-setting.icon-setting-hover {
+.list-container.Tile .item-content .item-setting .blog-icon-setting:hover, .list-container.Tile .item-content .item-setting .blog-icon-setting.icon-setting-hover {
   background-position: 0 -160px;
 }
-/* line 120, ../scss/Blog.scss */
-.list-container .item-content .item-setting:hover .blog-icon-setting {
+/* line 132, ../scss/Blog.scss */
+.list-container.Tile .item-content .item-setting:hover .blog-icon-setting {
   background-position: 0 -160px;
 }
-/* line 125, ../scss/Blog.scss */
-.list-container .item-content.hover {
+/* line 137, ../scss/Blog.scss */
+.list-container.Tile .item-content.hover {
   border: 1px solid #d0d0d0;
   border-radius: 2px;
-  background: #e0e0e0;
+  background: #f3f4f5;
 }
-/* line 129, ../scss/Blog.scss */
-.list-container .item-content.hover .item-setting {
+/* line 141, ../scss/Blog.scss */
+.list-container.Tile .item-content.hover .item-setting {
   display: block;
 }
-/* line 134, ../scss/Blog.scss */
-.list-container .file-operations {
+/* line 145, ../scss/Blog.scss */
+.list-container.Tile .item-content.droppable {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+/* line 149, ../scss/Blog.scss */
+.list-container.Tile .item-content.drophover .blog-folder {
+  -moz-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+/* line 156, ../scss/Blog.scss */
+.list-container.Tile.onDrag .item-content {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+/* line 165, ../scss/Blog.scss */
+.file-operations {
   position: absolute;
   -moz-box-shadow: 0 5px 8px 0 #ccc;
   -webkit-box-shadow: 0 5px 8px 0 #ccc;
@@ -209,12 +274,16 @@ ul, li {
   cursor: default;
   border-radius: 3px;
 }
-/* line 146, ../scss/Blog.scss */
-.list-container .file-operations.active {
+/* line 166, ../scss/Blog.scss */
+.file-operations hr {
+  width: 192px;
+}
+/* line 180, ../scss/Blog.scss */
+.file-operations.active {
   display: block;
 }
-/* line 151, ../scss/Blog.scss */
-.list-container .trangle .list-trangle-item {
+/* line 184, ../scss/Blog.scss */
+.file-operations .trangle .list-trangle-item {
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: #fff;
@@ -228,18 +297,18 @@ ul, li {
   background: none;
   border-top: none;
 }
-/* line 164, ../scss/Blog.scss */
-.list-container .trangle .list-trangle-item.top {
+/* line 197, ../scss/Blog.scss */
+.file-operations .trangle .list-trangle-item.top {
   top: -8px;
   border-bottom-color: rgba(136, 136, 136, 0.2);
   z-index: 10;
 }
-/* line 169, ../scss/Blog.scss */
-.list-container .trangle .list-trangle-item.down {
+/* line 202, ../scss/Blog.scss */
+.file-operations .trangle .list-trangle-item.down {
   z-index: 11;
 }
-/* line 174, ../scss/Blog.scss */
-.list-container .menu-item {
+/* line 207, ../scss/Blog.scss */
+.file-operations .menu-item {
   height: 36px;
   line-height: 36px;
   text-align: left;
@@ -248,12 +317,12 @@ ul, li {
   color: #41464b;
   padding-left: 14px;
 }
-/* line 182, ../scss/Blog.scss */
-.list-container .menu-item.delete {
+/* line 215, ../scss/Blog.scss */
+.file-operations .menu-item.delete {
   margin-top: 4px;
 }
-/* line 185, ../scss/Blog.scss */
-.list-container .menu-item:hover {
+/* line 218, ../scss/Blog.scss */
+.file-operations .menu-item:hover {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U3ZThlOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VlZWZmMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e7e8e9), color-stop(100%, #eeeff0));
@@ -261,19 +330,19 @@ ul, li {
   background-image: -webkit-linear-gradient(top, #e7e8e9, #eeeff0);
   background-image: linear-gradient(to bottom, #e7e8e9, #eeeff0);
 }
-/* line 189, ../scss/Blog.scss */
-.list-container .menu-list {
+/* line 222, ../scss/Blog.scss */
+.file-operations .menu-list {
   padding-top: 8px;
   padding-bottom: 8px;
   background-color: #fff;
   border-radius: 3px;
 }
-/* line 195, ../scss/Blog.scss */
-.list-container .menu-title {
+/* line 228, ../scss/Blog.scss */
+.file-operations .menu-title {
   padding: 0 10px 8px 10px;
 }
-/* line 197, ../scss/Blog.scss */
-.list-container .menu-title .title-input {
+/* line 230, ../scss/Blog.scss */
+.file-operations .menu-title .title-input {
   height: 20px;
   line-height: 20px;
   padding: 3px 9px;
@@ -285,8 +354,8 @@ ul, li {
   -webkit-box-shadow: 0px 1px 3px 0px #e5e5e5 inset;
   box-shadow: 0px 1px 3px 0px #e5e5e5 inset;
 }
-/* line 208, ../scss/Blog.scss */
-.list-container .icon-delete {
+/* line 241, ../scss/Blog.scss */
+.file-operations .icon-delete {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -295,7 +364,31 @@ ul, li {
   margin-right: 10px;
   background-position: 0 0;
 }
-/* line 217, ../scss/Blog.scss */
-.list-container hr {
-  width: 192px;
+
+/* line 251, ../scss/Blog.scss */
+.item-placeholder {
+  height: 127px;
+  width: 120px;
+  margin-top: 24px;
+  margin-right: 6px;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  background: #f3f4f5;
+  float: left;
+}
+
+/* line 261, ../scss/Blog.scss */
+#sortHelper-folder {
+  width: 80px !important;
+  height: 60px !important;
+  margin: 16px auto 10px auto;
+  background-position: 0 -100px;
+}
+
+/* line 267, ../scss/Blog.scss */
+#sortHelper-doc {
+  width: 60px !important;
+  height: 80px !important;
+  margin: 6px auto 0 auto;
+  background-position: 0 -20px;
 }
