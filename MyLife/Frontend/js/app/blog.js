@@ -34,6 +34,7 @@ class Bloglist {
     }
 
     switchMode(e) {
+        this.containerList.removeClass(this.mode);
         this.mode = e;
         localStorage.setItem("blogMode", e);
         this.setMode(e);

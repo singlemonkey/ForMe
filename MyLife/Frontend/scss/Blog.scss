@@ -159,7 +159,25 @@
         }
     }
     &.List{
+        .list-item{
+            display:block;
+            position:relative;
+            height:48px;
+            line-height:48px;
+            border-bottom:1px solid #e5e5e5;
+        }
+        .file-icon{
+            display:inline-block;
+            width:26px;
+            height:26px;
+            float:left;
+            &.folder-icon{
 
+            }
+            &.doc-icon{
+
+            }
+        }
     }
 }
 .file-operations{
