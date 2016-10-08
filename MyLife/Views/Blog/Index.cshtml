@@ -6,6 +6,7 @@
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
 <link rel="stylesheet"  href="~/Frontend/assets/dialog/css/dialog-wilma.css"/>
 <div class="container">
+    <div class=""></div>
     <div >
         <div class="list-crumb"></div>
         <a class="list-switch" href="javascript:void(0);">
@@ -38,7 +39,7 @@
 </div>
 @section scripts{
     <script id="blog-tile" type="text/x-jsrender">
-        <li class="list-item">
+        <li class="list-item" id="{{:ID}}">
             <div class="list-box">
                 <a data-id="{{:ID}}">
                     <div class="item-content {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}" data-id="{{:ID}}" draggable="true">
@@ -69,13 +70,37 @@
         </li>
     </script>
     <script id="blog-list" type="text/x-jsrender">
-        <li class="list-item">
+        <li class="list-item" id="{{:ID}}">
             <a data-id="{{:ID}}">
-                <span class="list-table-cell file-name">
-                    <i class="file-icon {{if FileType=="folder"}} folder-icon {{else}} doc-icon {{/if}}"></i>
-                    <span class="file-name-text">{{:Title}}</span>
-                </span>
+                <div class="item-content clearfix {{if FileType=="folder"}} folder-content {{else}} doc-content {{/if}}" data-id="{{:ID}}" draggable="true">
+                    <span class="list-table-cell file-name">
+                        <i class="file-icon {{if FileType=="folder"}} folder-icon {{else}} doc-icon {{/if}}"></i>
+                        <span class="item-title">{{:Title}}</span>
+                    </span>
+                    <span class="list-table-cell file-update">
+                        <span class="file-update-time">{{:CreateDate}}</span>
+                    </span>
+                    <div class="item-setting">
+                        <span class="blog-icon-setting"></span>
+                    </div>
+                </div>
             </a>
+            <div draggable="false" class="file-operations" data-id="{{:ID}}">
+                <div class="trangle">
+                    <span class="list-trangle-item top"></span>
+                    <span class="list-trangle-item down"></span>
+                </div>
+                <div class="menu-list">
+                    <div class="menu-title">
+                        <input class="title-input input" placeholder="{{if FileType=="folder"}} 文件夹名称 {{else}} 文档名称 {{/if}}" value="{{:Title}}" />
+                    </div>
+                    <hr />
+                    <div class="menu-item delete">
+                        <span class="icon-delete"></span>
+                        <span>删除</span>
+                    </div>
+                </div>
+            </div>
         </li>
     </script>
     <script src="~/Frontend/assets/jquery-ui/jquery-ui.min.js"></script>

@@ -25,8 +25,7 @@ class Bloglist {
         let self = this;
         let obj = {
             url: "/Blog/BlogList/?id=" + dataID,
-            success: function (result) {
-                self.result = result;
+            success: function (result) {                
                 self.render(result);
             }
         }
@@ -55,11 +54,10 @@ class Bloglist {
     }
 
     render(data) {
+        this.result = data;
         this.renderCrumb(data.crumbList);
         this.renderContainer(data.containerList);
-        if (this.mode === "Tile") {
-            this.initInteractions();
-        }
+        this.initInteractions();
     }
 
     renderCrumb(result) {
@@ -85,7 +83,7 @@ class Bloglist {
     }
 
     renderContainer(result) {
-        this.containerList.html("").addClass(this.mode);
+        this.containerList.empty().addClass(this.mode);
         let l = result.length;
         if (l != 0) {
             for (let i = 0; i < l; i++) {
@@ -96,6 +94,9 @@ class Bloglist {
 
     renderListItem(item) {
         let tmpl;
+        if (item.CreateDate.indexOf("-") == -1) {
+            item.CreateDate = $.formatDate(new Date(parseInt(item.CreateDate.substr(6, 13))));
+        }        
         if (this.mode === "Tile") {
             tmpl = $.templates("#blog-tile");
         } else {
@@ -104,37 +105,34 @@ class Bloglist {
         let liItem = tmpl.render(item);
         this.containerList.append(liItem);
     }
+    //初始化交互操作
+
+    UpdateDisplayIndex() {
+        let self = this;
+        var widget = $(".list-container").sortable("toArray");
+        let obj = {
+            showProgress: false,
+            url: "/Blog/UpdateDisplayIndex/?widget=" + widget + "&parentID=" + localStorage.getItem("blogData"),
+            success: function (result) {
+                self.result.containerList = result;
+            }
+        }
+        $.Ajaxobj(obj);
+    }
 
     initInteractions() {
         let self = this;
         $(".list-container").sortable({
             cursor:"pointer",
-            helper:function(a,u){
-                if (u.find(".item-content").hasClass("doc-content")) {
-                    $(".list-container").sortable("option","cursorAt",{
-                        left: 30,
-                        top:32
-                    });
-                    return $("<a></a>", {
-                        id: "sortHelper-doc"
-                    });
-                } else {
-                    $(".list-container").sortable("option", "cursorAt", {
-                        left:40,
-                        top: 22
-                    });
-                    return $("<a></a>", {
-                        id: "sortHelper-folder"
-                    });
-                }
-            },
-            placeholder: "item-placeholder",
             start:function(event,ui){
                 $(this).addClass("onDrag");
             },
             stop: function (event, ui) {
                 $(this).removeClass("onDrag");
             },
+            update: function (event, ui) {
+                self.UpdateDisplayIndex();
+            }
         }).disableSelection();
 
         $(".folder-content").droppable({
@@ -153,6 +151,41 @@ class Bloglist {
                 self.resetStructure(ui.draggable, this);
             }
         });
+
+        if (this.mode === "Tile") {
+            $(".list-container").sortable("option", {
+                helper: function (a, u) {
+                    if (u.find(".item-content").hasClass("doc-content")) {
+                        $(".list-container").sortable("option", "cursorAt", {
+                            left: 30,
+                            top: 32
+                        });
+                        return $("<a></a>", {
+                            id: "sortHelper-doc"
+                        });
+                    } else {
+                        $(".list-container").sortable("option", "cursorAt", {
+                            left: 40,
+                            top: 22
+                        });
+                        return $("<a></a>", {
+                            id: "sortHelper-folder"
+                        });
+                    }
+                },
+                placeholder: "item-placeholder",
+            });
+            $(".crumb-item").droppable("option", "tolerance", "intersect");
+            $(".folder-content").droppable("option", "disabled", false);
+        } else {
+            $(".list-container").sortable("option", {
+                helper: "original",
+                placeholder: false,
+                cursorAt: false
+            });
+            $(".crumb-item").droppable("option", "tolerance", "pointer");
+            $(".folder-content").droppable("option", "disabled", true);
+        }
     }
 
     resetStructure(drag,_this) {
@@ -179,7 +212,7 @@ class Bloglist {
         }).removeClass("hover");
 
         //监听元素class变化，触发回调函数更新title
-        let operation = $(setting).parents(".list-box").children(".file-operations");
+        let operation = $(setting).parents(".list-item").find(".file-operations");
         let observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.type === "attributes") {
@@ -297,7 +330,7 @@ jQuery(document).ready(function () {
         if (event.type == "mouseover") {
             $(this).addClass("hover");
         } else if (event.type == "mouseout") {
-            if ($(this).parents(".list-box").children(".file-operations.active").length == 0) {
+            if ($(this).parents(".list-item").find(".file-operations.active").length == 0) {
                 $(this).removeClass("hover");
             }
         }

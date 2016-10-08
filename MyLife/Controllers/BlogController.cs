@@ -32,9 +32,34 @@ namespace MyLife.Controllers
         {
             BlogModel blog = db.Blogs.Find(ID);
             blog.ParentID = ParentID;
+            blog.DisplayIndex = 0;
             db.Entry(blog).State = EntityState.Modified;
             db.SaveChanges();
             return Json(blog);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateDisplayIndex(string widget,int parentID)
+        {
+            if (widget != "")
+            {
+                char[] separator = { ',' };
+                string[] BlogWidget = widget.Split(separator);
+                List<BlogModel> blogList = new List<BlogModel>();
+                for (int i = 0; i < BlogWidget.ToArray().Length; i++)
+                {
+                    BlogModel blog = db.Blogs.Find(int.Parse(BlogWidget[i]));
+                    blog.DisplayIndex = parentID + i + 1;
+                    db.Entry(blog).State = EntityState.Modified;
+                    blogList.Add(blog);
+                }
+                db.SaveChanges();
+                return Json(blogList);
+            }
+            else
+            {
+                return Json(new { });
+            }     
         }
 
         [HttpPost]
@@ -60,7 +85,7 @@ namespace MyLife.Controllers
                 crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.CreateDate).ToList();
             }
             var ContainerList = from blog in db.Blogs
-                                where blog.ParentID==id && blog.ID!=0 orderby blog.CreateDate
+                                where blog.ParentID==id && blog.ID!=0 orderby blog.DisplayIndex
                                 select blog;
             return Json( new
             {
