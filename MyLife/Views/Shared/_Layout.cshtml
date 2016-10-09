@@ -23,6 +23,12 @@
             </div>
         </div>
         <div class="content">
+            @if (@ViewBag.Header != null)
+            {
+                <div class="header">
+                    <span class="move">@ViewBag.Header</span>
+                </div>
+            }            
             @RenderBody()
         </div>
     </div>

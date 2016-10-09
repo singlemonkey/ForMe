@@ -4,10 +4,12 @@
 @import "blog/*.png";
 
 .container{
-    width:calc(100% - 160px);
-    padding:20px 80px;
+    width:calc(100% - 180px);
+    padding:20px 90px;
     margin:0 auto;
     position:relative;
+    height:calc(100% - 81px);
+    overflow:auto;
 }
 
 //页面头部导航

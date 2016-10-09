@@ -1,4 +1,61 @@
-﻿$(function () {
+﻿class moveHeader {
+    constructor(e) {
+        this.isMoving = true;
+        this.element = $(e);
+        this.container = $(e).parent();
+        this.direction = "right";
+        this.width = $(e).innerWidth();
+        this.timer = null;
+        this.speed=1;
+        this.distance = 1;
+    }
+
+    init() {
+        let self = this;
+        self.start();
+        $(window).resize(function () {
+        });
+    }
+
+
+    change() {
+        if (this.isMoving == false) {
+            this.isMoving = true;
+        } else {
+            this.isMoving = false;
+        }
+        this.start();
+    }
+
+    start() {
+        if (this.isMoving == false) {
+            return false;
+        }
+        let self = this;
+        let left = self.element.position().left;
+        if (self.direction === "right") {
+            self.element.animate({
+                left: left + self.distance
+            }, self.speed, "linear", function () {
+                if (left + self.distance + self.width >= self.container.width()) {
+                    self.direction = "left";
+                }
+                self.start();
+            })
+        } else {
+            self.element.animate({
+                left: left- self.distance
+            }, self.speed, "linear", function () {
+                if (left-self.distance <= 0) {
+                    self.direction = "right";
+                }
+                self.start();
+            })
+        }
+    }
+}
+
+$(function () {
     jQuery.extend({
         Ajaxobj: function (config) {
             let defaultConfig= {
@@ -53,5 +110,11 @@
     });
     $(document).ajaxComplete(() => {
         NProgress.done();
+    });
+    let move = new moveHeader(".move");
+    move.init();
+    //移动标题初始化
+    $(".move").on("click", function () {
+        move.change();
     });
 });

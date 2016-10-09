@@ -8,13 +8,14 @@ body{
     font-family:"Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
     font-size:12px;
 }
-.navbar{
-    background-color:#09C;    
+.navbar{   
+    background-color:#e5e5e5;
     position: fixed;
     top:0;
     right: 0;
     left: 0;
     z-index: 1030;
+    height:50px;
 }
 .main-container{
     position: absolute;
@@ -49,6 +50,24 @@ body{
         right:0;
         overflow-x:hidden;
         overflow-y:auto;
+        .header{
+            height:40px;
+            border-bottom:1px solid #e5e5e5;
+            position:relative;
+            span{
+                letter-spacing:10px;
+                font-size:18px;
+                line-height:39px;
+                color:#808080;
+                height:39px;
+                display:inline-block;
+                padding:0 20px 0 30px;
+                border-bottom:2px solid #0099cc;
+                position:absolute;
+                cursor:pointer;
+                overflow:hidden;
+            }
+        }
     }
 }
 //菜单栏组件
