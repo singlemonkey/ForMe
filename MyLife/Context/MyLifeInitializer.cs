@@ -7,7 +7,7 @@ using MyLife.Models;
 
 namespace MyLife.Context
 {
-    public class MyLifeInitializer:System.Data.Entity.DropCreateDatabaseAlways<MyLifeContext>
+    public class MyLifeInitializer:System.Data.Entity.DropCreateDatabaseIfModelChanges<MyLifeContext>
     {
         protected override void Seed(MyLifeContext context)
         {
@@ -22,71 +22,15 @@ namespace MyLife.Context
             context.SaveChanges();
             var blogs = new List<BlogModel> {
                 new BlogModel {
-                    ID=0,
                     Title="桌面",
                     Content="",
                     IsPublish=true,
                     IsStar=false,
                     FileType="folder",
-                    ParentID=0,
+                    ParentID=1,
                     CreateDate=DateTime.Parse("2016-06-24"),
                     DisplayIndex=1
                 },
-                new BlogModel {
-                    ID=1,
-                    Title="第一篇博客",
-                    Content="个人博客系统正式启动，将作为技术与生活的新载体",
-                    IsPublish=true,
-                    IsStar=false,
-                    FileType="document",
-                    ParentID=0,
-                    CreateDate=DateTime.Parse("2016-06-26"),
-                    DisplayIndex=2
-                },
-                new BlogModel {
-                    ID=2,
-                    Title="第二篇博客",
-                    Content="个人博客系统正式启动，将作为技术与生活的新载体",
-                    IsPublish=true,
-                    IsStar=false,
-                    FileType="document",
-                    ParentID=0,
-                    CreateDate=DateTime.Parse("2016-07-28"),
-                    DisplayIndex=3
-                },
-                new BlogModel {
-                    ID=3,
-                    Title="第一个文件夹",
-                    Content="",
-                    IsPublish=true,
-                    IsStar=false,
-                    FileType="folder",
-                    ParentID=0,
-                    CreateDate=DateTime.Parse("2016-07-30"),
-                    DisplayIndex=4
-                },
-                new BlogModel {
-                    ID=4,
-                    Title="第一个文件夹第一篇博客",
-                    Content="个人博客系统正式启动，将作为技术与生活的新载体",
-                    IsPublish=true,
-                    IsStar=false,
-                    FileType="document",
-                    ParentID=3,
-                    CreateDate=DateTime.Parse("2016-08-01"),
-                    DisplayIndex=5
-                },
-                new BlogModel {
-                    ID=5,
-                    Title="文件夹",
-                    Content="",
-                    IsPublish=true,
-                    IsStar=false,
-                    FileType="folder",
-                    ParentID=3,
-                    CreateDate=DateTime.Parse("2016-08-10"),
-                    DisplayIndex=6
-                },                
             };
             blogs.ForEach(b=>context.Blogs.Add(b));
             context.SaveChanges();

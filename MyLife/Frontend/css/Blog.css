@@ -9,11 +9,7 @@ ul, li {
   list-style: none;
 }
 
-/* line 10, ../scss/base.scss */
-.clearfix {
-  height: 1%;
-}
-/* line 12, ../scss/base.scss */
+/* line 11, ../scss/base.scss */
 .clearfix:after {
   content: ".";
   display: block;
@@ -22,7 +18,7 @@ ul, li {
   visibility: hidden;
 }
 
-/* line 21, ../scss/base.scss */
+/* line 20, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -35,7 +31,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 30, ../scss/base.scss */
+/* line 29, ../scss/base.scss */
 .input {
   display: block;
   width: 100%;
@@ -54,7 +50,7 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 42, ../scss/base.scss */
+/* line 41, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
@@ -76,12 +72,19 @@ hr {
   overflow: auto;
 }
 
-/* line 16, ../scss/Blog.scss */
+/* line 15, ../scss/Blog.scss */
+.handle {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+}
+
+/* line 22, ../scss/Blog.scss */
 .list-crumb {
   position: relative;
   display: inline-block;
 }
-/* line 19, ../scss/Blog.scss */
+/* line 25, ../scss/Blog.scss */
 .list-crumb .crumb-item {
   color: #6886aa;
   margin: 0 7px;
@@ -93,18 +96,18 @@ hr {
   display: inline-block;
   border: 1px solid transparent;
 }
-/* line 27, ../scss/Blog.scss */
+/* line 33, ../scss/Blog.scss */
 .list-crumb .crumb-item:hover {
   color: #6093bb;
   cursor: pointer;
 }
-/* line 31, ../scss/Blog.scss */
+/* line 37, ../scss/Blog.scss */
 .list-crumb .crumb-item.droppable {
   opacity: 1;
   background: rgba(220, 220, 220, 0.2);
   border: 1px solid #ddd;
 }
-/* line 36, ../scss/Blog.scss */
+/* line 42, ../scss/Blog.scss */
 .list-crumb .crumb-item.drophover {
   -moz-transition: 0.1s, ease-in;
   -o-transition: 0.1s, ease-in;
@@ -117,7 +120,7 @@ hr {
   background-color: rgba(233, 244, 255, 0.5);
   border-color: #97afc9;
 }
-/* line 43, ../scss/Blog.scss */
+/* line 49, ../scss/Blog.scss */
 .list-crumb .now-crumb {
   color: #666;
   padding: 3px;
@@ -126,7 +129,7 @@ hr {
   border: 1px solid transparent;
 }
 
-/* line 51, ../scss/Blog.scss */
+/* line 57, ../scss/Blog.scss */
 .list-switch {
   display: none;
   float: right;
@@ -136,20 +139,20 @@ hr {
   color: #7d7d7d;
   text-decoration: none;
 }
-/* line 59, ../scss/Blog.scss */
+/* line 65, ../scss/Blog.scss */
 .list-switch:focus {
   outline: none !important;
 }
-/* line 62, ../scss/Blog.scss */
+/* line 68, ../scss/Blog.scss */
 .list-switch:hover {
   color: #333;
 }
 
-/* line 66, ../scss/Blog.scss */
+/* line 72, ../scss/Blog.scss */
 .list-container {
   color: #333;
 }
-/* line 69, ../scss/Blog.scss */
+/* line 75, ../scss/Blog.scss */
 .list-container.Tile .list-item {
   height: 127px;
   width: 122px;
@@ -158,7 +161,7 @@ hr {
   position: relative;
   float: left;
 }
-/* line 78, ../scss/Blog.scss */
+/* line 84, ../scss/Blog.scss */
 .list-container.Tile .item-content {
   width: 122px;
   height: 126px;
@@ -169,7 +172,7 @@ hr {
   border: 1px solid transparent;
   border-radius: 2px;
 }
-/* line 87, ../scss/Blog.scss */
+/* line 93, ../scss/Blog.scss */
 .list-container.Tile .item-content .blog-folder {
   width: 80px;
   height: 60px;
@@ -181,7 +184,7 @@ hr {
   -webkit-transition: 0.2s, ease-in;
   transition: 0.2s, ease-in;
 }
-/* line 95, ../scss/Blog.scss */
+/* line 101, ../scss/Blog.scss */
 .list-container.Tile .item-content .blog-doc {
   display: block;
   width: 60px;
@@ -190,7 +193,7 @@ hr {
   margin: 6px auto 0 auto;
   background-position: 0 -46px;
 }
-/* line 103, ../scss/Blog.scss */
+/* line 109, ../scss/Blog.scss */
 .list-container.Tile .item-content .item-title {
   text-align: center;
   font-size: 12px;
@@ -202,7 +205,7 @@ hr {
   max-height: 40px;
   margin: 0 auto;
 }
-/* line 114, ../scss/Blog.scss */
+/* line 120, ../scss/Blog.scss */
 .list-container.Tile .item-content .item-setting {
   height: 26px;
   width: 26px;
@@ -213,7 +216,7 @@ hr {
   display: none;
   cursor: pointer;
 }
-/* line 123, ../scss/Blog.scss */
+/* line 129, ../scss/Blog.scss */
 .list-container.Tile .item-content .item-setting .blog-icon-setting {
   width: 12px;
   height: 12px;
@@ -228,60 +231,60 @@ hr {
 .list-container.Tile .item-content .item-setting .blog-icon-setting:hover, .list-container.Tile .item-content .item-setting .blog-icon-setting.icon-setting-hover {
   background-position: 0 -212px;
 }
-/* line 134, ../scss/Blog.scss */
+/* line 140, ../scss/Blog.scss */
 .list-container.Tile .item-content .item-setting:hover .blog-icon-setting {
   background-position: 0 -212px;
 }
-/* line 139, ../scss/Blog.scss */
+/* line 145, ../scss/Blog.scss */
 .list-container.Tile .item-content.hover {
   border: 1px solid #d0d0d0;
   border-radius: 2px;
   background: #f3f4f5;
 }
-/* line 143, ../scss/Blog.scss */
+/* line 149, ../scss/Blog.scss */
 .list-container.Tile .item-content.hover .item-setting {
   display: block;
 }
-/* line 147, ../scss/Blog.scss */
+/* line 153, ../scss/Blog.scss */
 .list-container.Tile .item-content.droppable {
   opacity: 1 !important;
   filter: alpha(opacity=100) !important;
 }
-/* line 151, ../scss/Blog.scss */
+/* line 157, ../scss/Blog.scss */
 .list-container.Tile .item-content.drophover .blog-folder {
   -moz-transform: scale(1.2, 1.2);
   -ms-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 158, ../scss/Blog.scss */
+/* line 164, ../scss/Blog.scss */
 .list-container.Tile.onDrag .item-content {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
-/* line 163, ../scss/Blog.scss */
+/* line 169, ../scss/Blog.scss */
 .list-container.List {
   margin-top: 30px !important;
 }
-/* line 164, ../scss/Blog.scss */
+/* line 170, ../scss/Blog.scss */
 .list-container.List .item-content {
   height: auto !important;
   color: #666;
 }
-/* line 167, ../scss/Blog.scss */
+/* line 173, ../scss/Blog.scss */
 .list-container.List .item-content.hover {
   cursor: pointer;
   background-color: #f3f4f5;
 }
-/* line 170, ../scss/Blog.scss */
+/* line 176, ../scss/Blog.scss */
 .list-container.List .item-content.hover .item-setting {
   display: block;
 }
-/* line 176, ../scss/Blog.scss */
+/* line 182, ../scss/Blog.scss */
 .list-container.List > :first-child {
   border-top: 1px solid #e5e5e5;
 }
-/* line 179, ../scss/Blog.scss */
+/* line 185, ../scss/Blog.scss */
 .list-container.List .list-item {
   display: block;
   position: relative;
@@ -289,13 +292,13 @@ hr {
   line-height: 48px;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 185, ../scss/Blog.scss */
+/* line 191, ../scss/Blog.scss */
 .list-container.List .list-item .list-table-cell {
   font-size: 14px;
   padding-left: 25px;
   display: inline-block;
 }
-/* line 191, ../scss/Blog.scss */
+/* line 197, ../scss/Blog.scss */
 .list-container.List .file-icon {
   display: inline-block;
   width: 26px;
@@ -303,35 +306,34 @@ hr {
   float: left;
   margin: 10px 10px 0 0;
 }
-/* line 197, ../scss/Blog.scss */
+/* line 203, ../scss/Blog.scss */
 .list-container.List .file-icon.folder-icon {
   background-position: 0 -126px;
 }
-/* line 200, ../scss/Blog.scss */
+/* line 206, ../scss/Blog.scss */
 .list-container.List .file-icon.doc-icon {
   background-position: 0 -20px;
 }
-/* line 204, ../scss/Blog.scss */
+/* line 210, ../scss/Blog.scss */
 .list-container.List .file-name {
   float: left;
 }
-/* line 207, ../scss/Blog.scss */
+/* line 213, ../scss/Blog.scss */
 .list-container.List .file-update {
   white-space: nowrap;
   float: right;
   margin-right: 60px;
 }
-/* line 212, ../scss/Blog.scss */
+/* line 218, ../scss/Blog.scss */
 .list-container.List .item-setting {
-  float: right;
-  position: relative;
+  position: absolute;
   top: 11px;
-  right: -150px;
+  right: 9px;
   height: 26px;
   width: 26px;
   display: none;
 }
-/* line 220, ../scss/Blog.scss */
+/* line 225, ../scss/Blog.scss */
 .list-container.List .item-setting .blog-icon-setting {
   width: 12px;
   height: 12px;
@@ -346,14 +348,14 @@ hr {
 .list-container.List .item-setting .blog-icon-setting:hover, .list-container.List .item-setting .blog-icon-setting.icon-setting-hover {
   background-position: 0 -212px;
 }
-/* line 231, ../scss/Blog.scss */
+/* line 236, ../scss/Blog.scss */
 .list-container.List .file-operations {
   top: 40px;
   right: -89px;
   left: auto;
 }
 
-/* line 238, ../scss/Blog.scss */
+/* line 243, ../scss/Blog.scss */
 .file-operations {
   position: absolute;
   -moz-box-shadow: 0 5px 8px 0 #ccc;
@@ -369,15 +371,15 @@ hr {
   cursor: default;
   border-radius: 3px;
 }
-/* line 239, ../scss/Blog.scss */
+/* line 244, ../scss/Blog.scss */
 .file-operations hr {
   width: 192px;
 }
-/* line 253, ../scss/Blog.scss */
+/* line 258, ../scss/Blog.scss */
 .file-operations.active {
   display: block;
 }
-/* line 257, ../scss/Blog.scss */
+/* line 262, ../scss/Blog.scss */
 .file-operations .trangle .list-trangle-item {
   border-left-color: transparent;
   border-right-color: transparent;
@@ -392,17 +394,17 @@ hr {
   background: none;
   border-top: none;
 }
-/* line 270, ../scss/Blog.scss */
+/* line 275, ../scss/Blog.scss */
 .file-operations .trangle .list-trangle-item.top {
   top: -8px;
   border-bottom-color: rgba(136, 136, 136, 0.2);
   z-index: 10;
 }
-/* line 275, ../scss/Blog.scss */
+/* line 280, ../scss/Blog.scss */
 .file-operations .trangle .list-trangle-item.down {
   z-index: 11;
 }
-/* line 280, ../scss/Blog.scss */
+/* line 285, ../scss/Blog.scss */
 .file-operations .menu-item {
   height: 36px;
   line-height: 36px;
@@ -412,11 +414,11 @@ hr {
   color: #41464b;
   padding-left: 14px;
 }
-/* line 288, ../scss/Blog.scss */
+/* line 293, ../scss/Blog.scss */
 .file-operations .menu-item.delete {
   margin-top: 4px;
 }
-/* line 291, ../scss/Blog.scss */
+/* line 296, ../scss/Blog.scss */
 .file-operations .menu-item:hover {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U3ZThlOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VlZWZmMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -425,18 +427,18 @@ hr {
   background-image: -webkit-linear-gradient(top, #e7e8e9, #eeeff0);
   background-image: linear-gradient(to bottom, #e7e8e9, #eeeff0);
 }
-/* line 295, ../scss/Blog.scss */
+/* line 300, ../scss/Blog.scss */
 .file-operations .menu-list {
   padding-top: 8px;
   padding-bottom: 8px;
   background-color: #fff;
   border-radius: 3px;
 }
-/* line 301, ../scss/Blog.scss */
+/* line 306, ../scss/Blog.scss */
 .file-operations .menu-title {
   padding: 0 10px 8px 10px;
 }
-/* line 303, ../scss/Blog.scss */
+/* line 308, ../scss/Blog.scss */
 .file-operations .menu-title .title-input {
   height: 20px;
   line-height: 20px;
@@ -449,7 +451,7 @@ hr {
   -webkit-box-shadow: 0px 1px 3px 0px #e5e5e5 inset;
   box-shadow: 0px 1px 3px 0px #e5e5e5 inset;
 }
-/* line 314, ../scss/Blog.scss */
+/* line 319, ../scss/Blog.scss */
 .file-operations .icon-delete {
   display: inline-block;
   width: 20px;
@@ -460,7 +462,7 @@ hr {
   background-position: 0 0;
 }
 
-/* line 324, ../scss/Blog.scss */
+/* line 329, ../scss/Blog.scss */
 .item-placeholder {
   height: 127px;
   width: 120px;
@@ -472,7 +474,7 @@ hr {
   float: left;
 }
 
-/* line 334, ../scss/Blog.scss */
+/* line 339, ../scss/Blog.scss */
 #sortHelper-folder {
   width: 80px !important;
   height: 60px !important;
@@ -480,7 +482,7 @@ hr {
   background-position: 0 -152px;
 }
 
-/* line 340, ../scss/Blog.scss */
+/* line 345, ../scss/Blog.scss */
 #sortHelper-doc {
   width: 60px !important;
   height: 80px !important;

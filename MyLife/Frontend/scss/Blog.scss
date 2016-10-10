@@ -12,6 +12,12 @@
     overflow:auto;
 }
 
+.handle{
+    position:absolute;
+    left:10px;
+    top:14px;
+}
+
 //页面头部导航
 .list-crumb{
     position:relative;
@@ -210,10 +216,9 @@
             margin-right:60px;
         }
         .item-setting{
-            float:right;
-            position:relative;
+            position:absolute;
             top:11px;
-            right:-150px;
+            right:9px;
             height:26px;
             width:26px;
             display:none;

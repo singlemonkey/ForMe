@@ -11,7 +11,7 @@ using MyLife.Models;
 
 namespace MyLife.Controllers
 {
-    public class BlogController:Controller
+    public class BlogController:BaseController
     {
         private MyLifeContext db = new MyLifeContext();
 
@@ -75,17 +75,36 @@ namespace MyLife.Controllers
         }
 
         [HttpPost]
+        public JsonResult Add(int parentID, string fileType)
+        {
+            BlogModel blog = new BlogModel();
+            blog.Content = "";
+            blog.CreateDate = DateTime.Now;
+            blog.DisplayIndex =0;
+            blog.FileType = fileType;
+            blog.IsPublish = true;
+            blog.IsStar = false;
+            blog.ParentID = parentID;
+            blog.Title = fileType == "document" ? "新建文档" : "新建文件夹";
+            blog.UpdateDate = DateTime.Now;
+            db.Entry(blog).State = EntityState.Added;
+            db.SaveChanges();
+
+            return BlogList(parentID);
+        }
+
+        [HttpPost]
         public JsonResult BlogList(int id)
         {            
             BlogModel model = db.Blogs.Find(id);
             List<BlogModel> crumbList = new List<BlogModel>();
             crumbList.Add(model);
-            if (id != 0)
+            if (id != 1)
             {
                 crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.CreateDate).ToList();
             }
             var ContainerList = from blog in db.Blogs
-                                where blog.ParentID==id && blog.ID!=0 orderby blog.DisplayIndex
+                                where blog.ParentID==id && blog.ID!=1 orderby blog.DisplayIndex
                                 select blog;
             return Json( new
             {
@@ -98,7 +117,7 @@ namespace MyLife.Controllers
         {
             BlogModel parentBlog = db.Blogs.SingleOrDefault(b => b.ID == parentID);
             list.Add(parentBlog);      
-            if (parentID != 0)
+            if (parentID != 1)
             {
                 list = GetCrumbList(parentBlog.ParentID, list);
             }

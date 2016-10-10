@@ -4,7 +4,7 @@ let mutationObserverSupport = !!MutationObserver;
 class Bloglist {
 
     constructor() {
-        this.data = localStorage.getItem("blogData") ? localStorage.getItem("blogData") : 0;
+        this.data = localStorage.getItem("blogData") ? localStorage.getItem("blogData") : 1;
         this.mode = localStorage.getItem("blogMode") ? localStorage.getItem("blogMode") : "Tile";
         localStorage.setItem("blogData", this.data);
         localStorage.setItem("blogMode", this.mode);
@@ -94,8 +94,8 @@ class Bloglist {
 
     renderListItem(item) {
         let tmpl;
-        if (item.CreateDate.indexOf("-") == -1) {
-            item.CreateDate = $.formatDate(new Date(parseInt(item.CreateDate.substr(6, 13))));
+        if (item.UpdateDate.indexOf("-") == -1) {
+            item.UpdateDate = $.formatDate(new Date(parseInt(item.UpdateDate.substr(6, 13))));
         }        
         if (this.mode === "Tile") {
             tmpl = $.templates("#blog-tile");
@@ -256,7 +256,8 @@ class Bloglist {
                         url: "/Blog/DeleteBlog/",
                         data: {
                             ID: id,
-                            FileType: contentType
+                            FileType: contentType,
+                            ParentID:localStorage.getItem("blogData")
                         },
                         success: function (result) {
                             self.render(result);
@@ -297,6 +298,22 @@ class Bloglist {
 
     show(id) {
         location.href = "/Blog/Edit?id=" + id;
+    }
+
+    addFile(file) {
+        let self = this;
+        let parentID = localStorage.getItem("blogData");
+        let fileType = file;
+        let obj = {
+            url: "/Blog/Add/?parentID=" + parentID + "&fileType=" + fileType,
+            data:{},
+            showProgress: false,
+            success: function (result) {
+                self.result = result;
+                self.render(result);
+            }
+        }
+        $.Ajaxobj(obj);
     }
 };
 jQuery(document).ready(function () {
@@ -345,5 +362,13 @@ jQuery(document).ready(function () {
     //切换显示模式
     $(".list-switch").on("click", function () {
         blog.switchMode(localStorage.getItem("blogMode")==="Tile"?"List":"Tile");
+    });
+
+    //新建文件、文件夹
+    $(".AddDoc").on("click", function () {
+        blog.addFile("document");
+    });
+    $(".AddFolder").on("click", function () {
+        blog.addFile("folder");
     });
 });

@@ -7,6 +7,25 @@
 <link rel="stylesheet"  href="~/Frontend/css/Blog.css"/>
 <link rel="stylesheet"  href="~/Frontend/assets/dialog/css/dialog-wilma.css"/>
 <div class="container">
+    <div class="handle">
+        <span class="button-dropdown button-dropdown-primary" data-buttons="dropdown">
+            <button class="button button-primary ">
+                <i class="fa fa-bars"></i> 新 建
+            </button>
+            <ul class="button-dropdown-list is-below">
+                <li>
+                    <a href="javascript:void(0);" class="AddDoc">
+                        文档
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="AddFolder">
+                        文件夹
+                    </a>
+                </li>
+            </ul>
+        </span>
+    </div>
     <div >
         <div class="list-crumb"></div>
         <a class="list-switch" href="javascript:void(0);">
@@ -78,7 +97,7 @@
                         <span class="item-title">{{:Title}}</span>
                     </span>
                     <span class="list-table-cell file-update">
-                        <span class="file-update-time">{{:CreateDate}}</span>
+                        <span class="file-update-time">{{:UpdateDate}}</span>
                     </span>
                     <div class="item-setting">
                         <span class="blog-icon-setting"></span>
@@ -104,6 +123,7 @@
         </li>
     </script>
     <script src="~/Frontend/assets/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Frontend/assets/buttons/buttons.js"></script>
     <script src="~/Frontend/js/JsRender.js"></script>
     <script src="~/Frontend/js/app/blog.js"></script>
 }

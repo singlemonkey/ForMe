@@ -9,7 +9,6 @@ namespace MyLife.Models
 {
     public class BlogModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }

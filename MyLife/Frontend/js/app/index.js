@@ -105,38 +105,20 @@ jQuery(document).ready(function () {
                 isFold:false,
                 modules: [
                     {
-                        title: "心情",
-                        url: "/Home/Index",
-                        icon: "",
-                        isActive:false
-                    },
-                    {
                         title: "博客",
                         url: "/Blog/Index",
-                        icon: "",
-                        isActive: false
-                    },
-                    {
-                        title: "设置",
-                        url: "/Home/Index",
                         icon: "",
                         isActive: false
                     },
                 ]
             },
             {
-                title: "资产管理",
+                title: "设置",
                 isFold: false,
                 modules: [
                     {
-                        title: "购物车",
-                        url: "/Home/Index",
-                        icon: "",
-                        isActive: false
-                    },
-                    {
-                        title: "资债统计",
-                        url: "/Home/Index",
+                        title: "字典管理",
+                        url: "/Dictionary/DictionaryIndex",
                         icon: "",
                         isActive: false
                     },

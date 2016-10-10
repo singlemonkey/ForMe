@@ -12,9 +12,9 @@
 
     init() {
         let self = this;
-        self.start();
-        $(window).resize(function () {
-        });
+        if (this.element.length!=0) {
+            self.start();
+        }        
     }
 
 

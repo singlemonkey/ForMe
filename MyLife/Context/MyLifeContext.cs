@@ -22,5 +22,7 @@ namespace MyLife.Context
             modelBuilder.Entity<BlogModel>().ToTable("Blog");
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<MyLife.Models.DictionaryModel> DictionaryModels { get; set; }
     }
 }

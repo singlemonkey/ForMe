@@ -9,11 +9,7 @@ ul, li {
   list-style: none;
 }
 
-/* line 10, ../scss/base.scss */
-.clearfix {
-  height: 1%;
-}
-/* line 12, ../scss/base.scss */
+/* line 11, ../scss/base.scss */
 .clearfix:after {
   content: ".";
   display: block;
@@ -22,7 +18,7 @@ ul, li {
   visibility: hidden;
 }
 
-/* line 21, ../scss/base.scss */
+/* line 20, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -35,7 +31,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 30, ../scss/base.scss */
+/* line 29, ../scss/base.scss */
 .input {
   display: block;
   width: 100%;
@@ -54,7 +50,7 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 42, ../scss/base.scss */
+/* line 41, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
