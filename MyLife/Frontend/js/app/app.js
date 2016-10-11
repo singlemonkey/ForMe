@@ -17,7 +17,6 @@
         }        
     }
 
-
     change() {
         if (this.isMoving == false) {
             this.isMoving = true;

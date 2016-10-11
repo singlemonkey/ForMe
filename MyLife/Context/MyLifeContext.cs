@@ -16,13 +16,13 @@ namespace MyLife.Context
         }
         public DbSet<AdminModel> Administrators { get; set; }
         public DbSet<BlogModel> Blogs { get; set; }
+        public DbSet<DictionaryModel> Dictionarys { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdminModel>().ToTable("Admin");
             modelBuilder.Entity<BlogModel>().ToTable("Blog");
+            modelBuilder.Entity<DictionaryModel>().ToTable("Dictionary");
             base.OnModelCreating(modelBuilder);
         }
-
-        public System.Data.Entity.DbSet<MyLife.Models.DictionaryModel> DictionaryModels { get; set; }
     }
 }
