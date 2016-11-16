@@ -7,7 +7,24 @@
 <link rel="stylesheet" href="~/Frontend/css/Dictonary.css" />
 <div class="container"></div>
 @section scripts{
+    <script src="~/Frontend/js/JsRender.js"></script>    
+    <script id="dictonariesUnit" type="text/x-jsrender">
+        <div class="dictionaryItem">
+            <h4>{{:Name}}</h4>
+            <ul>
+                {{for Dictionaries}}
+                    <li>{{:Name}}</li>
+                {{/for}}
+            </ul>
+        </div>
+    </script>
     <script src="~/Frontend/js/app/dictonary.js"></script>   
-    <script src="~/Frontend/js/app/waterfall.js"></script> 
+    <script>
+        let dictorys=@Html.Raw(Json.Encode(ViewData["data"]));
+        let waterFull=new WaterFall({
+            'data':dictorys,
+            'container':'.container'
+        });
+    </script>
 }
 

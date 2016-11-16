@@ -17,7 +17,23 @@ namespace MyLife.Controllers
         // GET: Dictionary
         public ActionResult DictionaryIndex()
         {
-            var dictionarys = db.Dictionarys.ToLookup(i=>i.ParentID,i=>i.Name);
+            var ParentDictionaries = from parentDictionary in db.Dictionarys
+                                     where parentDictionary.ParentID == 0
+                                     select parentDictionary;
+            List<DictionaryUnit> DictionaryUnit = new List<Models.DictionaryUnit>();
+            foreach (var dictionary in ParentDictionaries)
+            {
+                DictionaryUnit unit = new DictionaryUnit();
+                unit.ID = dictionary.ID;
+                unit.Name = dictionary.Name;
+
+                var ChildrenDictionaries = from childrenDictionary in db.Dictionarys
+                                           where childrenDictionary.ParentID == unit.ID orderby childrenDictionary.DisplayIndex
+                                           select childrenDictionary;
+                unit.Dictionaries = ChildrenDictionaries;
+                DictionaryUnit.Add(unit);
+            }
+            ViewData["data"] = DictionaryUnit;
             return View();
         }
     }

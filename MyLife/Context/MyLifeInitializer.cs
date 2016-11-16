@@ -38,7 +38,7 @@ namespace MyLife.Context
 
             var dictionarys = new List<DictionaryModel> {
                 new DictionaryModel {
-                    Name="consumeType",
+                    Name="消费类型",
                     ParentID=0,
                     DisplayIndex=0
                 },
@@ -58,7 +58,7 @@ namespace MyLife.Context
                     DisplayIndex=3
                 },
                 new DictionaryModel {
-                    Name="payType",
+                    Name="支付类型",
                     ParentID=0,
                     DisplayIndex=0
                 },
