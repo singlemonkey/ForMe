@@ -1,3 +1,14 @@
-﻿.dictionaryItem{
+﻿.container{
+    height: calc(100% - 81px);
+    padding:20px 0;
+}
+.dictionaryItem{
     border:1px solid #808080;
+}
+.column{
+    display:inline-block;
+    padding:0 20px;
+    vertical-align:top;
+    >ul{
+    }
 }

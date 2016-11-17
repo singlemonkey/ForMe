@@ -1,4 +1,17 @@
 /* line 1, ../scss/Dictonary.scss */
+.container {
+  height: calc(100% - 81px);
+  padding: 20px 0;
+}
+
+/* line 5, ../scss/Dictonary.scss */
 .dictionaryItem {
   border: 1px solid #808080;
+}
+
+/* line 8, ../scss/Dictonary.scss */
+.column {
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
 }
