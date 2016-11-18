@@ -30,6 +30,7 @@
         for (var i = 0, l = this.options.data.length; i < l; i++) {
             this.renderItem(this.options.data[i]);
         }
+        self.renderButton();
     }
     //先渲染布局列
     renderColumn() {
@@ -70,6 +71,17 @@
         self.update(self.items-1);        
     }
     
+    renderButton() {
+        let addButton = $("<a></a>", {
+            'class': 'button button-primary',
+            text: '新建',
+            click: () => {
+                
+            }
+        });
+        this.container.append(addButton);
+    }
+
     update(index) {
         this.items += 1;
         let height = $(".column" + index).height();
@@ -78,7 +90,7 @@
 };
 
 jQuery(document).ready(function () {
-    let Dictionary = new Dictionary({
+    let dictionary = new Dictionary({
         'data': dictorys,
         'container': '.container'
     });

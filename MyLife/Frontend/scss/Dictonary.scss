@@ -1,6 +1,12 @@
 ﻿.container{
-    height: calc(100% - 81px);
-    padding:20px 0;
+    height: calc(100% - 101px);
+    padding:40px 0 20px 0;
+    position:relative;
+    .button{
+        position:absolute;
+        left:10px;
+        top:5px;
+    }
 }
 .dictionaryItem{
     border:1px solid #808080;
@@ -12,3 +18,4 @@
     >ul{
     }
 }
+
