@@ -68,7 +68,7 @@
         let unit = tmpl.render(dictonary);
         itemContainer.append(unit);
         //更新items(已加载的字典数)和各列的高度
-        self.update(self.items-1);        
+        self.update(self.items-1,true);        
     }
     
     renderButton() {
@@ -76,14 +76,27 @@
             'class': 'button button-primary',
             text: '新建',
             click: () => {
-                
+                $('#addModal').modal()
             }
         });
         this.container.append(addButton);
     }
 
-    update(index) {
-        this.items += 1;
+    addNewDictionary() {
+        let obj = {
+            showProgress: false,
+            url: "/Blog/UpdateDisplayIndex/?widget=" + widget + "&parentID=" + localStorage.getItem("blogData"),
+            success: function (result) {
+                
+            }
+        }
+        $.Ajaxobj(obj);
+    }
+
+    update(index, isNewItem) {
+        if (isNewItem) {
+            this.items += 1;
+        }        
         let height = $(".column" + index).height();
         this.columns[index] = height;
     }
@@ -93,5 +106,10 @@ jQuery(document).ready(function () {
     let dictionary = new Dictionary({
         'data': dictorys,
         'container': '.container'
+    });
+    $(".save").on("click",function () {
+        $("#addModal").modal("hide");
+        let name = $("#dictionaryName").val();
+        dictionary.addNewDictionary(name);
     });
 });

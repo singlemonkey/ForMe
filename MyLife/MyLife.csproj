@@ -199,6 +199,8 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
     <Content Include="favicon.ico" />
+    <Content Include="Frontend\assets\modal\css\bootstrap.css" />
+    <Content Include="Frontend\assets\modal\js\bootstrap.min.js" />
     <Content Include="Frontend\assets\buttons\buttons.css" />
     <Content Include="Frontend\assets\buttons\buttons.js" />
     <Content Include="Frontend\assets\dialog\css\dialog-alex.css" />
@@ -795,6 +797,7 @@
     <Content Include="Frontend\assets\editor\scss\github-markdown.scss" />
     <Content Include="Frontend\assets\editor\scss\prettify.scss" />
     <Content Include="Frontend\assets\jquery-ui\package.json" />
+    <Content Include="Frontend\assets\modal\config.json" />
     <None Include="Frontend\scss\base.scss" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Global.asax" />

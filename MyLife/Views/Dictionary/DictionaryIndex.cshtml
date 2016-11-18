@@ -5,11 +5,31 @@
     ViewBag.Header = "愿芸芸众生，都能找到自己的归属";
 }
 <link rel="stylesheet" href="~/Frontend/css/Dictonary.css" />
+<link rel="stylesheet" href="~/Frontend/assets/modal/css/bootstrap.css" />
+
 <div class="container">
     <div></div>
 </div>
+<div class="modal fade" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">请输入字典名称</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="input" id="dictionaryName" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button" data-dismiss="modal">取 消</button>
+                <button type="button" class="button button-primary save">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section scripts{
-    <script src="~/Frontend/js/JsRender.js"></script>    
+    <script src="~/Frontend/js/JsRender.js"></script> 
+    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>   
     <script id="dictonariesUnit" type="text/x-jsrender">
         <li id={{:ID}}>
             <div class="dictionaryItem">
