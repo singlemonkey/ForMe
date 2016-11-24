@@ -1,22 +1,25 @@
-/* line 1, ../scss/Dictonary.scss */
+/* line 2, ../scss/Dictonary.scss */
 .container {
   height: calc(100% - 101px);
   padding: 40px 0 20px 0;
   position: relative;
 }
-/* line 5, ../scss/Dictonary.scss */
+/* line 6, ../scss/Dictonary.scss */
 .container .button {
   position: absolute;
   left: 10px;
   top: 5px;
 }
 
-/* line 11, ../scss/Dictonary.scss */
+/* line 12, ../scss/Dictonary.scss */
 .dictionaryItem {
-  border: 1px solid #808080;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 3px #ddd;
+  background-color: #fff;
+  color: #969696;
 }
 
-/* line 14, ../scss/Dictonary.scss */
+/* line 18, ../scss/Dictonary.scss */
 .column {
   display: inline-block;
   padding: 0 20px;

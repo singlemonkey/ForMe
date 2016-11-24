@@ -57,6 +57,63 @@ hr {
   border-color: #a6a6a6 !important;
 }
 
+/* line 47, ../scss/base.scss */
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 51, ../scss/base.scss */
+.btn-group :first-child:not(:last-child) {
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
+/* line 56, ../scss/base.scss */
+.btn-group :last-child:not(:first-child) {
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+}
+/* line 60, ../scss/base.scss */
+.btn-group .btn {
+  position: relative;
+  float: left;
+}
+/* line 64, ../scss/base.scss */
+.btn-group > .btn + .btn {
+  margin-left: -1px;
+}
+
+/* line 68, ../scss/base.scss */
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* line 82, ../scss/base.scss */
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
 /* line 96, blog/*.png */
 .blog-sprite, .list-container.Tile .item-content .blog-folder, .list-container.Tile .item-content .blog-doc, .list-container.Tile .item-content .item-setting .blog-icon-setting, .list-container.Tile .item-content .item-setting:hover .blog-icon-setting, .list-container.List .file-icon.folder-icon, .list-container.List .file-icon.doc-icon, .list-container.List .item-setting .blog-icon-setting, .file-operations .icon-delete, #sortHelper-folder, #sortHelper-doc {
   background-image: url('/Frontend/images/blog-s627436029b.png');

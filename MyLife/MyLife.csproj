@@ -199,6 +199,13 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
     <Content Include="favicon.ico" />
+    <Content Include="Frontend\assets\icon\demo.css" />
+    <Content Include="Frontend\assets\icon\demo_fontclass.html" />
+    <Content Include="Frontend\assets\icon\demo_symbol.html" />
+    <Content Include="Frontend\assets\icon\demo_unicode.html" />
+    <Content Include="Frontend\assets\icon\iconfont.css" />
+    <Content Include="Frontend\assets\icon\iconfont.js" />
+    <Content Include="Frontend\assets\icon\iconfont.svg" />
     <Content Include="Frontend\assets\modal\css\bootstrap.css" />
     <Content Include="Frontend\assets\modal\js\bootstrap.min.js" />
     <Content Include="Frontend\assets\buttons\buttons.css" />
@@ -771,7 +778,6 @@
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Frontend\images\blog-sd47cff9fc4.png" />
     <Content Include="Frontend\images\blog\doc.png" />
     <Content Include="Frontend\images\blog\folder.png" />
     <Content Include="Frontend\images\blog\icon-setting.png" />
@@ -798,6 +804,9 @@
     <Content Include="Frontend\assets\editor\scss\prettify.scss" />
     <Content Include="Frontend\assets\jquery-ui\package.json" />
     <Content Include="Frontend\assets\modal\config.json" />
+    <Content Include="Frontend\assets\icon\iconfont.eot" />
+    <Content Include="Frontend\assets\icon\iconfont.ttf" />
+    <Content Include="Frontend\assets\icon\iconfont.woff" />
     <None Include="Frontend\scss\base.scss" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Global.asax" />
@@ -837,6 +846,7 @@
   <ItemGroup>
     <Folder Include="Frontend\assets\jquery-ui\external\" />
     <Folder Include="Frontend\assets\jquery-ui\images\" />
+    <Folder Include="Frontend\images\svg\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

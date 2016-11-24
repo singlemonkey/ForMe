@@ -44,6 +44,47 @@ hr{
         border-color:#a6a6a6 !important;
     }
 }
+.btn-group{
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+    :first-child:not(:last-child){
+        @include border-bottom-right-radius(0);
+        @include border-top-right-radius(0);
+
+    }
+    :last-child:not(:first-child){
+        @include border-bottom-left-radius(0);
+        @include border-top-left-radius(0);
+    }
+    .btn{
+        position:relative;
+        float:left;
+    }
+    >.btn+.btn{
+        margin-left:-1px;
+    }
+}
+.btn{
+    display:inline-block;
+    margin-bottom:0;
+    text-align:center;
+    vertical-align:middle;
+    touch-action:manipulation;
+    cursor:pointer;
+    border:1px solid transparent;
+    padding:4px 8px;
+    font-size:14px;
+    line-height:1.4;
+    border-radius:4px;
+    text-decoration:none;
+}
+.btn-default{
+    color:#333;
+    background-color:#fff;
+    border-color:#ccc;
+}
+
 @mixin opacity($opacity, $important: 0) {
   @if $important == 1 {
     opacity: $opacity !important;

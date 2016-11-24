@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using MyLife.Models;
 using MyLife.Context;
+using System.Data.Entity;
 
 namespace MyLife.Controllers
 {
@@ -35,6 +36,17 @@ namespace MyLife.Controllers
             }
             ViewData["data"] = DictionaryUnit;
             return View();
+        }
+
+        public JsonResult AddDictionary(string name)
+        {
+            DictionaryModel dictionary = new DictionaryModel();
+            dictionary.Name = name;
+            dictionary.DisplayIndex = 0;
+            dictionary.ParentID = 0;
+            db.Entry(dictionary).State = EntityState.Added;
+            db.SaveChanges();
+            return Json(dictionary);
         }
     }
 }

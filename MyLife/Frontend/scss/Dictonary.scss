@@ -1,4 +1,5 @@
-﻿.container{
+﻿@import "compass/css3";
+.container{
     height: calc(100% - 101px);
     padding:40px 0 20px 0;
     position:relative;
@@ -9,7 +10,10 @@
     }
 }
 .dictionaryItem{
-    border:1px solid #808080;
+    margin-bottom:20px;
+    box-shadow: 2px 2px 3px #ddd;
+    background-color:#fff;
+    color:#969696;
 }
 .column{
     display:inline-block;

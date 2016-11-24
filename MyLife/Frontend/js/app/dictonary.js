@@ -1,7 +1,7 @@
 ﻿class Dictionary {
     constructor(props) {
         let defaultOption = {
-            'defaultWidth': 200,
+            'defaultWidth': 300,
         }
         this.container = $(props.container);        
         this.options = Object.assign(defaultOption, props);
@@ -38,7 +38,7 @@
         for (var i = 0; i < self.column; i++) {
             let column = $("<div></div>", {
                 'class': 'column column' + i,
-                style: 'width:' + (self.columnWidth-40)+'px',
+                style: 'width:' + (self.columnWidth)+'px',
             })
             let columnUl = $("<ul></ul>", {
                 id:'columnUl'+i,
@@ -54,6 +54,7 @@
         if (self.items <=self.column){
             itemContainer = $(".column" + (self.items-1) + " ul");
         } else {
+            //查找最短列
             let indexOfSamllest = () =>{
                 let lowest = 0;
                 const columns=self.columns;
@@ -62,7 +63,7 @@
                 }
                 return lowest;
             }
-            itemContainer = $(".column" + indexOfSamllest() + " ul");
+            itemContainer = $(".column" + indexOfSamllest() + "> ul");
         }
         let tmpl = $.templates("#dictonariesUnit");
         let unit = tmpl.render(dictonary);
@@ -70,7 +71,7 @@
         //更新items(已加载的字典数)和各列的高度
         self.update(self.items-1,true);        
     }
-    
+
     renderButton() {
         let addButton = $("<a></a>", {
             'class': 'button button-primary',
@@ -82,12 +83,13 @@
         this.container.append(addButton);
     }
 
-    addNewDictionary() {
+    addNewDictionary(name) {
+        let self = this;
         let obj = {
             showProgress: false,
-            url: "/Blog/UpdateDisplayIndex/?widget=" + widget + "&parentID=" + localStorage.getItem("blogData"),
+            url: "/Dictionary/AddDictionary/?name="+name,
             success: function (result) {
-                
+                self.renderItem(result);
             }
         }
         $.Ajaxobj(obj);
@@ -110,6 +112,8 @@ jQuery(document).ready(function () {
     $(".save").on("click",function () {
         $("#addModal").modal("hide");
         let name = $("#dictionaryName").val();
-        dictionary.addNewDictionary(name);
+        if (name != "") {
+            dictionary.addNewDictionary(name);
+        }        
     });
 });
