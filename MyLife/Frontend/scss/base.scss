@@ -16,7 +16,9 @@ ul,li{
         visibility:hidden
     }
 }
-
+a:hover{
+    text-decoration:none !important;
+}
 hr{
 	margin-top: 4px;
     border-bottom: 0;
@@ -48,15 +50,6 @@ hr{
     position:relative;
     display:inline-block;
     vertical-align:middle;
-    :first-child:not(:last-child){
-        @include border-bottom-right-radius(0);
-        @include border-top-right-radius(0);
-
-    }
-    :last-child:not(:first-child){
-        @include border-bottom-left-radius(0);
-        @include border-top-left-radius(0);
-    }
     .btn{
         position:relative;
         float:left;

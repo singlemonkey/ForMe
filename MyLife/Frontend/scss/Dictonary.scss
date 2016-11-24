@@ -14,6 +14,47 @@
     box-shadow: 2px 2px 3px #ddd;
     background-color:#fff;
     color:#969696;
+    position:relative;
+    h4{
+        margin:0;
+        padding:10px 20px 5px 20px;
+        text-align:center;
+        border-bottom:1px solid #a0b0e5;
+    }
+    >.btn-group{
+        width:100%;
+        background-color:#f7f7f7;
+        .btn{
+            width:50%;
+            @include border-radius(0);
+            border:0 !important;
+            &:hover{
+                background-color:#ddd;
+            }
+        }
+        .btn + .btn{
+            margin-left:0 !important;
+        }
+    }
+    >ul{
+        padding:20px 0px;
+        >li{
+            padding:5px 10px;
+            position:relative;
+            >a.btn{
+                position:absolute;
+                top:2px;
+                right:0;
+                display:none;
+            }
+            &:hover{
+                >a.btn{
+                    display:inline-block;
+                }
+                background-color:#ddd;
+            }
+        }
+    }
 }
 .column{
     display:inline-block;

@@ -1,7 +1,7 @@
 ﻿class Dictionary {
     constructor(props) {
         let defaultOption = {
-            'defaultWidth': 300,
+            'defaultWidth': 150,
         }
         this.container = $(props.container);        
         this.options = Object.assign(defaultOption, props);

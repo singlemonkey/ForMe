@@ -17,9 +17,62 @@
   box-shadow: 2px 2px 3px #ddd;
   background-color: #fff;
   color: #969696;
+  position: relative;
+}
+/* line 18, ../scss/Dictonary.scss */
+.dictionaryItem h4 {
+  margin: 0;
+  padding: 10px 20px 5px 20px;
+  text-align: center;
+  border-bottom: 1px solid #a0b0e5;
+}
+/* line 24, ../scss/Dictonary.scss */
+.dictionaryItem > .btn-group {
+  width: 100%;
+  background-color: #f7f7f7;
+}
+/* line 27, ../scss/Dictonary.scss */
+.dictionaryItem > .btn-group .btn {
+  width: 50%;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: 0 !important;
+}
+/* line 31, ../scss/Dictonary.scss */
+.dictionaryItem > .btn-group .btn:hover {
+  background-color: #ddd;
+}
+/* line 35, ../scss/Dictonary.scss */
+.dictionaryItem > .btn-group .btn + .btn {
+  margin-left: 0 !important;
+}
+/* line 39, ../scss/Dictonary.scss */
+.dictionaryItem > ul {
+  padding: 20px 0px;
+}
+/* line 41, ../scss/Dictonary.scss */
+.dictionaryItem > ul > li {
+  padding: 5px 10px;
+  position: relative;
+}
+/* line 44, ../scss/Dictonary.scss */
+.dictionaryItem > ul > li > a.btn {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  display: none;
+}
+/* line 50, ../scss/Dictonary.scss */
+.dictionaryItem > ul > li:hover {
+  background-color: #ddd;
+}
+/* line 51, ../scss/Dictonary.scss */
+.dictionaryItem > ul > li:hover > a.btn {
+  display: inline-block;
 }
 
-/* line 18, ../scss/Dictonary.scss */
+/* line 59, ../scss/Dictonary.scss */
 .column {
   display: inline-block;
   padding: 0 20px;

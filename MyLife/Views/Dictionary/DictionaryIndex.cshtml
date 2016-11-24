@@ -12,6 +12,7 @@
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
+        font-size:16px;
     }
 </style>
 <div class="container">
@@ -41,25 +42,37 @@
         <li id={{:ID}}>
             <div class="dictionaryItem">
                 <h4>{{:Name}}</h4>
-                <div class="btn-group">
-                    <a class="btn btn-default" href="#">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                    <a class="btn btn-default" href="#">
-                        <i class="fa fa-remove"></i>
-                    </a>
-                </div>
                 <ul>
                     {{for Dictionaries}}
-                    <li>{{:Name}}</li>
+                    <li>
+                        <label>{{:Name}}</label>
+                        <a class="btn " href="#">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-close"></use>
+                            </svg>
+                        </a>
+                    </li>
                     {{/for}}
                 </ul>
+                <div class="btn-group">
+                    <a class="btn " href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </a>
+                    <a class="btn " href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-delete"></use>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </li>        
     </script>
     <script>
         let dictorys=@Html.Raw(Json.Encode(ViewData["data"]));
     </script>
+    <script src="~/Frontend/assets/icon/iconfont.js"></script>
     <script src="~/Frontend/js/app/dictonary.js"></script>   
 }
 

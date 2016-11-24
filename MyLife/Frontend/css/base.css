@@ -18,7 +18,12 @@ ul, li {
   visibility: hidden;
 }
 
-/* line 20, ../scss/base.scss */
+/* line 19, ../scss/base.scss */
+a:hover {
+  text-decoration: none !important;
+}
+
+/* line 22, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -31,7 +36,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 29, ../scss/base.scss */
+/* line 31, ../scss/base.scss */
 .input {
   display: block;
   width: 100%;
@@ -51,47 +56,29 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 42, ../scss/base.scss */
+/* line 44, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
 }
 
-/* line 47, ../scss/base.scss */
+/* line 49, ../scss/base.scss */
 .btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 51, ../scss/base.scss */
-.btn-group :first-child:not(:last-child) {
-  -moz-border-radius-bottomright: 0;
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-topright: 0;
-  -webkit-border-top-right-radius: 0;
-  border-top-right-radius: 0;
-}
-/* line 56, ../scss/base.scss */
-.btn-group :last-child:not(:first-child) {
-  -moz-border-radius-bottomleft: 0;
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  -webkit-border-top-left-radius: 0;
-  border-top-left-radius: 0;
-}
-/* line 60, ../scss/base.scss */
+/* line 53, ../scss/base.scss */
 .btn-group .btn {
   position: relative;
   float: left;
 }
-/* line 64, ../scss/base.scss */
+/* line 57, ../scss/base.scss */
 .btn-group > .btn + .btn {
   margin-left: -1px;
 }
 
-/* line 68, ../scss/base.scss */
+/* line 61, ../scss/base.scss */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -107,7 +94,7 @@ hr {
   text-decoration: none;
 }
 
-/* line 82, ../scss/base.scss */
+/* line 75, ../scss/base.scss */
 .btn-default {
   color: #333;
   background-color: #fff;

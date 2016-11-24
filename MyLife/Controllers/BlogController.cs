@@ -101,7 +101,8 @@ namespace MyLife.Controllers
             crumbList.Add(model);
             if (id != 1)
             {
-                crumbList = GetCrumbList(model.ParentID, crumbList).OrderBy(blog => blog.CreateDate).ToList();
+                crumbList = GetCrumbList(model.ParentID, crumbList).ToList();
+                crumbList.Reverse();
             }
             var ContainerList = from blog in db.Blogs
                                 where blog.ParentID==id && blog.ID!=1 orderby blog.DisplayIndex

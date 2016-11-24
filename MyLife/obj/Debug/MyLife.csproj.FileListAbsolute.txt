@@ -32,5 +32,5 @@ F:\GitHub\MyLife\MyLife\bin\MyLife.dll
 F:\GitHub\MyLife\MyLife\bin\MyLife.pdb
 F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.dll
 F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.pdb
-F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
 F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
+F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
