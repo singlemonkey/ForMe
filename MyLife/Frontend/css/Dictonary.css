@@ -1,7 +1,7 @@
 /* line 2, ../scss/Dictonary.scss */
 .container {
   height: calc(100% - 101px);
-  padding: 40px 0 20px 0;
+  padding: 40px 20px 20px 20px;
   position: relative;
 }
 /* line 6, ../scss/Dictonary.scss */
@@ -59,7 +59,7 @@
 /* line 44, ../scss/Dictonary.scss */
 .dictionaryItem > ul > li > a.btn {
   position: absolute;
-  top: 2px;
+  top: 0;
   right: 0;
   display: none;
 }
@@ -77,4 +77,9 @@
   display: inline-block;
   padding: 0 20px;
   vertical-align: top;
+}
+/* line 64, ../scss/Dictonary.scss */
+.column > ul > li {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
 }

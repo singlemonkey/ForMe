@@ -40,11 +40,57 @@ namespace MyLife.Controllers
 
         public JsonResult AddDictionary(string name)
         {
-            DictionaryModel dictionary = new DictionaryModel();
-            dictionary.Name = name;
-            dictionary.DisplayIndex = 0;
-            dictionary.ParentID = 0;
-            db.Entry(dictionary).State = EntityState.Added;
+            var list = from item in db.Dictionarys
+                       where item.Name==name
+                       select item;
+            if (list.Count() == 0)
+            {
+                DictionaryModel dictionary = new DictionaryModel();
+                dictionary.Name = name;
+                dictionary.DisplayIndex = 0;
+                dictionary.ParentID = 0;
+                db.Entry(dictionary).State = EntityState.Added;
+                db.SaveChanges();
+                return Json(dictionary);
+            }
+            else
+            {
+                return Json("");
+            }
+        }
+
+        public JsonResult AddDictionaryItem(int id,string name)
+        {
+            var list = from item in db.Dictionarys
+                       where item.ParentID==id && item.Name == name
+                       select item;
+            if (list.Count() == 0)
+            {
+                DictionaryModel dictionary = new DictionaryModel();
+                dictionary.DisplayIndex = 0;
+                dictionary.Name = name;
+                dictionary.ParentID = id;
+                db.Entry(dictionary).State = EntityState.Added;
+                db.SaveChanges();
+                return Json(dictionary);
+            }
+            else
+            {
+                return Json("");
+            }
+        }
+
+        public JsonResult DeleteDictionary(int id)
+        {
+            DictionaryModel dictionary = db.Dictionarys.Find(id);
+            db.Entry(dictionary).State = EntityState.Deleted;
+            var dictionarys = from childrenDictionary in db.Dictionarys
+                              where childrenDictionary.ParentID == id
+                              select childrenDictionary;
+            foreach (var item in dictionarys)
+            {
+                db.Entry(item).State = EntityState.Deleted;
+            }
             db.SaveChanges();
             return Json(dictionary);
         }
