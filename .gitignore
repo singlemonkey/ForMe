@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
@@ -23,3 +23,5 @@
 /MyLife/Frontend/assets/dialog/annie.html
 /MyLife/Frontend/assets/dialog/alex.html
 /MyLife/Frontend/assets/dialog/.DS_Store
+/MyLife/.vs/
+/MyLife/obj/
