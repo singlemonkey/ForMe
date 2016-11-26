@@ -1,0 +1,37 @@
+﻿.container{
+    height:100%;
+    .dataShow{
+        width:calc( 100% - 321px );
+        height:100%;
+        float:left;
+    }
+    .dataEntry{
+        width:320px;
+        float:right;
+        background-color:#e5e5e5;
+        height:100%;
+        border-left:1px solid transparent;
+        .actions{
+            padding:10px;
+            >li{
+                line-height:28px;
+                label{
+                    margin-left:10px;
+                }
+                input,select{
+                    margin-left:30px;
+                }
+                &.submit{
+                    line-height:50px;
+                    vertical-align:middle;
+                    text-align:center;
+                    button{
+                        width:50%;
+                        height:35px;
+                        font-size:18px;
+                    }
+                }
+            }
+        }
+    }
+}

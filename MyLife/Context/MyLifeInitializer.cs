@@ -16,6 +16,7 @@ namespace MyLife.Context
                     Account="903012206",
                     Password="missyou?",
                     Name="日光倾城",
+                    Balance=0
                 }
             };
             administrators.ForEach(a => context.Administrators.Add(a));

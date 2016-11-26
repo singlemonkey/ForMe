@@ -55,6 +55,7 @@
 }
 
 $(function () {
+    //扩展jquery本身方法
     jQuery.extend({
         Ajaxobj: function (config) {
             let defaultConfig= {
@@ -102,6 +103,12 @@ $(function () {
             return dateString;
         },
     });
+    jQuery.fn.extend({
+        bindDictionary: function (e) {
+            alert(1);
+        }
+    });
+
     //注册全局ajax事件，
     //在发起请求时可传入showProgress为false更改ajax的global参数来禁用此事件
     $(document).ajaxStart(() => {
@@ -115,5 +122,9 @@ $(function () {
     //移动标题初始化
     $(".move").on("click", function () {
         move.change();
+    });
+    //绑定字典
+    $("select[data-dictionary]").each((e) => {
+        let select = $("select[data-dictionary]")[e];
     });
 });

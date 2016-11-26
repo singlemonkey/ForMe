@@ -29,8 +29,9 @@ hr{
 	@include box-sizing(content-box);
 }
 .input{
+    box-sizing:border-box;
 	display: block;
-    width: 100%;
+    width: 80%;
     height: 34px;
     padding: 6px 12px;
     font-size: 12px;

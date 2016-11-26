@@ -1,0 +1,46 @@
+/* line 1, ../scss/Cost.scss */
+.container {
+  height: 100%;
+}
+/* line 3, ../scss/Cost.scss */
+.container .dataShow {
+  width: calc( 100% - 321px );
+  height: 100%;
+  float: left;
+}
+/* line 8, ../scss/Cost.scss */
+.container .dataEntry {
+  width: 320px;
+  float: right;
+  background-color: #e5e5e5;
+  height: 100%;
+  border-left: 1px solid transparent;
+}
+/* line 14, ../scss/Cost.scss */
+.container .dataEntry .actions {
+  padding: 10px;
+}
+/* line 16, ../scss/Cost.scss */
+.container .dataEntry .actions > li {
+  line-height: 28px;
+}
+/* line 18, ../scss/Cost.scss */
+.container .dataEntry .actions > li label {
+  margin-left: 10px;
+}
+/* line 21, ../scss/Cost.scss */
+.container .dataEntry .actions > li input, .container .dataEntry .actions > li select {
+  margin-left: 30px;
+}
+/* line 24, ../scss/Cost.scss */
+.container .dataEntry .actions > li.submit {
+  line-height: 50px;
+  vertical-align: middle;
+  text-align: center;
+}
+/* line 28, ../scss/Cost.scss */
+.container .dataEntry .actions > li.submit button {
+  width: 50%;
+  height: 35px;
+  font-size: 18px;
+}

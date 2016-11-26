@@ -38,8 +38,9 @@ hr {
 
 /* line 31, ../scss/base.scss */
 .input {
+  box-sizing: border-box;
   display: block;
-  width: 100%;
+  width: 80%;
   height: 34px;
   padding: 6px 12px;
   font-size: 12px;
@@ -56,29 +57,29 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 44, ../scss/base.scss */
+/* line 45, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
 }
 
-/* line 49, ../scss/base.scss */
+/* line 50, ../scss/base.scss */
 .btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 53, ../scss/base.scss */
+/* line 54, ../scss/base.scss */
 .btn-group .btn {
   position: relative;
   float: left;
 }
-/* line 57, ../scss/base.scss */
+/* line 58, ../scss/base.scss */
 .btn-group > .btn + .btn {
   margin-left: -1px;
 }
 
-/* line 61, ../scss/base.scss */
+/* line 62, ../scss/base.scss */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -94,7 +95,7 @@ hr {
   text-decoration: none;
 }
 
-/* line 75, ../scss/base.scss */
+/* line 76, ../scss/base.scss */
 .btn-default {
   color: #333;
   background-color: #fff;
@@ -105,8 +106,8 @@ hr {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
-  font-size: 12px;
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei" !important;
+  font-size: 12px !important;
 }
 
 /* line 11, ../scss/Index.scss */

@@ -113,6 +113,18 @@ jQuery(document).ready(function () {
                 ]
             },
             {
+                title: "资产管理",
+                isFold: false,
+                modules: [
+                    {
+                        title: "日常花销",
+                        url: "/Cost/Index",
+                        icon: "",
+                        isActive: false
+                    },
+                ]
+            },
+            {
                 title: "设置",
                 isFold: false,
                 modules: [

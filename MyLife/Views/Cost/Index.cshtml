@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Frontend/css/Cost.css" />
+<div class="container">
+    <div class="dataShow">
+
+    </div>
+    <div class="dataEntry">
+        <ul class="actions">
+            <li>
+                <label>花了多少钱</label>
+                <input class="input" />
+            </li>
+            <li>
+                <label>买了个什么？</label>
+                <input class="input" />
+            </li>
+            <li>
+                <label>消费类型</label>
+                <select class="input" data-dictionary="CostType"></select>
+            </li>
+            <li>
+                <label>支付类型</label>
+                <select class="input" data-dictionary="PayType"></select>
+            </li>
+            <li class="submit">
+                <button class="button button-primary disabled" id="buy">买 了~</button>
+            </li>
+        </ul>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Frontend/js/app/cost.js"></script>
+}
+
