@@ -11,19 +11,23 @@
         <ul class="actions">
             <li>
                 <label>花了多少钱</label>
-                <input class="input" />
+                <input class="input" id="money" type="number" />
             </li>
             <li>
                 <label>买了个什么？</label>
-                <input class="input" />
+                <input class="input" id="what" type="text" />
+            </li>
+            <li>
+                <label>为什么要买</label>
+                <textarea class="input" id="desc"></textarea>
             </li>
             <li>
                 <label>消费类型</label>
-                <select class="input" data-dictionary="CostType"></select>
+                <select class="input" data-dictionary="消费类型" id="costType"></select>
             </li>
             <li>
                 <label>支付类型</label>
-                <select class="input" data-dictionary="PayType"></select>
+                <select class="input" data-dictionary="支付类型" id="payType"></select>
             </li>
             <li class="submit">
                 <button class="button button-primary disabled" id="buy">买 了~</button>

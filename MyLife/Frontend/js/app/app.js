@@ -104,8 +104,27 @@ $(function () {
         },
     });
     jQuery.fn.extend({
-        bindDictionary: function (e) {
-            alert(1);
+        bindDictionary: function (dictionary) {
+            let self = $(this);
+            let obj = {
+                showProgress: false,
+                url: "/Dictionary/GetDictionary/?dictionary=" + dictionary,
+                success: function (result) {
+                    let option = $("<option></option>", {
+                        text: "请选择",
+                        value:-1
+                    });
+                    self.append(option);
+                    for (var i = 0; i < result.length; i++) {
+                        let newOption = $("<option></option>", {
+                            value: result[i].ID,
+                            text:result[i].Name
+                        })
+                        self.append(newOption);
+                    }
+                }
+            }
+            $.Ajaxobj(obj);
         }
     });
 
@@ -126,5 +145,7 @@ $(function () {
     //绑定字典
     $("select[data-dictionary]").each((e) => {
         let select = $("select[data-dictionary]")[e];
+        let dictionary = $(select).attr("data-dictionary");
+        $(select).bindDictionary(dictionary);
     });
 });

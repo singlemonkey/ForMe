@@ -11,6 +11,19 @@ namespace MyLife.Context
     {
         protected override void Seed(MyLifeContext context)
         {
+            var costs = new List<CostModel> {
+                new CostModel {
+                    Money=2000,
+                    GoodName="女朋友",
+                    CostDate=DateTime.Parse("2016-11-24"),
+                    Description="质量好，不漏气，值得拥有",
+                    CostType=2,
+                    PayType=6
+                }
+            };
+            costs.ForEach(c=>context.Costs.Add(c));
+            context.SaveChanges();
+
             var administrators = new List<AdminModel> {
                 new AdminModel {
                     Account="903012206",

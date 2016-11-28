@@ -14,11 +14,11 @@
   float: right;
   background-color: #e5e5e5;
   height: 100%;
-  border-left: 1px solid transparent;
 }
-/* line 14, ../scss/Cost.scss */
+/* line 13, ../scss/Cost.scss */
 .container .dataEntry .actions {
   padding: 10px;
+  background-color: #e5e5e5;
 }
 /* line 16, ../scss/Cost.scss */
 .container .dataEntry .actions > li {
@@ -29,7 +29,7 @@
   margin-left: 10px;
 }
 /* line 21, ../scss/Cost.scss */
-.container .dataEntry .actions > li input, .container .dataEntry .actions > li select {
+.container .dataEntry .actions > li input, .container .dataEntry .actions > li select, .container .dataEntry .actions > li textarea {
   margin-left: 30px;
 }
 /* line 24, ../scss/Cost.scss */

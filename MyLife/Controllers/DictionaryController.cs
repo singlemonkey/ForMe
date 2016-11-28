@@ -94,5 +94,12 @@ namespace MyLife.Controllers
             db.SaveChanges();
             return Json(dictionary);
         }
+
+        public JsonResult GetDictionary(string dictionary)
+        {
+            DictionaryModel parent = db.Dictionarys.FirstOrDefault(d=>d.Name==dictionary);
+            List<DictionaryModel> children= db.Dictionarys.Where(d=>d.ParentID==parent.ID).ToList();
+            return Json(children);
+        }
     }
 }

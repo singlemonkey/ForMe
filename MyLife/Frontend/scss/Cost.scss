@@ -10,15 +10,15 @@
         float:right;
         background-color:#e5e5e5;
         height:100%;
-        border-left:1px solid transparent;
         .actions{
             padding:10px;
+            background-color:#e5e5e5;
             >li{
                 line-height:28px;
                 label{
                     margin-left:10px;
                 }
-                input,select{
+                input,select,textarea{
                     margin-left:30px;
                 }
                 &.submit{

@@ -11,6 +11,7 @@ namespace MyLife.Models
     {
         public int ID { get; set; }
         public decimal Money { get; set; }
+        public string GoodName { get; set; }
         /// <summary>
         /// 消费类型
         /// </summary>

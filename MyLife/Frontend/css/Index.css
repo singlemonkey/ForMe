@@ -5,11 +5,16 @@ div, ul, li {
 }
 
 /* line 7, ../scss/base.scss */
+textarea {
+  height: 80px !important;
+}
+
+/* line 10, ../scss/base.scss */
 ul, li {
   list-style: none;
 }
 
-/* line 11, ../scss/base.scss */
+/* line 14, ../scss/base.scss */
 .clearfix:after {
   content: ".";
   display: block;
@@ -18,12 +23,12 @@ ul, li {
   visibility: hidden;
 }
 
-/* line 19, ../scss/base.scss */
+/* line 22, ../scss/base.scss */
 a:hover {
   text-decoration: none !important;
 }
 
-/* line 22, ../scss/base.scss */
+/* line 25, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -36,7 +41,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 31, ../scss/base.scss */
+/* line 34, ../scss/base.scss */
 .input {
   box-sizing: border-box;
   display: block;
@@ -57,29 +62,29 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 45, ../scss/base.scss */
+/* line 48, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
 }
 
-/* line 50, ../scss/base.scss */
+/* line 53, ../scss/base.scss */
 .btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 54, ../scss/base.scss */
+/* line 57, ../scss/base.scss */
 .btn-group .btn {
   position: relative;
   float: left;
 }
-/* line 58, ../scss/base.scss */
+/* line 61, ../scss/base.scss */
 .btn-group > .btn + .btn {
   margin-left: -1px;
 }
 
-/* line 62, ../scss/base.scss */
+/* line 65, ../scss/base.scss */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -95,7 +100,7 @@ hr {
   text-decoration: none;
 }
 
-/* line 76, ../scss/base.scss */
+/* line 79, ../scss/base.scss */
 .btn-default {
   color: #333;
   background-color: #fff;
