@@ -43,7 +43,7 @@
             })
         } else {
             self.element.animate({
-                left: left- self.distance
+                left: left - self.distance
             }, self.speed, "linear", function () {
                 if (left-self.distance <= 0) {
                     self.direction = "right";
@@ -53,6 +53,7 @@
         }
     }
 }
+
 
 $(function () {
     //扩展jquery本身方法
@@ -125,7 +126,7 @@ $(function () {
                 }
             }
             $.Ajaxobj(obj);
-        }
+        },
     });
 
     //注册全局ajax事件，

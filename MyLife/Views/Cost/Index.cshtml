@@ -3,9 +3,48 @@
     ViewBag.Title = "Index";
 }
 <link rel="stylesheet" href="~/Frontend/css/Cost.css" />
+<style>
+    .icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        font-size: 16px;
+    }
+</style>
 <div class="container">
     <div class="dataShow">
+        <div class="cost-left">
+            <div class="cost-table">
+                <div class="toolbar">
+                    <div class="prev">
+                        <button  type="button" id="prev" class="button button-action">上月</button>
+                    </div>
+                    <div class="search">
+                        <div class="input-group">
+                            <input type="text" class="input" id="searchInput"/>
+                            <span class="search">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="next">
+                        <button  type="button" id="next" class="button button-action">下月</button>
+                    </div>
+                </div>
+                <div class="tableContainer">
 
+                </div>
+            </div>
+            <div class="cost-linechart"></div>
+        </div>
+        <div class="cost-right">
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
     </div>
     <div class="dataEntry">
         <ul class="actions">
@@ -36,6 +75,43 @@
     </div>
 </div>
 @section scripts{
+    <script src="~/Frontend/js/JsRender.js"></script> 
+    <script src="~/Frontend/assets/icon/iconfont.js"></script>
+    <script id="costTable" type="text/x-jsrender" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>时间</th>
+                    <th>名称</th>
+                    <th>说明</th>
+                    <th>消费类型</th>
+                    <th>支付类型</th>
+                    <th>金额</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{for costs}}
+                    <tr>
+                        <td>{{:CostDate}}</td>
+                        <td>{{:GoodName}}</td>
+                        <td>{{:Description}}</td>
+                        <td>{{:CostType}}</td>
+                        <td>{{:PayType}}</td>
+                        <td>{{:Money}}</td>
+                    </tr>
+                {{/for}}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>消费总计</td>
+                    <td colspan="5"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </script>
+    <script>
+        let costs=@Html.Raw(Json.Encode(ViewData["costs"]));
+    </script>
     <script src="~/Frontend/js/app/cost.js"></script>
 }
 

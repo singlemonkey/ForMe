@@ -9,11 +9,12 @@
 <link rel="stylesheet" href="~/Frontend/assets/dialog/css/dialog-wilma.css" />
 <style>
     .icon {
-        width: 1em; height: 1em;
+        width: 1em;
+        height: 1em;
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
-        font-size:16px;
+        font-size: 16px;
     }
 </style>
 <div class="container">
@@ -33,7 +34,6 @@
                 <span class="dialog-close-icon fa fa-close dialog-close" data-dialog-close></span>
             </div>
             <div class="dialog-body confirm-dialog-content"></div>
-            </div>
         </div>
     </div>
 </div>
@@ -55,8 +55,8 @@
     </div>
 </div>
 @section scripts{
-    <script src="~/Frontend/js/JsRender.js"></script> 
-    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>   
+    <script src="~/Frontend/js/JsRender.js"></script>
+    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>
     <script id="dictonariesLiUnit" type="text/x-jsrender">
         <li>
             <label>{{:Name}}</label>
@@ -73,14 +73,14 @@
                 <h4>{{:Name}}</h4>
                 <ul>
                     {{for Dictionaries}}
-                        <li data-id="{{:ID}}">
-                            <label>{{:Name}}</label>
-                            <a class="btn close" href="#">
-                                <svg class="icon" aria-hidden="true">
-                                    <use xlink:href="#icon-close"></use>
-                                </svg>
-                            </a>
-                        </li>
+                    <li data-id="{{:ID}}">
+                        <label>{{:Name}}</label>
+                        <a class="btn close" href="#">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-close"></use>
+                            </svg>
+                        </a>
+                    </li>
                     {{/for}}
                 </ul>
                 <div class="btn-group">

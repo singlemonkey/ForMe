@@ -7,40 +7,110 @@
   width: calc( 100% - 321px );
   height: 100%;
   float: left;
+  position: relative;
 }
 /* line 8, ../scss/Cost.scss */
+.container .dataShow .cost-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 30%;
+  border-right: 1px solid #e5e5e5;
+}
+/* line 15, ../scss/Cost.scss */
+.container .dataShow .cost-left .cost-table {
+  min-height: 400px;
+  padding: 10px 20px;
+}
+/* line 20, ../scss/Cost.scss */
+.container .dataShow .cost-right {
+  right: 0;
+  left: calc(70% + 1px);
+  position: absolute;
+}
+/* line 26, ../scss/Cost.scss */
 .container .dataEntry {
   width: 320px;
   float: right;
   background-color: #e5e5e5;
   height: 100%;
 }
-/* line 13, ../scss/Cost.scss */
+/* line 31, ../scss/Cost.scss */
 .container .dataEntry .actions {
   padding: 10px;
   background-color: #e5e5e5;
 }
-/* line 16, ../scss/Cost.scss */
+/* line 34, ../scss/Cost.scss */
 .container .dataEntry .actions > li {
   line-height: 28px;
 }
-/* line 18, ../scss/Cost.scss */
+/* line 36, ../scss/Cost.scss */
 .container .dataEntry .actions > li label {
   margin-left: 10px;
 }
-/* line 21, ../scss/Cost.scss */
+/* line 39, ../scss/Cost.scss */
 .container .dataEntry .actions > li input, .container .dataEntry .actions > li select, .container .dataEntry .actions > li textarea {
   margin-left: 30px;
 }
-/* line 24, ../scss/Cost.scss */
+/* line 42, ../scss/Cost.scss */
 .container .dataEntry .actions > li.submit {
   line-height: 50px;
   vertical-align: middle;
   text-align: center;
 }
-/* line 28, ../scss/Cost.scss */
+/* line 46, ../scss/Cost.scss */
 .container .dataEntry .actions > li.submit button {
   width: 50%;
   height: 35px;
   font-size: 18px;
+}
+
+/* line 56, ../scss/Cost.scss */
+.toolbar {
+  padding: 10px 20px;
+  text-align: center;
+}
+/* line 59, ../scss/Cost.scss */
+.toolbar .button {
+  height: 34px;
+}
+/* line 62, ../scss/Cost.scss */
+.toolbar .prev {
+  float: left;
+}
+/* line 65, ../scss/Cost.scss */
+.toolbar .next {
+  float: right;
+}
+/* line 68, ../scss/Cost.scss */
+.toolbar .search {
+  display: inline-block;
+  width: calc(100% - 80px - 108px);
+}
+/* line 71, ../scss/Cost.scss */
+.toolbar .search .input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+/* line 75, ../scss/Cost.scss */
+.toolbar .search .input-group .input {
+  display: table-cell;
+  float: left;
+  z-index: 2;
+  width: 100%;
+  position: relative;
+}
+/* line 82, ../scss/Cost.scss */
+.toolbar .search .input-group .search {
+  border-left: 0 !important;
+  width: 1%;
+  display: table-cell;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 1px 12px;
+  border: 1px solid #e5e5e5;
+  background-color: #eee;
+  cursor: pointer;
 }

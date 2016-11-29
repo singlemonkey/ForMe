@@ -16,6 +16,8 @@ namespace MyLife.Controllers
         // GET: Cost
         public ActionResult Index()
         {
+            List<CostModel> costs = db.Costs.ToList();
+            ViewData["costs"] = costs;
             return View();
         }
 

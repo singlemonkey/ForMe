@@ -1,4 +1,5 @@
 ﻿jQuery(document).ready(function () {
+    
     $(".actions .input").on("keyup change", function () {
         let buy = $("#buy");
         let money = $("#money").val();
@@ -37,4 +38,8 @@
             $.Ajaxobj(obj);
         }
     });
+
+    let tmpl = $("#costTable");
+    let table = tmpl.render(costs);
+    $(".tableContainer").append(table);
 });

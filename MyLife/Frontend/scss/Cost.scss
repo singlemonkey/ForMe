@@ -4,6 +4,24 @@
         width:calc( 100% - 321px );
         height:100%;
         float:left;
+        position:relative;
+        .cost-left{
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            right:30%;
+            border-right:1px solid #e5e5e5;
+            .cost-table{
+                min-height:400px;
+                padding:10px 20px;
+            }
+        }
+        .cost-right{
+            right:0;
+            left:calc(70% + 1px) ;
+            position:absolute;
+        }
     }
     .dataEntry{
         width:320px;
@@ -31,6 +49,46 @@
                         font-size:18px;
                     }
                 }
+            }
+        }
+    }
+}
+.toolbar{
+    padding:10px 20px;
+    text-align:center;
+    .button{
+        height:34px;
+    }
+    .prev{
+        float:left;
+    }
+    .next{
+        float:right;
+    }
+    .search{
+        display:inline-block;
+        width:calc(100% - 80px - 108px);
+        .input-group{
+            position: relative;
+            display: table;
+            border-collapse: separate;
+            .input{
+                display:table-cell;
+                float:left;
+                z-index:2;
+                width:100%;
+                position:relative;
+            }
+            .search{
+                border-left:0 !important;
+                width:1%;
+                display:table-cell;
+                white-space:nowrap;
+                vertical-align:middle;
+                padding:1px 12px;
+                border:1px solid #e5e5e5;
+                background-color:#eee;
+                cursor:pointer;
             }
         }
     }
