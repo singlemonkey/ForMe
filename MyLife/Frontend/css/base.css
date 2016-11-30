@@ -106,3 +106,81 @@ hr {
   background-color: #fff;
   border-color: #ccc;
 }
+
+/* line 97, ../scss/base.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-sizing: border-box;
+}
+
+/* line 102, ../scss/base.scss */
+.table {
+  background: #F5F6FA;
+  font-size: 12px;
+  border-top: 1px solid #e1e6eb;
+  margin-top: 8px;
+  border: 1px solid #e1e6eb;
+  width: 100%;
+}
+/* line 109, ../scss/base.scss */
+.table td, .table th {
+  line-height: 1.428571429;
+  vertical-align: top;
+}
+/* line 115, ../scss/base.scss */
+.table thead tr:first-child th {
+  border-top: 0;
+}
+/* line 119, ../scss/base.scss */
+.table thead tr th {
+  padding: 8px 8px;
+  font-weight: normal;
+  color: #999;
+  border-bottom: 1px solid #e1e6eb;
+  background-color: #F5F6FA;
+  text-align: left;
+}
+/* line 128, ../scss/base.scss */
+.table tbody {
+  background-color: #fff;
+}
+/* line 132, ../scss/base.scss */
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+/* line 136, ../scss/base.scss */
+.table tbody tr td {
+  padding: 12px 8px;
+  border-top: 0px;
+  border-bottom: 1px solid #e1e6eb;
+  vertical-align: middle;
+}
+/* line 146, ../scss/base.scss */
+.table tfoot tr td {
+  padding: 8px 8px;
+  font-weight: normal;
+  color: #999;
+  border-top: 1px solid #e1e6eb;
+  border-bottom: 1px solid #e1e6eb;
+  background-color: #F5F6FA;
+  text-align: left;
+}
+
+/* line 158, ../scss/base.scss */
+.table-hover tbody tr:hover td {
+  background-color: #F9F9FA;
+}
+
+/* line 161, ../scss/base.scss */
+.scroll tbody {
+  display: block;
+  overflow-y: auto;
+}
+
+/* line 165, ../scss/base.scss */
+.scroll thead, .scroll tbody tr, .scroll tfoot tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}

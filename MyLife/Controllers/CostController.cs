@@ -16,23 +16,48 @@ namespace MyLife.Controllers
         // GET: Cost
         public ActionResult Index()
         {
-            List<CostModel> costs = db.Costs.ToList();
-            ViewData["costs"] = costs;
+            DateTime now = DateTime.Now;
+            DateTime first = now.AddDays(1-now.Day).Date;
+            DateTime last = now.AddDays(1-now.Day).AddMonths(1).Date;
+            var list = from cost in db.Costs
+                       join dictionaryCost in db.Dictionarys on cost.CostType equals dictionaryCost.ID
+                       join dictionaryPay in db.Dictionarys on cost.PayType equals dictionaryPay.ID
+                       where cost.CostDate >= first && cost.CostDate<=last
+                       select new {
+                           cost.ID,cost.Money,cost.GoodName,cost.Description,cost.CostDate,
+                           CostName=dictionaryCost.Name,
+                           PayName=dictionaryPay.Name
+                       };
+            ViewData["costs"] =list.ToList();
             return View();
         }
 
         public JsonResult AddCost(CostModel model)
         {
-            CostModel cost = new CostModel();
-            cost.CostDate = DateTime.Now;
-            cost.CostType = model.CostType;
-            cost.Description = model.Description;
-            cost.GoodName = model.GoodName;
-            cost.Money = model.Money;
-            cost.PayType = model.PayType;
-            db.Entry(cost).State = EntityState.Added;
+            CostModel costModel = new CostModel();
+            costModel.CostDate = DateTime.Now;
+            costModel.CostType = model.CostType;
+            costModel.Description = model.Description;
+            costModel.GoodName = model.GoodName;
+            costModel.Money = model.Money;
+            costModel.PayType = model.PayType;
+            db.Entry(costModel).State = EntityState.Added;
             db.SaveChanges();
-            return Json(cost);
+            var list= from cost in db.Costs
+                      join dictionaryCost in db.Dictionarys on cost.CostType equals dictionaryCost.ID
+                      join dictionaryPay in db.Dictionarys on cost.PayType equals dictionaryPay.ID
+                      where cost.ID==costModel.ID
+                      select new
+                      {
+                          cost.ID,
+                          cost.Money,
+                          cost.GoodName,
+                          cost.Description,
+                          cost.CostDate,
+                          CostName = dictionaryCost.Name,
+                          PayName = dictionaryPay.Name
+                      };
+            return Json(list.ToList()[0]);
         }
     }
 }

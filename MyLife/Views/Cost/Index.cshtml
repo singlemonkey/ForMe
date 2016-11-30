@@ -19,7 +19,7 @@
             <div class="cost-table">
                 <div class="toolbar">
                     <div class="prev">
-                        <button  type="button" id="prev" class="button button-action">上月</button>
+                        <button  type="button" id="prev" class="button button-action"></button>
                     </div>
                     <div class="search">
                         <div class="input-group">
@@ -30,11 +30,32 @@
                         </div>
                     </div>
                     <div class="next">
-                        <button  type="button" id="next" class="button button-action">下月</button>
+                        <button  type="button" id="next" class="button button-action"></button>
                     </div>
                 </div>
                 <div class="tableContainer">
-
+                    <table class="table table-hover scroll">
+                        <thead>
+                            <tr>
+                                <th style="width:80px">名称</th>
+                                <th style="width:120px">消费时间</th>
+                                <th>说明</th>
+                                <th style="width:50px">消费类型</th>
+                                <th style="width:50px">支付类型</th>
+                                <th style="width:30px">金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>消费总计</td>
+                                <td colspan="5">
+                                    <span id="total"></span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
             <div class="cost-linechart"></div>
@@ -77,37 +98,15 @@
 @section scripts{
     <script src="~/Frontend/js/JsRender.js"></script> 
     <script src="~/Frontend/assets/icon/iconfont.js"></script>
-    <script id="costTable" type="text/x-jsrender" >
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>时间</th>
-                    <th>名称</th>
-                    <th>说明</th>
-                    <th>消费类型</th>
-                    <th>支付类型</th>
-                    <th>金额</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{for costs}}
-                    <tr>
-                        <td>{{:CostDate}}</td>
-                        <td>{{:GoodName}}</td>
-                        <td>{{:Description}}</td>
-                        <td>{{:CostType}}</td>
-                        <td>{{:PayType}}</td>
-                        <td>{{:Money}}</td>
-                    </tr>
-                {{/for}}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>消费总计</td>
-                    <td colspan="5"></td>
-                </tr>
-            </tfoot>
-        </table>
+    <script id="tableRow" type="text/x-jsrender" >
+        <tr>            
+            <td style="width:80px">{{:GoodName}}</td>
+            <td style="width:120px">{{:CostDate}}</td>
+            <td>{{:Description}}</td>
+            <td style="width:50px">{{:CostName}}</td>
+            <td style="width:50px">{{:PayName}}</td>
+            <td style="width:30px">{{:Money}}</td>
+        </tr>
     </script>
     <script>
         let costs=@Html.Raw(Json.Encode(ViewData["costs"]));
