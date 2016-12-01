@@ -59,5 +59,48 @@ namespace MyLife.Controllers
                       };
             return Json(list.ToList()[0]);
         }
+
+        public JsonResult GetCosts(int year,int month,string queryString)
+        {
+            int days = DateTime.DaysInMonth(year,month);
+            DateTime first = new DateTime(year,month,1,0,0,0);
+            DateTime last = new DateTime(year,month,days,23,59,59);
+            var list = from cost in db.Costs
+                       join dictionaryCost in db.Dictionarys on cost.CostType equals dictionaryCost.ID
+                       join dictionaryPay in db.Dictionarys on cost.PayType equals dictionaryPay.ID
+                       where cost.CostDate >= first && cost.CostDate <= last 
+                       select new
+                       {
+                           cost.ID,
+                           cost.Money,
+                           cost.GoodName,
+                           cost.Description,
+                           cost.CostDate,
+                           CostName = dictionaryCost.Name,
+                           PayName = dictionaryPay.Name
+                       };
+            if (!String.IsNullOrEmpty(queryString))
+            {
+                list = list.Where(c=>c.GoodName.Contains(queryString));
+            }
+            return Json(list.ToList());
+        }
+
+        public JsonResult LineChart(int year)
+        {
+            List<DictionaryModel> dictionarys = (from costtype in db.Dictionarys
+                            where costtype.ParentID == 1
+                            select costtype).ToList();
+            for (int i = 0,l= dictionarys.Count(); i < l; i++)
+            {
+
+            }
+            return null;
+        }
+
+        public JsonResult CostInYear()
+        {
+
+        }
     }
 }

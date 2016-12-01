@@ -68,33 +68,36 @@
 
 /* line 56, ../scss/Cost.scss */
 .toolbar {
-  padding: 10px 20px;
   text-align: center;
 }
-/* line 59, ../scss/Cost.scss */
+/* line 58, ../scss/Cost.scss */
 .toolbar .button {
   height: 34px;
 }
-/* line 62, ../scss/Cost.scss */
+/* line 61, ../scss/Cost.scss */
 .toolbar .prev {
   float: left;
+  width: 66px;
+  height: 34px;
 }
-/* line 65, ../scss/Cost.scss */
+/* line 66, ../scss/Cost.scss */
 .toolbar .next {
   float: right;
+  width: 66px;
+  height: 34px;
 }
-/* line 68, ../scss/Cost.scss */
+/* line 71, ../scss/Cost.scss */
 .toolbar .search {
   display: inline-block;
   width: calc(100% - 80px - 108px);
 }
-/* line 71, ../scss/Cost.scss */
+/* line 74, ../scss/Cost.scss */
 .toolbar .search .input-group {
   position: relative;
   display: table;
   border-collapse: separate;
 }
-/* line 75, ../scss/Cost.scss */
+/* line 78, ../scss/Cost.scss */
 .toolbar .search .input-group .input {
   display: table-cell;
   float: left;
@@ -102,7 +105,7 @@
   width: 100%;
   position: relative;
 }
-/* line 82, ../scss/Cost.scss */
+/* line 85, ../scss/Cost.scss */
 .toolbar .search .input-group .search {
   border-left: 0 !important;
   width: 1%;

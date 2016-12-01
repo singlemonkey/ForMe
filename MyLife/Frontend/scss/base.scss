@@ -140,6 +140,20 @@ table{
                 vertical-align: middle;
             }
         }
+        tr.nodata{
+            td{
+                height:100px;
+                text-align:center;
+                line-height:100px;
+                vertical-align:middle;
+                font-size:22px;
+            }
+            &:hover{
+                td{
+                    background-color: #FFF !important;
+                }
+            }
+        }
     }
     tfoot{
         tr{
@@ -148,7 +162,6 @@ table{
                 font-weight: normal;
                 color: #999;
                 border-top:1px solid #e1e6eb;
-                border-bottom: 1px solid #e1e6eb;
                 background-color: #F5F6FA;
                 text-align:left;
             }

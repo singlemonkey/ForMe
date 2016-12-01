@@ -156,29 +156,40 @@ table {
   border-bottom: 1px solid #e1e6eb;
   vertical-align: middle;
 }
-/* line 146, ../scss/base.scss */
+/* line 144, ../scss/base.scss */
+.table tbody tr.nodata td {
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  vertical-align: middle;
+  font-size: 22px;
+}
+/* line 152, ../scss/base.scss */
+.table tbody tr.nodata:hover td {
+  background-color: #FFF !important;
+}
+/* line 160, ../scss/base.scss */
 .table tfoot tr td {
   padding: 8px 8px;
   font-weight: normal;
   color: #999;
   border-top: 1px solid #e1e6eb;
-  border-bottom: 1px solid #e1e6eb;
   background-color: #F5F6FA;
   text-align: left;
 }
 
-/* line 158, ../scss/base.scss */
+/* line 171, ../scss/base.scss */
 .table-hover tbody tr:hover td {
   background-color: #F9F9FA;
 }
 
-/* line 161, ../scss/base.scss */
+/* line 174, ../scss/base.scss */
 .scroll tbody {
   display: block;
   overflow-y: auto;
 }
 
-/* line 165, ../scss/base.scss */
+/* line 178, ../scss/base.scss */
 .scroll thead, .scroll tbody tr, .scroll tfoot tr {
   display: table;
   width: 100%;
