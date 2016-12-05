@@ -17,6 +17,7 @@ namespace MyLife.Controllers
         public ActionResult Index()
         {
             DateTime now = DateTime.Now;
+            int year = now.Year;
             DateTime first = now.AddDays(1-now.Day).Date;
             DateTime last = now.AddDays(1-now.Day).AddMonths(1).Date;
             var list = from cost in db.Costs
@@ -29,6 +30,7 @@ namespace MyLife.Controllers
                            PayName=dictionaryPay.Name
                        };
             ViewData["costs"] =list.ToList();
+            ViewData["costsLineData"] = LineChart(year);
             return View();
         }
 
@@ -88,19 +90,50 @@ namespace MyLife.Controllers
 
         public JsonResult LineChart(int year)
         {
+            DictionaryModel parentDic = db.Dictionarys.FirstOrDefault(d=>d.Name=="消费类型");
             List<DictionaryModel> dictionarys = (from costtype in db.Dictionarys
-                            where costtype.ParentID == 1
-                            select costtype).ToList();
-            for (int i = 0,l= dictionarys.Count(); i < l; i++)
-            {
-
-            }
-            return null;
+                                                 where costtype.ParentID == parentDic.ID
+                                                 select costtype).ToList();
+            List<CostTypeChartModel> list = CostInYear(dictionarys, year);            
+            return Json(list.ToList());
         }
 
-        public JsonResult CostInYear()
+        public List<CostTypeChartModel> CostInYear(List<DictionaryModel> dics,int year)
         {
-
+            List<CostTypeChartModel> list = new List<CostTypeChartModel>();            
+            for (int i = 0, l = dics.Count(); i < l; i++)
+            {
+                CostTypeChartModel chart = new CostTypeChartModel();
+                chart.name = dics[i].Name;
+                decimal[] money = new decimal[12];
+                int dicId = dics[i].ID;
+                for (int j = 1; j <= 12; j++)
+                {
+                    int days = DateTime.DaysInMonth(year, j);
+                    DateTime first = new DateTime(year, j, 1, 0, 0, 0);
+                    DateTime last = new DateTime(year, j, days, 23, 59, 59);
+                    var costs = from cost in db.Costs
+                                where cost.CostDate >= first && cost.CostDate <= last && cost.CostType== dicId
+                                select cost;
+                    decimal? total = costs.Sum(c => c.Money);
+                    money[j - 1] = Convert.ToDecimal(total);
+                }
+                chart.data = money;
+                list.Add(chart);
+            }
+            CostTypeChartModel allChart = new CostTypeChartModel();
+            allChart.name = "总计";
+            decimal[] allMoney = new decimal[12];
+            for (int i = 0; i < list.Count(); i++)
+            {
+                for (int j = 0; j <12 ; j++)
+                {
+                    allMoney[j] += list[i].data[j];
+                }
+            }
+            allChart.data = allMoney;
+            list.Add(allChart);
+            return list;
         }
     }
 }

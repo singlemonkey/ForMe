@@ -1,5 +1,7 @@
 ﻿@import "compass/css3";
-
+*{
+    box-sizing:border-box;
+}
 div,ul,li{
     margin:0;
     padding:0;

@@ -103,6 +103,17 @@ $(function () {
             var dateString = "\/Date(" + (i + 8 * 60 * 60 * 1000) + ")\/";
             return dateString;
         },
+        getYear: function () {
+            var date = new Date;
+            var year = date.getFullYear();
+            return year;
+        },
+        getMonth: function () {
+            var date = new Date;
+            var month = date.getMonth() + 1;
+            month = (month < 10 ? "0" + month : month);
+            return month;
+        }
     });
     jQuery.fn.extend({
         bindDictionary: function (dictionary) {

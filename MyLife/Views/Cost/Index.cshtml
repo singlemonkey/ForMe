@@ -40,9 +40,9 @@
                                 <th style="width:80px">名称</th>
                                 <th style="width:120px">消费时间</th>
                                 <th>说明</th>
-                                <th style="width:50px">消费类型</th>
-                                <th style="width:50px">支付类型</th>
-                                <th style="width:30px">金额</th>
+                                <th style="width:80px">消费类型</th>
+                                <th style="width:80px">支付类型</th>
+                                <th style="width:80px">金额</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
@@ -58,7 +58,7 @@
                     </table>
                 </div>
             </div>
-            <div class="cost-linechart">
+            <div class="cost-linechart" id="cost-linechart">
 
             </div>
         </div>
@@ -100,18 +100,21 @@
 @section scripts{
     <script src="~/Frontend/js/JsRender.js"></script> 
     <script src="~/Frontend/assets/icon/iconfont.js"></script>
+    <script src="~/Frontend/assets/Highcharts/code/highcharts.js"></script>
     <script id="tableRow" type="text/x-jsrender" >
         <tr>            
             <td style="width:80px">{{:GoodName}}</td>
             <td style="width:120px">{{:CostDate}}</td>
             <td>{{:Description}}</td>
-            <td style="width:50px">{{:CostName}}</td>
-            <td style="width:50px">{{:PayName}}</td>
-            <td style="width:30px">{{:Money}}</td>
+            <td style="width:80px">{{:CostName}}</td>
+            <td style="width:80px">{{:PayName}}</td>
+            <td style="width:80px">{{:Money}}</td>
         </tr>
     </script>
-    <script>
+    <script>        
         let costs=@Html.Raw(Json.Encode(ViewData["costs"]));
+        let costsLine=@Html.Raw(Json.Encode(ViewData["costsLineData"]));
+        let costsLineData=costsLine.Data;
     </script>
     <script src="~/Frontend/js/app/cost.js"></script>
 }

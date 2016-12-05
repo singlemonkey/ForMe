@@ -10,7 +10,7 @@ namespace MyLife.Models
     public class CostModel
     {
         public int ID { get; set; }
-        public decimal Money { get; set; }
+        public decimal? Money { get; set; }
         public string GoodName { get; set; }
         /// <summary>
         /// 消费类型
@@ -24,9 +24,12 @@ namespace MyLife.Models
         public string Description { get; set; }
     }
 
+    /// <summary>
+    /// lineChart结构数据，统计一年内12个月消费金额
+    /// </summary>
     public class CostTypeChartModel
     {
-        public string Name { get; set; }
-        public Array Total { get; set; }
+        public string name { get; set; }
+        public decimal[] data { get; set; }
     }
 }

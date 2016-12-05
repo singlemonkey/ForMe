@@ -1,7 +1,7 @@
 ﻿class costTable {
     constructor(props) {
-        this.year = this.getYear();
-        this.month = this.getMonth();
+        this.year = $.getYear();
+        this.month = $.getMonth();
         this.data = costs;
         this.callback = props.callback;
         this.lineHeight = 42;
@@ -35,11 +35,12 @@
 
     render() {
         let self = this;
+        let height = self.lineHeight * self.rows - 1;
+        $("#tbody").css("max-height", height);
+        $(".cost-table").css("height", height + 134);
         if (self.data.length == 0) {
             self.addNullRow();
-        } else {
-            let height = self.lineHeight * self.rows-1;
-            $("#tbody").css("max-height", height);
+        } else {           
             for (var i = 0; i < self.data.length; i++) {
                 self.addRow(self.data[i]);
             }
@@ -48,17 +49,17 @@
     }
 
     today() {
-        this.month = this.getMonth();
-        this.year = this.getYear();
+        this.month = $.getMonth();
+        this.year = $.getYear();
         this.search();
     }
 
     judgeCount() {
         let self = this;
         if (self.count>self.rows) {
-            $(".table.scroll thead th:last-child").css("padding-right", "23px");
+            $(".table.scroll tbody tr td:last-child").css("width", "57px");
         } else {
-            $(".table.scroll thead th:last-child").css("padding-right", "8px");
+            $(".table.scroll tbody tr td:last-child").css("width", "80px");
         }
     }
 
@@ -108,18 +109,6 @@
         $("#next").text(self.into(nextMonth) + "月");
     }
     
-    //获取当前月份
-    getMonth() {
-        var date = new Date;
-        var month = date.getMonth() + 1;
-        month = (month < 10 ? "0" + month : month);
-        return month;
-    }
-    getYear() {
-        var date = new Date;
-        var year = date.getFullYear();
-        return year;
-    }
     //转为为大写
     into(number) {
         switch (number) {
@@ -165,14 +154,75 @@
     }
 }
 
+class costLineChart {
+    constructor(props) {
+        this.year = $.getYear();
+        this.data = costsLineData;
+        this.init();
+    }
+
+    init() {
+        let self = this;
+        self.render();
+    }
+
+    search() {
+        let self=this;
+        let year=self.year;
+        let obj = {
+            url: "/Cost/LineChart/?year=" + year,
+            success: function (result) {
+                self.data =result ;
+                self.render();
+            }
+        }
+        $.Ajaxobj(obj);
+    }
+
+    render() {
+        let self = this;
+        let year = self.year;
+        let data = self.data;
+        Highcharts.chart('cost-linechart', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text:year+ '年财务支出状况图'
+            },
+            subtitle: {
+                text: '来源:'
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Cost Money'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series:data
+        });
+    }
+}
+
 jQuery(document).ready(function () {
     let table = new costTable({
         rows: 8,
         callback: function () {
-            let height =parseInt($("#tbody").css("max-height")) + 134;
+            let height = parseInt($(".cost-table").css("height"));
             $(".cost-linechart").css("height", "calc(100% - " + height + "px)");
         }
-    });    
+    });
+    let lineChart = new costLineChart();
     $(".actions .input").on("keyup change", function () {
         let buy = $("#buy");
         let money = $("#money").val();
@@ -219,8 +269,12 @@ jQuery(document).ready(function () {
     $("#prev").on("click", function () {
         let nowMonth = table.month;
         if (nowMonth == 1) {
+            //table加载数据
             table.month = 12;
             table.year -= 1;
+            //出现跨年情况，linechart重新加载
+            lineChart.year -= 1;
+            lineChart.search();
         } else {
             table.month -= 1;
         }
@@ -229,8 +283,12 @@ jQuery(document).ready(function () {
     $("#next").on("click", function () {
         let nowMonth = table.month;
         if (nowMonth == 12) {
+            //table加载数据
             table.month = 1;
             table.year += 1;
+            //出现跨年情况，linechart重新加载
+            lineChart.year += 1;
+            lineChart.search();
         } else {
             table.month += 1;
         }
