@@ -64,8 +64,8 @@
         </div>
         <div class="cost-right">
             <ul>
-                <li></li>
-                <li></li>
+                <li id="pieCostTypeChart"></li>
+                <li id="piePayTypeChart"></li>
             </ul>
         </div>
     </div>
@@ -111,8 +111,10 @@
             <td style="width:80px">{{:Money}}</td>
         </tr>
     </script>
-    <script>        
+    <script>
         let costs=@Html.Raw(Json.Encode(ViewData["costs"]));
+        let costPercentage=@Html.Raw(Json.Encode(ViewData["costsPieCostTypeData"]));
+        let payPercentage=@Html.Raw(Json.Encode(ViewData["costsPiePayTypeData"]));
         let costsLine=@Html.Raw(Json.Encode(ViewData["costsLineData"]));
         let costsLineData=costsLine.Data;
     </script>

@@ -31,6 +31,8 @@ namespace MyLife.Controllers
                        };
             ViewData["costs"] =list.ToList();
             ViewData["costsLineData"] = LineChart(year);
+            ViewData["costsPieCostTypeData"] = PieChartCostType().ToList();
+            ViewData["costsPiePayTypeData"] = PieChartPayType().ToList();
             return View();
         }
 
@@ -87,23 +89,71 @@ namespace MyLife.Controllers
             }
             return Json(list.ToList());
         }
-
+        public List<CostPieModel> PieChartCostType()
+        {
+            DictionaryModel parentDic = db.Dictionarys.FirstOrDefault(d=>d.Name=="消费类型");
+            List<DictionaryModel> dictionarys = (from costtype in db.Dictionarys
+                                                 where costtype.ParentID == parentDic.ID
+                                                 select costtype).ToList();
+            List<CostPieModel> list = new List<CostPieModel>();
+            decimal totalMoney=Convert.ToDecimal(db.Costs.Sum(c=>c.Money));
+            for (int i = 0,l=dictionarys.Count(); i < l; i++)
+            {
+                CostPieModel pie = new CostPieModel();
+                int id = dictionarys[i].ID;
+                pie.name = dictionarys[i].Name;
+                decimal costMoney =Convert.ToDecimal( db.Costs.Where(c=>c.CostType== id).Sum(c=>c.Money));
+                decimal costPercentage = (decimal)costMoney / totalMoney;
+                pie.Percentage = costPercentage;
+                list.Add(pie);
+            }
+            return list;
+        }
+        public List<CostPieModel> PieChartPayType()
+        {
+            DictionaryModel parentDic = db.Dictionarys.FirstOrDefault(d => d.Name == "支付类型");
+            List<DictionaryModel> dictionarys = (from paytype in db.Dictionarys
+                                                 where paytype.ParentID == parentDic.ID
+                                                 select paytype).ToList();
+            List<CostPieModel> list = new List<CostPieModel>();
+            decimal totalMoney = Convert.ToDecimal(db.Costs.Sum(c => c.Money));
+            for (int i = 0, l = dictionarys.Count(); i < l; i++)
+            {
+                CostPieModel pie = new CostPieModel();
+                int id = dictionarys[i].ID;
+                pie.name = dictionarys[i].Name;
+                decimal costMoney = Convert.ToDecimal(db.Costs.Where(c => c.PayType == id).Sum(c => c.Money));
+                decimal costPercentage = (decimal)costMoney / totalMoney;
+                pie.Percentage = costPercentage;
+                list.Add(pie);
+            }
+            return list;
+        }
+        public JsonResult PieChart()
+        {
+            List<CostPieModel> costList = PieChartCostType().ToList();
+            List<CostPieModel> payList = PieChartCostType().ToList();
+            return Json(new {
+                CostData =costList,
+                PayData = payList
+            });
+        }
         public JsonResult LineChart(int year)
         {
             DictionaryModel parentDic = db.Dictionarys.FirstOrDefault(d=>d.Name=="消费类型");
             List<DictionaryModel> dictionarys = (from costtype in db.Dictionarys
                                                  where costtype.ParentID == parentDic.ID
                                                  select costtype).ToList();
-            List<CostTypeChartModel> list = CostInYear(dictionarys, year);            
+            List<CostChartModel> list = CostInYear(dictionarys, year);            
             return Json(list.ToList());
         }
 
-        public List<CostTypeChartModel> CostInYear(List<DictionaryModel> dics,int year)
+        public List<CostChartModel> CostInYear(List<DictionaryModel> dics,int year)
         {
-            List<CostTypeChartModel> list = new List<CostTypeChartModel>();            
+            List<CostChartModel> list = new List<CostChartModel>();            
             for (int i = 0, l = dics.Count(); i < l; i++)
             {
-                CostTypeChartModel chart = new CostTypeChartModel();
+                CostChartModel chart = new CostChartModel();
                 chart.name = dics[i].Name;
                 decimal[] money = new decimal[12];
                 int dicId = dics[i].ID;
@@ -121,7 +171,7 @@ namespace MyLife.Controllers
                 chart.data = money;
                 list.Add(chart);
             }
-            CostTypeChartModel allChart = new CostTypeChartModel();
+            CostChartModel allChart = new CostChartModel();
             allChart.name = "总计";
             decimal[] allMoney = new decimal[12];
             for (int i = 0; i < list.Count(); i++)

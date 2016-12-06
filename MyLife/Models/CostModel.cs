@@ -27,9 +27,14 @@ namespace MyLife.Models
     /// <summary>
     /// lineChart结构数据，统计一年内12个月消费金额
     /// </summary>
-    public class CostTypeChartModel
+    public class CostChartModel
     {
         public string name { get; set; }
         public decimal[] data { get; set; }
+    }
+    public class CostPieModel
+    {
+        public string name { get; set; }
+        public decimal Percentage { get; set; }
     }
 }

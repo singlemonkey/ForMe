@@ -25,6 +25,17 @@
             right:0;
             left:calc(70% + 1px) ;
             position:absolute;
+            height:100%;
+            ul{
+                height:100%;
+                li{
+                    height:50%;
+                    padding:10px 20px;
+                    &:first-child{
+                        border-bottom:1px solid #e5e5e5;
+                    }
+                }
+            }
         }
     }
     .dataEntry{

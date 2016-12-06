@@ -11,6 +11,32 @@ namespace MyLife.Context
     {
         protected override void Seed(MyLifeContext context)
         {
+            var Wishs = new List<WishModel> {
+                new WishModel {
+                    ID=1,
+                    CreateDate=DateTime.Parse("2016-11-24"),
+                    Degree=5,
+                    EndDate=DateTime.Parse("2016-12-24"),
+                    ImgUrl="",
+                    Info="学习绘画",
+                    Name="绘画套装",
+                    ParentID=0,
+                    Price=300
+                },
+                new WishModel {
+                    ID=2,
+                    CreateDate=DateTime.Parse("2016-11-24"),
+                    Degree=5,
+                    EndDate=DateTime.Parse("2016-12-24"),
+                    ImgUrl="",
+                    Info="铅笔",
+                    Name="铅笔",
+                    ParentID=1,
+                    Price=300
+                }
+            };
+            
+
             var costs = new List<CostModel> {
                 new CostModel {
                     Money=2000,
@@ -29,7 +55,7 @@ namespace MyLife.Context
                     Account="903012206",
                     Password="missyou?",
                     Name="日光倾城",
-                    Balance=0
+                    Money=800
                 }
             };
             administrators.ForEach(a => context.Administrators.Add(a));

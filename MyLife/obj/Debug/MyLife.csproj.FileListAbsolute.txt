@@ -15,6 +15,7 @@ F:\MyLife\MyLife\bin\MyLife.dll
 F:\MyLife\MyLife\bin\MyLife.pdb
 F:\MyLife\MyLife\obj\Debug\MyLife.dll
 F:\MyLife\MyLife\obj\Debug\MyLife.pdb
+F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
 F:\GitHub\MyLife\MyLife\bin\roslyn\csc.exe
 F:\GitHub\MyLife\MyLife\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 F:\GitHub\MyLife\MyLife\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -32,4 +33,4 @@ F:\GitHub\MyLife\MyLife\bin\MyLife.dll
 F:\GitHub\MyLife\MyLife\bin\MyLife.pdb
 F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.dll
 F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.pdb
-F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache
+F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache

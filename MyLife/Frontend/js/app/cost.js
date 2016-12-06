@@ -214,6 +214,117 @@ class costLineChart {
     }
 }
 
+class costPieChart{
+    constructor() {
+        this.costData = costPercentage;
+        this.payData = payPercentage;
+        this.init();
+    }
+    init() {
+        this.renderCost();
+        this.renderPay();
+    }
+
+    search() {
+        let self = this;
+        let obj = {
+            url: "/Cost/PieChart/",
+            success: function (result) {
+                self.costData = result["CostData"];
+                self.payData = result["PayData"];
+                self.init();
+            }
+        }
+        $.Ajaxobj(obj);
+    }
+    renderCost() {
+        let self = this;
+        let data=self.costData;
+        let arr = [];
+        for (var i = 0; i < data.length; i++) {
+            let category = [];
+            category[0] = data[i].name;
+            category[1] = data[i].Percentage;
+            arr.push(category);
+        }
+        $('#pieCostTypeChart').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '消费类型统计图'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    showInLegend: true,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '花销占比',
+                data:arr
+            }]
+        });
+    }
+    renderPay() {
+        let self = this;
+        let data = self.payData;
+        let arr = [];
+        for (var i = 0; i < data.length; i++) {
+            let category = [];
+            category[0] = data[i].name;
+            category[1] = data[i].Percentage;
+            arr.push(category);
+        }
+        $('#piePayTypeChart').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '支付类型统计图'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    showInLegend: true,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '花销占比',
+                data: arr
+            }]
+        });
+    }
+}
+
 jQuery(document).ready(function () {
     let table = new costTable({
         rows: 8,
@@ -223,6 +334,7 @@ jQuery(document).ready(function () {
         }
     });
     let lineChart = new costLineChart();
+    let pieChart = new costPieChart();
     $(".actions .input").on("keyup change", function () {
         let buy = $("#buy");
         let money = $("#money").val();
@@ -260,6 +372,10 @@ jQuery(document).ready(function () {
                     buy.addClass("disabled");
                     table.today();
                     table.addRow(result);
+                    //折线图和饼图更新
+                    lineChart.year = table.year;
+                    lineChart.search();
+                    pieChart.search();
                 }
             }
             $.Ajaxobj(obj);
