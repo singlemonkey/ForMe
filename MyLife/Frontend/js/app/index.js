@@ -122,6 +122,12 @@ jQuery(document).ready(function () {
                         icon: "",
                         isActive: false
                     },
+                    {
+                        title: "愿望单",
+                        url: "/Wish/WishIndex",
+                        icon: "",
+                        isActive: false
+                    },
                 ]
             },
             {

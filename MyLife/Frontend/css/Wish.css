@@ -1,0 +1,28 @@
+/* line 1, ../scss/Wish.scss */
+.container {
+  height: 100%;
+  padding: 20px;
+}
+
+/* line 5, ../scss/Wish.scss */
+.title {
+  font-size: 14px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+/* line 13, ../scss/Wish.scss */
+.title .remind {
+  color: #e38800;
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+/* line 19, ../scss/Wish.scss */
+.wish-search {
+  width: 250px;
+  display: inline;
+}

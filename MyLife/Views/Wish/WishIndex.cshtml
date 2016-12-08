@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "WishIndex";
+}
+<link rel="stylesheet" href="~/Frontend/css/Wish.css"/>
+<div class="container">
+    <div class="title">
+        <span class="remind">提示</span>
+        <span class="title-content">
+            愿望单会有冷冻期，通常与清单金额和愿望系数有关，解冻期过后可酌情购买。愿望图需自行绘制并上传。
+        </span>
+    </div>
+    <div class="search-bar">
+        <input type="text" class="wish-search input" />
+        <button type="button" class="button button-primary search">
+            <span>查询</span>
+        </button>
+        <button type="button" class="button button-primary add">
+            <span>添加愿望单</span>        
+        </button>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Frontend/js/app/wish.js"></script>
+    <script>
+        let wishs=@Html.Raw(Json.Encode(ViewData["wishUnits"]));
+    </script>
+}
+
+

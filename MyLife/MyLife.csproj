@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WishController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -973,6 +974,7 @@
     <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
+    <Content Include="Frontend\css\Wish.css" />
     <Content Include="Frontend\fonts\fontawesome-webfont.eot" />
     <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
     <Content Include="Frontend\fonts\fontawesome-webfont.ttf" />
@@ -992,6 +994,7 @@
     <Content Include="Frontend\js\app\cost.js" />
     <Content Include="Frontend\js\app\dictonary.js" />
     <Content Include="Frontend\js\app\index.js" />
+    <Content Include="Frontend\js\app\wish.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
     <Content Include="Frontend\js\JsRender.js" />
     <Content Include="Frontend\assets\dialog\css\.DS_Store" />
@@ -1043,6 +1046,8 @@
     <Content Include="Frontend\scss\Dictonary.scss" />
     <Content Include="Views\Cost\Index.cshtml" />
     <Content Include="Frontend\scss\Cost.scss" />
+    <Content Include="Views\Wish\WishIndex.cshtml" />
+    <Content Include="Frontend\scss\Wish.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />

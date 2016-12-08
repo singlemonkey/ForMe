@@ -35,7 +35,8 @@ namespace MyLife.Context
                     Price=300
                 }
             };
-            
+            Wishs.ForEach(w=>context.Wishs.Add(w));
+            context.SaveChanges();
 
             var costs = new List<CostModel> {
                 new CostModel {

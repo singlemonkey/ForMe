@@ -29,4 +29,10 @@ namespace MyLife.Models
         /// </summary>
         public DateTime EndDate { get; set; }
     }
+    public class WishUnit
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public IEnumerable<WishModel> WishUnitList { get; set; }
+    }
 }
