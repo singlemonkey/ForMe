@@ -56,6 +56,11 @@
                 border-bottom:0 !important;
             }
         }
+        tr:first-child{
+            td{
+                border-bottom:1px solid #e1e6eb !important;
+            }
+        }
     }
 }
 .wishName{
