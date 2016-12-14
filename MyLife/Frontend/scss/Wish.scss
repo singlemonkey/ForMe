@@ -1,4 +1,15 @@
-﻿.container{
+﻿.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    font-size: 16px;
+    color:greenyellow;
+    margin-left:5px;
+    margin-bottom:-1px;
+}
+.container{
     height:100%;
     padding:20px;
 }
@@ -19,4 +30,55 @@
 .wish-search{
     width:250px;
     display:inline;
+}
+.search{
+    margin-left:20px;
+}
+.add{
+    float:right;
+}
+.raty{
+    float:right;
+}
+.wishList{
+    height:209px;
+    overflow:auto;
+    table{
+        width:100%;
+        tr{
+            td{
+                border-bottom: 1px solid #e1e6eb !important;
+                background-color: #F9F9FA
+            }
+        }
+        tr:last-child{
+            td{
+                border-bottom:0 !important;
+            }
+        }
+    }
+}
+.wishName{
+    color:#0094ff;
+    &:hover{
+        color:#b200ff;
+    }
+}
+#wishPic{
+    height: 100%;
+    width: 100%;
+    border: 0 !important;
+    vertical-align: middle;
+    outline: 0;
+}
+.control{
+    text-align:right !important;
+    .button{
+        margin-right:8px;
+    }
+}
+.countdown{
+    margin-right: 10px;
+    font-size:18px;
+    vertical-align: middle;
 }

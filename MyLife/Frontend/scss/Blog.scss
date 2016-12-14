@@ -4,11 +4,10 @@
 @import "blog/*.png";
 
 .container{
-    width:calc(100% - 180px);
     padding:20px 90px;
     margin:0 auto;
     position:relative;
-    height:calc(100% - 81px);
+    height:100%;
     overflow:auto;
 }
 
@@ -186,7 +185,7 @@
             display:block;
             position:relative;
             height:48px;
-            line-height:48px;
+            line-height:46px;
             border-bottom:1px solid #e5e5e5;
             .list-table-cell{
                 font-size:14px;
@@ -306,7 +305,6 @@
     .menu-title{
         padding: 0 10px 8px 10px;
         .title-input{
-            height: 20px;
             line-height: 20px;
             padding: 3px 9px;
             margin-right: 0px;

@@ -59,7 +59,7 @@
 /* line 44, ../scss/Dictonary.scss */
 .dictionaryItem > ul > li > a.btn {
   position: absolute;
-  top: 0;
+  top: -4px;
   right: 0;
   display: none;
 }

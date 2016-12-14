@@ -19,9 +19,82 @@
             <span>添加愿望单</span>        
         </button>
     </div>
+    <div id="wishContent">
+        
+    </div>
 </div>
 @section scripts{
+    <script src="~/Frontend/assets/icon/iconfont.js"></script>
+    <script src="~/Frontend/assets/raty/lib/jquery.raty.js"></script>
     <script src="~/Frontend/js/app/wish.js"></script>
+    <script src="~/Frontend/js/JsRender.js"></script>
+    <script type="text/x-jsrender" id="wishs">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        {{:Name}}
+                        {{if Flag==2}}
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-roundcheckfill"></use>
+                            </svg>
+                        {{/if}}
+                    </th>
+                    <th width="300px;">
+                        <div data-id="{{:ID}}" class="raty"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="nopadding">
+                        <div class="wishList">
+                            <table>
+                                <tbody>
+                                    {{for WishUnitList}}
+                                        <tr>
+                                            <td style="width:150px;"  >
+                                                <a href="#" class="wishName" data-url="{{:ImgUrl}}">{{:Name}}</a>
+                                            </td>
+                                            <td style="width:60px">{{:Price}}</td>
+                                            <td>{{:Info}}</td>
+                                            <td style="width:100px;">{{:CreateDate}}</td>
+                                            <td style="width:100px;padding:0 !important">
+                                                {{if Flag==-0 || Flag==1}}
+                                                    <button data-id="{{:ID}}" class="button button-caution delete">删除</button>
+                                                {{/if}}                                                
+                                            </td>
+                                        </tr>
+                                    {{/for}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td class="nopadding">
+                        <img data-id="{{:ID}}" id="wishPic" alt="清单样品" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>总计：{{:Total}}</td>
+                    <td class="control">
+                        {{if Flag==0}}
+                            <button class="button button-caution addItem">添加</button>
+                            <button class="button button-primary lock">锁定</button>
+                        {{/if}}
+                        {{if Flag==-1}}
+                            <span class="countdown" data-id="{{:ID}}"></span>
+                            <button class="button button-primary giveUp">放弃</button>
+                        {{/if}}
+                        {{if Flag==1}}
+                            <button class="button button-primary buy">购买</button>
+                        {{/if}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </script>
     <script>
         let wishs=@Html.Raw(Json.Encode(ViewData["wishUnits"]));
     </script>

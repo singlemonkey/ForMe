@@ -21,8 +21,17 @@ ul,li{
         visibility:hidden
     }
 }
+.nopadding{
+    padding:0 !important;
+}
+a{
+    text-decoration:none !important;
+}
 a:hover{
     text-decoration:none !important;
+}
+a:focus{
+    outline-style:none !important;
 }
 hr{
 	margin-top: 4px;
@@ -110,7 +119,6 @@ table{
     width:100%;
     td,th{
         line-height: 1.428571429;
-        vertical-align: top;
     }
     thead{
         tr:first-child{
@@ -127,9 +135,9 @@ table{
             text-align:left;
         }
     }
-    tbody{
+    >tbody{
         background-color:#fff;
-        tr{
+        >tr{
             &:last-child{
                 td{
                     border-bottom:0;

@@ -1,6 +1,7 @@
 ﻿.button {
   color: #666;
   background-color: #EEE;
+  vertical-align:middle;
   border-color: #EEE;
   font-weight: 300;
   font-size: 12px;
@@ -8,7 +9,7 @@
   text-decoration: none;
   text-align: center;
   line-height: 30px;
-  height: 32px;
+  height: 34px;
   padding: 0 15px;
   margin: 0;
   display: inline-block;

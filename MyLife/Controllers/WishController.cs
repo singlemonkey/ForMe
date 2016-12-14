@@ -26,8 +26,12 @@ namespace MyLife.Controllers
                 WishUnit unit = new WishUnit();
                 unit.ID = wishList[i].ID;
                 unit.Name = wishList[i].Name;
+                unit.Raty = wishList[i].Degree;
+                unit.EndDate = wishList[i].EndDate;
+                unit.Flag = wishList[i].Flag;
                 int ParentID = wishList[i].ID;
                 List<WishModel> childWishs = db.Wishs.Where(w => w.ParentID == ParentID).ToList();
+                unit.Total = childWishs.Sum(w=>w.Price);
                 unit.WishUnitList = childWishs;
                 unitList.Add(unit);
             }

@@ -16,6 +16,7 @@ namespace MyLife.Models
         /// 心急程度0->1,1->0.9,2->0.7,3->0.5,4->0.3,5->0.1
         /// </summary>
         public int Degree { get; set; }
+        public int Flag { get; set; }
 
         /// <summary>
         /// 说明为何想要买这个东西
@@ -33,6 +34,10 @@ namespace MyLife.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public int Raty { get; set; }
+        public decimal Total { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Flag { get; set; }
         public IEnumerable<WishModel> WishUnitList { get; set; }
     }
 }

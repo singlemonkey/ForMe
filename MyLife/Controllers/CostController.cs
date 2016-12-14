@@ -132,7 +132,7 @@ namespace MyLife.Controllers
         public JsonResult PieChart()
         {
             List<CostPieModel> costList = PieChartCostType().ToList();
-            List<CostPieModel> payList = PieChartCostType().ToList();
+            List<CostPieModel> payList = PieChartPayType().ToList();
             return Json(new {
                 CostData =costList,
                 PayData = payList

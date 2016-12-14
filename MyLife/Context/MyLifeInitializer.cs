@@ -21,7 +21,8 @@ namespace MyLife.Context
                     Info="学习绘画",
                     Name="绘画套装",
                     ParentID=0,
-                    Price=300
+                    Price=300,
+                    Flag=-1
                 },
                 new WishModel {
                     ID=2,
@@ -32,7 +33,8 @@ namespace MyLife.Context
                     Info="铅笔",
                     Name="铅笔",
                     ParentID=1,
-                    Price=300
+                    Price=300,
+                    Flag=-1
                 }
             };
             Wishs.ForEach(w=>context.Wishs.Add(w));
