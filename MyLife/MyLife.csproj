@@ -999,6 +999,7 @@
     <Content Include="Frontend\images\blog\doc.png" />
     <Content Include="Frontend\images\blog\folder.png" />
     <Content Include="Frontend\images\blog\icon-setting.png" />
+    <Content Include="Frontend\images\wish\buy.gif" />
     <Content Include="Frontend\js\app\app.js" />
     <Content Include="Frontend\js\app\blog.js" />
     <Content Include="Frontend\js\app\cost.js" />

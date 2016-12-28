@@ -17,12 +17,13 @@ namespace MyLife.Context
                     CreateDate=DateTime.Parse("2016-11-24"),
                     Degree=5,
                     EndDate=DateTime.Parse("2016-12-24"),
-                    ImgUrl="",
+                    ImgUrl="../Frontend/images/wish/buy.gif",
                     Info="学习绘画",
                     Name="绘画套装",
                     ParentID=0,
                     Price=300,
-                    Flag=-1
+                    Flag=-1,
+                   
                 },
                 new WishModel {
                     ID=2,

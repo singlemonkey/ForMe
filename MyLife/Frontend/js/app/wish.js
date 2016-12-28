@@ -6,6 +6,12 @@
     init() {
         this.render();
     }
+    addWish(result) {
+        let tmpl = $.templates("#wishs");
+        let unit = tmpl.render(result);
+        let readonly = false;
+        $("#wishContent").append(unit);
+    }
     render() {
         let wish = this.wishs;
         for (var i = 0, l = wish.length; i < l; i++) {
@@ -45,8 +51,7 @@
         }, 1000,id,date);
     }
     setImg(url) {
-        let self = this;
-        $("#wishPic").attr("src",'');
+        $("#wishPic").attr("src",url);
     }
     setRaty(id, raty, readonly) {
         let self = this;
@@ -60,4 +65,21 @@
 }
 jQuery(document).ready(function () {
     let wish = new Wish();
+    $(".add").on("click", function () {
+        $('#addModal').modal();
+    });
+    $(".save").on("click", function () {
+        let wishName = $("#wishName").val().trim();
+        if (wishName) {
+            let obj = {
+                url: "/Wish/AddWish/?name=" + wishName,
+                success: function (result) {
+                    wish.addWish(result);
+                    $("#wishName").val("");
+                    $("#addModal").modal("hide");
+                }
+            }
+            $.Ajaxobj(obj);
+        }
+    });
 });

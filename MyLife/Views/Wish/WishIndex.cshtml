@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "WishIndex";
+    ViewBag.Title = "愿望单";
 }
 <link rel="stylesheet" href="~/Frontend/css/Wish.css"/>
+<link rel="stylesheet" href="~/Frontend/assets/modal/css/bootstrap.css" />
 <div class="container">
     <div class="title">
         <span class="remind">提示</span>
@@ -23,7 +24,25 @@
         
     </div>
 </div>
+<div class="modal fade" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">添加愿望清单</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="input" id="wishName" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button" data-dismiss="modal">取 消</button>
+                <button type="button" class="button button-primary save">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section scripts{
+    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>
     <script src="~/Frontend/assets/icon/iconfont.js"></script>
     <script src="~/Frontend/assets/raty/lib/jquery.raty.js"></script>
     <script src="~/Frontend/js/app/wish.js"></script>
@@ -71,7 +90,7 @@
                         </div>
                     </td>
                     <td class="nopadding">
-                        <img data-id="{{:ID}}" id="wishPic" alt="清单样品" />
+                        <img data-id="{{:ID}}" id="wishPic" alt="清单样品" src="{{:ImgUrl}}" />
                     </td>
                 </tr>
             </tbody>

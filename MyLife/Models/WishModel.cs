@@ -24,11 +24,11 @@ namespace MyLife.Models
         public string Info { get; set; }
         public decimal Price { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         /// <summary>
         /// 过了解冻期的物品方可购买
         /// </summary>
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
     public class WishUnit
     {
@@ -36,7 +36,7 @@ namespace MyLife.Models
         public string Name { get; set; }
         public int Raty { get; set; }
         public decimal Total { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public int Flag { get; set; }
         public IEnumerable<WishModel> WishUnitList { get; set; }
     }

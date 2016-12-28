@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace MyLife.Controllers
 {
-    public class WishController : Controller
+    public class WishController : BaseController
     {
         private MyLifeContext db = new MyLifeContext();
         // GET: Wish
@@ -37,6 +37,18 @@ namespace MyLife.Controllers
             }
             ViewData["wishUnits"] = unitList;
             return View();
+        }
+        public JsonResult AddWish(string name)
+        {
+            WishModel model = new WishModel();
+            model.ParentID = 0;
+            model.ImgUrl = "../Frontend/images/wish/buy.gif";
+            model.Degree = 0;
+            model.Flag = 0;
+            model.Name = name;
+            db.Entry(model).State = EntityState.Added;
+            db.SaveChanges();
+            return Json(model);
         }
     }
 }

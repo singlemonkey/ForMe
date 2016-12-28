@@ -265,8 +265,8 @@ table {
     word-break: break-all;
 }
 .dialog-foot {
-    padding: 10px 40px 30px 40px;
-    height: 32px;
+    padding:10px 40px 50px 40px;
+    height: 38px;
 }
 .confirm-dialog-foot {
     text-align: right;
