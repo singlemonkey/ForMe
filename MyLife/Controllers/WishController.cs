@@ -16,39 +16,34 @@ namespace MyLife.Controllers
         // GET: Wish
         public ActionResult WishIndex()
         {
-            List<WishUnit> unitList = new List<WishUnit>();
-            var wishs = from wish in db.Wishs
-                        where wish.ParentID == 0
-                        select wish;
-            List<WishModel> wishList = wishs.ToList();
-            for (int i = 0; i < wishList.Count(); i++)
-            {
-                WishUnit unit = new WishUnit();
-                unit.ID = wishList[i].ID;
-                unit.Name = wishList[i].Name;
-                unit.Raty = wishList[i].Degree;
-                unit.EndDate = wishList[i].EndDate;
-                unit.Flag = wishList[i].Flag;
-                int ParentID = wishList[i].ID;
-                List<WishModel> childWishs = db.Wishs.Where(w => w.ParentID == ParentID).ToList();
-                unit.Total = childWishs.Sum(w=>w.Price);
-                unit.WishUnitList = childWishs;
-                unitList.Add(unit);
-            }
-            ViewData["wishUnits"] = unitList;
             return View();
         }
-        public JsonResult AddWish(string name)
+
+        public JsonResult AddWish(WishModel model)
         {
-            WishModel model = new WishModel();
-            model.ParentID = 0;
-            model.ImgUrl = "../Frontend/images/wish/buy.gif";
-            model.Degree = 0;
-            model.Flag = 0;
-            model.Name = name;
-            db.Entry(model).State = EntityState.Added;
+            WishModel wish = new WishModel();
+            wish.CreateDate = DateTime.Now;
+            wish.Degree = model.Degree;
+            wish.EndDate = DateTime.Now.AddSeconds(GetSecond(model.Price, model.Degree));
+            wish.Flag = -1;
+            wish.Info = model.Info;
+            wish.Name = model.Name;
+            wish.Price = model.Price;
+            db.Entry(wish).State = EntityState.Added;
             db.SaveChanges();
-            return Json(model);
+            return Json(wish);
+        }
+
+        //根据金额与期望值，随机计算出一个时间点
+        public int GetSecond(decimal price,int raty)
+        {
+            decimal?  money=db.Administrators.SingleOrDefault(a=>a.ID==1).Wages/10;
+            decimal totalMoney = db.Wishs.Where(w => w.Flag == -1).Sum(w=>w.Price)+ price;
+            int totalSecond =Convert.ToInt32((totalMoney/money) * 30*24*6*6);
+            Random random = new Random();
+            int degree= random.Next(100-raty*10,100);
+            int second =Convert.ToInt32(totalSecond * degree);
+            return second;
         }
     }
 }

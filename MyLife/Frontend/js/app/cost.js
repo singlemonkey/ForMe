@@ -1,7 +1,7 @@
 ﻿class costTable {
     constructor(props) {
         this.year = $.getYear();
-        this.month = $.getMonth();
+        this.month =parseInt( $.getMonth());
         this.data = costs;
         this.callback = props.callback;
         this.lineHeight = 42;
@@ -49,7 +49,7 @@
     }
 
     today() {
-        this.month = $.getMonth();
+        this.month =parseInt($.getMonth());
         this.year = $.getYear();
         this.search();
     }

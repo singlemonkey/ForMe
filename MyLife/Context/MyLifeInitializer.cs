@@ -16,27 +16,13 @@ namespace MyLife.Context
                     ID=1,
                     CreateDate=DateTime.Parse("2016-11-24"),
                     Degree=5,
-                    EndDate=DateTime.Parse("2016-12-24"),
-                    ImgUrl="../Frontend/images/wish/buy.gif",
-                    Info="学习绘画",
-                    Name="绘画套装",
-                    ParentID=0,
+                    EndDate=DateTime.Parse("2017-12-24"),
+                    Info="学习编程",
+                    Name="imac台式电脑",
                     Price=300,
                     Flag=-1,
                    
                 },
-                new WishModel {
-                    ID=2,
-                    CreateDate=DateTime.Parse("2016-11-24"),
-                    Degree=5,
-                    EndDate=DateTime.Parse("2016-12-24"),
-                    ImgUrl="",
-                    Info="铅笔",
-                    Name="铅笔",
-                    ParentID=1,
-                    Price=300,
-                    Flag=-1
-                }
             };
             Wishs.ForEach(w=>context.Wishs.Add(w));
             context.SaveChanges();
@@ -59,7 +45,7 @@ namespace MyLife.Context
                     Account="903012206",
                     Password="missyou?",
                     Name="日光倾城",
-                    Money=800
+                    Wages=3000
                 }
             };
             administrators.ForEach(a => context.Administrators.Add(a));

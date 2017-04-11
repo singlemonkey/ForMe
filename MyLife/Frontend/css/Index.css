@@ -36,19 +36,20 @@ ul, li {
 /* line 27, ../scss/base.scss */
 a {
   text-decoration: none !important;
+  cursor: pointer;
 }
 
-/* line 30, ../scss/base.scss */
+/* line 31, ../scss/base.scss */
 a:hover {
   text-decoration: none !important;
 }
 
-/* line 33, ../scss/base.scss */
+/* line 34, ../scss/base.scss */
 a:focus {
   outline-style: none !important;
 }
 
-/* line 36, ../scss/base.scss */
+/* line 37, ../scss/base.scss */
 hr {
   margin-top: 4px;
   border-bottom: 0;
@@ -61,7 +62,7 @@ hr {
   box-sizing: content-box;
 }
 
-/* line 45, ../scss/base.scss */
+/* line 46, ../scss/base.scss */
 .input {
   box-sizing: border-box;
   display: block;
@@ -82,29 +83,29 @@ hr {
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-/* line 59, ../scss/base.scss */
+/* line 60, ../scss/base.scss */
 .input:focus {
   outline: 0;
   border-color: #a6a6a6 !important;
 }
 
-/* line 64, ../scss/base.scss */
+/* line 65, ../scss/base.scss */
 .btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 68, ../scss/base.scss */
+/* line 69, ../scss/base.scss */
 .btn-group .btn {
   position: relative;
   float: left;
 }
-/* line 72, ../scss/base.scss */
+/* line 73, ../scss/base.scss */
 .btn-group > .btn + .btn {
   margin-left: -1px;
 }
 
-/* line 76, ../scss/base.scss */
+/* line 77, ../scss/base.scss */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -120,21 +121,48 @@ hr {
   text-decoration: none;
 }
 
-/* line 90, ../scss/base.scss */
+/* line 91, ../scss/base.scss */
 .btn-default {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
 
+/* line 97, ../scss/base.scss */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+/* line 100, ../scss/base.scss */
+.form .row {
+  margin: 5px 0;
+  display: flex;
+  min-height: 38px;
+}
+/* line 104, ../scss/base.scss */
+.form .row .group {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+}
 /* line 108, ../scss/base.scss */
+.form .row .group label {
+  flex: 1;
+  text-align: center;
+}
+/* line 112, ../scss/base.scss */
+.form .row .group .input-wrap {
+  flex: 4;
+}
+
+/* line 131, ../scss/base.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
   box-sizing: border-box;
 }
 
-/* line 113, ../scss/base.scss */
+/* line 136, ../scss/base.scss */
 .table {
   background: #F5F6FA;
   font-size: 12px;
@@ -143,15 +171,15 @@ table {
   border: 1px solid #e1e6eb;
   width: 100%;
 }
-/* line 120, ../scss/base.scss */
+/* line 143, ../scss/base.scss */
 .table td, .table th {
   line-height: 1.428571429;
 }
-/* line 125, ../scss/base.scss */
+/* line 148, ../scss/base.scss */
 .table thead tr:first-child th {
   border-top: 0;
 }
-/* line 129, ../scss/base.scss */
+/* line 152, ../scss/base.scss */
 .table thead tr th {
   padding: 8px 8px;
   font-weight: normal;
@@ -160,22 +188,22 @@ table {
   background-color: #F5F6FA;
   text-align: left;
 }
-/* line 138, ../scss/base.scss */
+/* line 161, ../scss/base.scss */
 .table > tbody {
   background-color: #fff;
 }
-/* line 142, ../scss/base.scss */
+/* line 165, ../scss/base.scss */
 .table > tbody > tr:last-child td {
   border-bottom: 0;
 }
-/* line 146, ../scss/base.scss */
+/* line 169, ../scss/base.scss */
 .table > tbody > tr td {
   padding: 12px 8px;
   border-top: 0px;
   border-bottom: 1px solid #e1e6eb;
   vertical-align: middle;
 }
-/* line 154, ../scss/base.scss */
+/* line 177, ../scss/base.scss */
 .table > tbody tr.nodata td {
   height: 100px;
   text-align: center;
@@ -183,11 +211,11 @@ table {
   vertical-align: middle;
   font-size: 22px;
 }
-/* line 162, ../scss/base.scss */
+/* line 185, ../scss/base.scss */
 .table > tbody tr.nodata:hover td {
   background-color: #FFF !important;
 }
-/* line 170, ../scss/base.scss */
+/* line 193, ../scss/base.scss */
 .table tfoot tr td {
   padding: 8px 8px;
   font-weight: normal;
@@ -197,18 +225,18 @@ table {
   text-align: left;
 }
 
-/* line 181, ../scss/base.scss */
+/* line 204, ../scss/base.scss */
 .table-hover tbody tr:hover td {
   background-color: #F9F9FA;
 }
 
-/* line 184, ../scss/base.scss */
+/* line 207, ../scss/base.scss */
 .scroll tbody {
   display: block;
   overflow-y: auto;
 }
 
-/* line 188, ../scss/base.scss */
+/* line 211, ../scss/base.scss */
 .scroll thead, .scroll tbody tr, .scroll tfoot tr {
   display: table;
   width: 100%;
@@ -226,7 +254,6 @@ body {
 /* line 11, ../scss/Index.scss */
 .navbar {
   background-color: #e5e5e5;
-  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -234,7 +261,7 @@ body {
   height: 50px;
 }
 
-/* line 20, ../scss/Index.scss */
+/* line 19, ../scss/Index.scss */
 .main-container {
   position: absolute;
   width: 100%;
@@ -243,7 +270,7 @@ body {
   background-color: #f0f0f0;
   z-index: 100;
 }
-/* line 27, ../scss/Index.scss */
+/* line 26, ../scss/Index.scss */
 .main-container .sidebar {
   width: 180px;
   display: block;
@@ -254,14 +281,14 @@ body {
   z-index: 102;
   overflow-x: hidden;
 }
-/* line 36, ../scss/Index.scss */
+/* line 35, ../scss/Index.scss */
 .main-container .sidebar .sidebar-content {
   width: 200px;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
 }
-/* line 43, ../scss/Index.scss */
+/* line 42, ../scss/Index.scss */
 .main-container .content {
   left: 180px;
   background-color: #f7f7f7;
@@ -273,13 +300,13 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 53, ../scss/Index.scss */
+/* line 52, ../scss/Index.scss */
 .main-container .content .header {
   height: 40px;
   border-bottom: 1px solid #e5e5e5;
   position: relative;
 }
-/* line 57, ../scss/Index.scss */
+/* line 56, ../scss/Index.scss */
 .main-container .content .header span {
   letter-spacing: 10px;
   font-size: 18px;
@@ -294,11 +321,11 @@ body {
   overflow: hidden;
 }
 
-/* line 74, ../scss/Index.scss */
+/* line 73, ../scss/Index.scss */
 .sidebar-nav {
   width: 180px;
 }
-/* line 76, ../scss/Index.scss */
+/* line 75, ../scss/Index.scss */
 .sidebar-nav .sidebar-title {
   height: 40px;
   background: #22282e;
@@ -307,11 +334,11 @@ body {
   position: relative;
   cursor: pointer;
 }
-/* line 83, ../scss/Index.scss */
+/* line 82, ../scss/Index.scss */
 .sidebar-nav .sidebar-title:hover {
   background-color: #414d5c;
 }
-/* line 87, ../scss/Index.scss */
+/* line 86, ../scss/Index.scss */
 .sidebar-nav .sidebar-title-icon {
   display: inline-block;
   margin: 0 8px 8px 20px;
@@ -321,25 +348,25 @@ body {
   -webkit-transition: -webkit-transform 0.25s;
   transition: transform 0.25s;
 }
-/* line 93, ../scss/Index.scss */
+/* line 92, ../scss/Index.scss */
 .sidebar-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
 }
-/* line 99, ../scss/Index.scss */
+/* line 98, ../scss/Index.scss */
 .sidebar-nav .sidebar-trans {
   -moz-transition: all 0.25s ease, ease 0.25s;
   -o-transition: all 0.25s ease, ease 0.25s;
   -webkit-transition: all 0.25s ease, ease 0.25s;
   transition: all 0.25s ease, ease 0.25s;
 }
-/* line 102, ../scss/Index.scss */
+/* line 101, ../scss/Index.scss */
 .sidebar-nav .nav-item {
   position: relative;
 }
-/* line 106, ../scss/Index.scss */
+/* line 105, ../scss/Index.scss */
 .sidebar-nav li a {
   display: block;
   width: 100%;
@@ -347,23 +374,23 @@ body {
   line-height: 40px;
   overflow: hidden;
 }
-/* line 112, ../scss/Index.scss */
+/* line 111, ../scss/Index.scss */
 .sidebar-nav li a:hover {
   background: #37424f;
 }
-/* line 114, ../scss/Index.scss */
+/* line 113, ../scss/Index.scss */
 .sidebar-nav li a:hover .nav-icon, .sidebar-nav li a:hover .nav-title {
   color: #fff;
 }
-/* line 120, ../scss/Index.scss */
+/* line 119, ../scss/Index.scss */
 .sidebar-nav li.active a {
   background: #0099cc;
 }
-/* line 122, ../scss/Index.scss */
+/* line 121, ../scss/Index.scss */
 .sidebar-nav li.active a .nav-icon, .sidebar-nav li.active a .nav-title {
   color: #fff;
 }
-/* line 128, ../scss/Index.scss */
+/* line 127, ../scss/Index.scss */
 .sidebar-nav .nav-icon {
   width: 50px;
   text-align: center;
@@ -371,7 +398,7 @@ body {
   float: left;
   color: #aeb9c2;
 }
-/* line 135, ../scss/Index.scss */
+/* line 134, ../scss/Index.scss */
 .sidebar-nav .nav-title {
   float: left;
   overflow: hidden;
@@ -381,19 +408,19 @@ body {
   display: block;
   width: 130px;
 }
-/* line 145, ../scss/Index.scss */
+/* line 144, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title {
   background-color: #37424f;
   border-bottom: 1px solid #414d5c;
 }
-/* line 149, ../scss/Index.scss */
+/* line 148, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold .sidebar-title-icon {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-/* line 152, ../scss/Index.scss */
+/* line 151, ../scss/Index.scss */
 .sidebar-nav.sidebar-nav-fold ul {
   height: 0 !important;
   overflow: hidden;

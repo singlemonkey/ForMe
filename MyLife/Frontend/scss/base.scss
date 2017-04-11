@@ -26,6 +26,7 @@ ul,li{
 }
 a{
     text-decoration:none !important;
+    cursor:pointer;
 }
 a:hover{
     text-decoration:none !important;
@@ -91,6 +92,28 @@ hr{
     color:#333;
     background-color:#fff;
     border-color:#ccc;
+}
+//表单样式
+.form{
+    display:flex;
+    flex-direction:column;
+    .row{
+        margin:5px 0;
+        display:flex;
+        min-height:38px;
+        .group{
+            display:flex;
+            flex:1 1 0;
+            align-items:center;
+            label{
+                flex:1;
+                text-align:center;
+            }
+            .input-wrap{
+                flex:4
+            }
+        }
+    }
 }
 
 @mixin opacity($opacity, $important: 0) {

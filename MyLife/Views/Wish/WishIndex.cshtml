@@ -8,7 +8,7 @@
     <div class="title">
         <span class="remind">提示</span>
         <span class="title-content">
-            愿望单会有冷冻期，通常与清单金额和愿望系数有关，解冻期过后可酌情购买。愿望图需自行绘制并上传。
+            愿望单会有冷冻期，通常与清单金额和愿望系数有关，解冻期过后可酌情购买。
         </span>
     </div>
     <div class="search-bar">
@@ -21,7 +21,7 @@
         </button>
     </div>
     <div id="wishContent">
-        
+
     </div>
 </div>
 <div class="modal fade" id="addModal">
@@ -31,12 +31,41 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">添加愿望清单</h4>
             </div>
-            <div class="modal-body">
-                <input type="text" class="input" id="wishName" />
+            <div class="modal-body form">
+                <div class="row">
+                    <div class="group">
+                        <label>名称</label>
+                        <div class="input-wrap">
+                            <input type="text" class="input" id="wishName" />
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label>价格</label>
+                        <div class="input-wrap">
+                            <input type="number" class="input" id="wishPrice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="group">
+                        <label>用途</label>
+                        <div class="input-wrap" style="flex:9">
+                            <textarea class="input" id="wishPurpose" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="group">
+                        <label>需求度</label>
+                        <div class="input-wrap"  style="flex:9">
+                            <div id="raty"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="button" data-dismiss="modal">取 消</button>
-                <button type="button" class="button button-primary save">保 存</button>
+                <button type="button" class="button button-primary save disabled">保 存</button>
             </div>
         </div>
     </div>
@@ -47,73 +76,6 @@
     <script src="~/Frontend/assets/raty/lib/jquery.raty.js"></script>
     <script src="~/Frontend/js/app/wish.js"></script>
     <script src="~/Frontend/js/JsRender.js"></script>
-    <script type="text/x-jsrender" id="wishs">
-        <table class="table {{if Flag==-1}} vague {{/if}}">
-            <thead>
-                <tr>
-                    <th>
-                        {{:Name}}
-                        {{if Flag==2}}
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-roundcheckfill"></use>
-                            </svg>
-                        {{/if}}
-                    </th>
-                    <th width="300px;">
-                        <div data-id="{{:ID}}" class="raty"></div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="nopadding">
-                        <div class="wishList">
-                            <table>
-                                <tbody>
-                                    {{for WishUnitList}}
-                                        <tr>
-                                            <td style="width:150px;"  >
-                                                <a href="#" class="wishName" data-url="{{:ImgUrl}}">{{:Name}}</a>
-                                            </td>
-                                            <td style="width:60px">{{:Price}}</td>
-                                            <td>{{:Info}}</td>
-                                            <td style="width:100px;">{{:CreateDate}}</td>
-                                            <td style="width:100px;padding:0 !important">
-                                                {{if Flag==-0 || Flag==1}}
-                                                    <button data-id="{{:ID}}" class="button button-caution delete">删除</button>
-                                                {{/if}}                                                
-                                            </td>
-                                        </tr>
-                                    {{/for}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                    <td class="nopadding">
-                        <img data-id="{{:ID}}" id="wishPic" alt="清单样品" src="{{:ImgUrl}}" />
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>总计：{{:Total}}</td>
-                    <td class="control">
-                        {{if Flag==0}}
-                            <button class="button button-caution addItem">添加</button>
-                            <button class="button button-primary lock">锁定</button>
-                        {{/if}}
-                        {{if Flag==-1}}
-                            <span class="countdown" data-id="{{:ID}}"></span>
-                            <button class="button button-primary giveUp">放弃</button>
-                        {{/if}}
-                        {{if Flag==1}}
-                            <button class="button button-primary buy">购买</button>
-                        {{/if}}
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </script>
     <script>
         let wishs=@Html.Raw(Json.Encode(ViewData["wishUnits"]));
     </script>
