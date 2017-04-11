@@ -41,14 +41,13 @@
     float:right;
 }
 .wishList{
-    height:209px;
     overflow:auto;
     table{
         width:100%;
         tr{
             td{
                 border-bottom: 1px solid #e1e6eb !important;
-                background-color: #F9F9FA
+                background-color:rgba(249,249,250,0.2);
             }
         }
         tr:last-child{
@@ -56,12 +55,10 @@
                 border-bottom:0 !important;
             }
         }
-        tr:first-child{
-            td{
-                border-bottom:1px solid #e1e6eb !important;
-            }
-        }
     }
+}
+.bcImg{
+    background-size:100% 100% !important;
 }
 .wishName{
     color:#0094ff;
@@ -69,10 +66,10 @@
         color:#b200ff;
     }
 }
-#wishPic{
+.wishPic{
     height: 100%;
     width: 100%;
-    border: 0 !important;
+    border-bottom:1px solid #e1e6eb;
     vertical-align: middle;
     outline: 0;
 }

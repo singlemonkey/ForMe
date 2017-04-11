@@ -57,55 +57,55 @@
 
 /* line 43, ../scss/Wish.scss */
 .wishList {
-  height: 209px;
   overflow: auto;
 }
-/* line 46, ../scss/Wish.scss */
+/* line 45, ../scss/Wish.scss */
 .wishList table {
   width: 100%;
 }
-/* line 49, ../scss/Wish.scss */
+/* line 48, ../scss/Wish.scss */
 .wishList table tr td {
   border-bottom: 1px solid #e1e6eb !important;
-  background-color: #F9F9FA;
+  background-color: rgba(249, 249, 250, 0.2);
 }
-/* line 55, ../scss/Wish.scss */
+/* line 54, ../scss/Wish.scss */
 .wishList table tr:last-child td {
   border-bottom: 0 !important;
 }
+
 /* line 60, ../scss/Wish.scss */
-.wishList table tr:first-child td {
-  border-bottom: 1px solid #e1e6eb !important;
+.bcImg {
+  background-size: 100% 100% !important;
 }
 
-/* line 66, ../scss/Wish.scss */
+/* line 63, ../scss/Wish.scss */
 .wishName {
   color: #0094ff;
 }
-/* line 68, ../scss/Wish.scss */
+/* line 65, ../scss/Wish.scss */
 .wishName:hover {
   color: #b200ff;
 }
 
-/* line 72, ../scss/Wish.scss */
-#wishPic {
+/* line 69, ../scss/Wish.scss */
+.wishPic {
   height: 100%;
   width: 100%;
-  border: 0 !important;
+  border-bottom: 1px solid #e1e6eb;
   vertical-align: middle;
   outline: 0;
 }
 
-/* line 79, ../scss/Wish.scss */
+/* line 76, ../scss/Wish.scss */
 .control {
   text-align: right !important;
 }
-/* line 81, ../scss/Wish.scss */
+/* line 78, ../scss/Wish.scss */
 .control .button {
   margin-right: 8px;
 }
 
-/* line 85, ../scss/Wish.scss */
+/* line 82, ../scss/Wish.scss */
 .countdown {
   margin-right: 10px;
   font-size: 18px;

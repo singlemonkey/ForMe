@@ -11,6 +11,9 @@ namespace MyLife.Models
         public string Name { get; set; }
         public string Account { get; set; }
         public string Password { get; set; }
-        public decimal? Money { get; set; }
+        /// <summary>
+        /// 工资
+        /// </summary>
+        public decimal? Wages { get; set; }
     }
 }
