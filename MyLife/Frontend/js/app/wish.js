@@ -1,5 +1,7 @@
 ﻿jQuery(document).ready(function () {
-    
+    let table = new Table({
+        rows:10,
+    });
     $(".add").on("click", function () {
         $('#addModal').modal();
     });

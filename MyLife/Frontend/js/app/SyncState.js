@@ -1,10 +1,10 @@
-﻿class Table {
+﻿class SyncStateTable {
     constructor(props) {
         this.rows = props.rows;
         this.lineHieght = 42;
         this.data = SyncStates;
         this.tmpl = $("#tableRow");
-        this.count = SyncStates.length;
+        this.count =0;
         this.render();
     }
 
@@ -25,13 +25,10 @@
         let self = this;
         let height = self.lineHieght * self.rows - 1;
         $("#tbody").css("max-height", height);
-        if (self.data.length == 0) {
-            self.addNullRow();
-        } else {
-            for (var i = 0; i < self.data.length; i++) {
-                self.addRow(self.data[i]);
-            }
+        for (var i = 0; i < self.data.length; i++) {
+            self.addRow(self.data[i]);
         }
+
     }
 
     addNullRow() {
@@ -71,7 +68,7 @@
     }
 }
 jQuery(document).ready(function () {
-    let table = new Table({
+    let table = new SyncStateTable({
         rows:10,
     });
 

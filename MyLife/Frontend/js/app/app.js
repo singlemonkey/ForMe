@@ -53,7 +53,59 @@
         }
     }
 }
+/**
+ * table类参数说明
+ * tmpl：表格行模板，必传项
+ * data：需要渲染的数据，必传项
+ */
+class Table {
+    constructor(props) {
+        this.rows = props.rows || 8;
+        this.data = props.data;
+        this.tmpl = props.tmpl;
+        this.lineHeight = 42;
+        this.count =0;
+        this.init();
+    }
+    get count() {
+        if (this._count == 0) {
+            this.removeNullRow();
+        }
+        return this._count;
+    }
+    set count(c) {
+        if (c == 0) {
+            this.addNullRow();
+        }
+        this._count = c;
+    }
 
+    init() {
+        this.bindCheckBoxEventListener();
+    }
+
+    bindCheckBoxEventListener() {
+        //表格全选事件
+        $(".table .selectAll").on("click", function () {
+            let checked = $(this).prop("checked");
+            $(".table .selectItem").prop("checked", checked);
+
+        });
+        $(".table").on("click", ".selectItem", function () {
+            let flag = true;
+            $(".table .selectItem").each((i, e) => {
+                let checked = $(e).prop("checked");
+                if (checked) {
+                    return true;
+                } else {
+                    flag = false;
+                    return flag;
+                }
+            });
+            $(".table .selectAll").prop("checked", flag);
+        });
+    }
+}
 
 $(function () {
     //扩展jquery本身方法
@@ -165,23 +217,5 @@ jQuery(document).ready(function () {
         let dictionary = $(select).attr("data-dictionary");
         $(select).bindDictionary(dictionary);
     });
-    //表格全选事件
-    $(".table .selectAll").on("click", function () {
-        let checked = $(this).prop("checked");
-        $(".table .selectItem").prop("checked", checked);
-
-    });
-    $(".table").on("click",".selectItem", function () {
-        let flag = true;
-        $(".table .selectItem").each((i,e) => {
-            let checked = $(e).prop("checked");
-            if (checked) {
-                return true;
-            } else {
-                flag = false;
-                return flag;
-            }
-        });
-        $(".table .selectAll").prop("checked", flag);
-    });
+    
 });
