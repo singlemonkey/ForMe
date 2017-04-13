@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SyncStateController.cs" />
     <Compile Include="Controllers\WishController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,6 +149,7 @@
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Models\DictionaryModel.cs" />
+    <Compile Include="Models\SyncStateModel.cs" />
     <Compile Include="Models\WishModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -984,6 +986,7 @@
     <Content Include="Frontend\css\fontAwesome\font-awesome.css" />
     <Content Include="Frontend\css\fontAwesome\font-awesome.min.css" />
     <Content Include="Frontend\css\Index.css" />
+    <Content Include="Frontend\css\SyncState.css" />
     <Content Include="Frontend\css\Wish.css" />
     <Content Include="Frontend\fonts\fontawesome-webfont.eot" />
     <Content Include="Frontend\fonts\fontawesome-webfont.svg" />
@@ -1007,6 +1010,7 @@
     <Content Include="Frontend\js\app\demo.js" />
     <Content Include="Frontend\js\app\dictonary.js" />
     <Content Include="Frontend\js\app\index.js" />
+    <Content Include="Frontend\js\app\SyncState.js" />
     <Content Include="Frontend\js\app\wish.js" />
     <Content Include="Frontend\js\jquery-3.1.0.min.js" />
     <Content Include="Frontend\js\JsRender.js" />
@@ -1033,6 +1037,7 @@
     <Content Include="Frontend\assets\Highcharts\license.pdf" />
     <None Include="Frontend\scss\base.scss" />
     <Content Include="Frontend\scss\Index.scss" />
+    <Content Include="Frontend\scss\SyncState.scss" />
     <Content Include="Global.asax" />
     <Content Include="logs\log.txt" />
     <Content Include="obj\Debug\MyLife.csproj.FileListAbsolute.txt" />
@@ -1061,6 +1066,7 @@
     <Content Include="Frontend\scss\Cost.scss" />
     <Content Include="Views\Wish\WishIndex.cshtml" />
     <Content Include="Frontend\scss\Wish.scss" />
+    <Content Include="Views\SyncState\SyncStateIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />

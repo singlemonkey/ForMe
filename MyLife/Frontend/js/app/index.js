@@ -140,6 +140,12 @@ jQuery(document).ready(function () {
                         icon: "",
                         isActive: false
                     },
+                    {
+                        title: "同步设置",
+                        url: "/SyncState/SyncStateIndex",
+                        icon: "",
+                        isActive: false
+                    }
                 ]
             }
         ]));

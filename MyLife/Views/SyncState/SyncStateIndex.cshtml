@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "App数据同步";
+}
+<link rel="stylesheet" href="~/Frontend/css/SyncState.css"/>
+<link rel="stylesheet" href="~/Frontend/assets/modal/css/bootstrap.css" />
+<div class="container">
+    <div class="title">
+        <span class="remind">提示</span>
+        <span class="title-content">
+            管理需要与App进行数据自动同步的表，状态为0则数据为同步，为1为已同步
+        </span>
+    </div>
+    <div class="toolbar">
+        <button class="button button-primary" id="OpenModal">添加同步数据</button>
+        <button class="button button-caution disabled" id="RemoveState">删除同步数据</button>
+        
+    </div>
+    <div>
+        <table class="table table-hover scroll">
+            <thead>
+                <tr>
+                    <th style="width:40px;text-align:center">
+                        <input type="checkbox" class="selectAll"/>
+                    </th>
+                    <th style="width:120px">表名</th>
+                    <th>说明</th>
+                    <th style="width:80px">同步状态</th>
+                    <th style="width:180px">同步时间</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">添加同步表</h4>
+            </div>
+            <div class="modal-body form">
+                <div class="row">
+                    <div class="group">
+                        <label>表名</label>
+                        <div class="input-wrap">
+                            <input type="text" class="input" id="TableName" />
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label>同步状态</label>
+                        <div class="input-wrap">
+                            <select class="input" id="IsSync">
+                                <option value="-1">请选择</option>
+                                <option value="0">未同步</option>
+                                <option value="1">已同步</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="group">
+                        <label>说明</label>
+                        <div class="input-wrap" style="flex:9">
+                            <textarea class="input" id="Desc"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button" data-dismiss="modal">取 消</button>
+                <button type="button" class="button button-primary save disabled">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Frontend/js/JsRender.js"></script> 
+    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>
+    <script id="tableRow" type="text/x-jsrender">
+        <tr>
+            <td style="width:40px;text-align:center"><input type="checkbox" class="selectItem" data-id="{{:ID}}"/></td>
+            <td style="width:120px">{{:TableName}}</td>
+            <td>{{:Desc}}</td>
+            <td style="width:80px">
+                {{if IsSync==0}}未同步{{else}}已同步{{/if}}
+            </td>
+            <td style="width:180px">{{:SyncDate}}</td>
+        </tr>
+    </script>
+    <script>
+        let SyncStates=@Html.Raw(Json.Encode(ViewData["SyncStateList"]));
+    </script>
+    <script src="~/Frontend/js/app/SyncState.js"></script>
+}

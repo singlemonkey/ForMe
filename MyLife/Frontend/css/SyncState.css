@@ -1,0 +1,22 @@
+/* line 1, ../scss/SyncState.scss */
+.container {
+  height: 100%;
+  padding: 20px;
+}
+
+/* line 5, ../scss/SyncState.scss */
+.title {
+  font-size: 14px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+/* line 14, ../scss/SyncState.scss */
+.title .remind {
+  color: #e38800;
+  font-weight: 900;
+  margin-right: 10px;
+}
