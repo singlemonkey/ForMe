@@ -140,6 +140,11 @@ $(function () {
         },
     });
 
+    
+    
+});
+//和Dom有关的代码写在jQuery(document).ready()事件中
+jQuery(document).ready(function () {
     //注册全局ajax事件，
     //在发起请求时可传入showProgress为false更改ajax的global参数来禁用此事件
     $(document).ajaxStart(() => {
@@ -159,5 +164,24 @@ $(function () {
         let select = $("select[data-dictionary]")[e];
         let dictionary = $(select).attr("data-dictionary");
         $(select).bindDictionary(dictionary);
+    });
+    //表格全选事件
+    $(".table .selectAll").on("click", function () {
+        let checked = $(this).prop("checked");
+        $(".table .selectItem").prop("checked", checked);
+
+    });
+    $(".table").on("click",".selectItem", function () {
+        let flag = true;
+        $(".table .selectItem").each((i,e) => {
+            let checked = $(e).prop("checked");
+            if (checked) {
+                return true;
+            } else {
+                flag = false;
+                return flag;
+            }
+        });
+        $(".table .selectAll").prop("checked", flag);
     });
 });

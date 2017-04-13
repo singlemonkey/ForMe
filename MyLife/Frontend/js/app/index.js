@@ -135,11 +135,23 @@ jQuery(document).ready(function () {
                 isFold: false,
                 modules: [
                     {
+                        title: "个人信息",
+                        url: "/Admin/Admin",
+                        icon: "",
+                        isActive: false
+                    },
+                    {
                         title: "字典管理",
                         url: "/Dictionary/DictionaryIndex",
                         icon: "",
                         isActive: false
                     },
+                    {
+                        title: "同步设置",
+                        url: "/SyncState/SyncStateIndex",
+                        icon: "",
+                        isActive: false
+                    }
                 ]
             }
         ]));

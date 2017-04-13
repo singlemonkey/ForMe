@@ -11,6 +11,17 @@ namespace MyLife.Context
     {
         protected override void Seed(MyLifeContext context)
         {
+            var SyncStates = new List<SyncStateModel>{
+                new SyncStateModel{
+                    Desc="用户信息数据更新",
+                    IsSync=0,
+                    TableName="Admin",
+                    SyncDate=null
+                }
+            };
+            SyncStates.ForEach(s=>context.SyncStates.Add(s));
+            context.SaveChanges();
+
             var Wishs = new List<WishModel> {
                 new WishModel {
                     ID=1,
@@ -45,7 +56,10 @@ namespace MyLife.Context
                     Account="903012206",
                     Password="missyou?",
                     Name="日光倾城",
-                    Wages=3000
+                    Wages=3000,
+                    ImgUrl="/Frontend/images/Admin/admin.jpeg",
+                    Sign="我要怼死你"
+               
                 }
             };
             administrators.ForEach(a => context.Administrators.Add(a));
