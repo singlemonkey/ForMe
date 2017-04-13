@@ -1,10 +1,5 @@
-﻿class wish {
-    constructor() {
-        this.data = wishs;
-        this.init();        
-    }
-}
-jQuery(document).ready(function () {
+﻿jQuery(document).ready(function () {
+    
     $(".add").on("click", function () {
         $('#addModal').modal();
     });
