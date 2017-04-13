@@ -1,0 +1,60 @@
+﻿@import "compass/css3";
+.container{
+    height:100%;
+    padding:20px;
+}
+.adminTitle {
+    border-bottom: 1px solid #DDD;
+    padding: 10px 0px;
+    min-height: 50px;
+
+    h5 {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        display: inline-block;
+        text-indent: 8px;
+        border-left: 2px solid #88B7E0;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-right: 8px;
+        vertical-align: top;
+    }
+}
+.adminContent {
+    height: 180px;
+    display: flex;
+    flex-flow: row;
+
+    .adminImg {
+        width: 160px;
+        height:100%;
+        padding: 10px;
+        text-align:center;
+
+        img {
+            height: 140px;
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
+            @include border-radius(5px);
+        }
+
+        .editImgUrl {
+            color: #06C;
+            cursor:pointer;
+            margin-top:8px;
+            display:block;
+        }
+    }
+
+    .adminInfo {
+        flex: 1;
+
+        p {
+            margin-bottom: 20px;
+        }
+    }
+}
+#imgUrl {
+    width: 100%;
+}

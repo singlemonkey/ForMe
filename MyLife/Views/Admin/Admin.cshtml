@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+<link rel="stylesheet" href="~/Frontend/css/Admin.css" />
+<link rel="stylesheet" href="~/Frontend/assets/modal/css/bootstrap.css" />
+<div class="container">
+    <div class="adminTitle">
+        <div class="pull-left">
+            <h5>个人信息及相关设置</h5>
+        </div>
+    </div>
+    <div class="adminContent">
+        <div class="adminImg">
+            <img src="" alt="头像" id="img"  />
+            <a class="editImgUrl">修改头像</a>
+        </div>
+        <div class="adminInfo">
+            <p class="name">
+                <span>昵称 : </span><span id="name"></span>
+            </p>
+            <p class="account">
+                <span>登录账号 : </span><span id="account"></span>
+            </p>
+            <p class="wages">
+                <span>工资 : </span><span id="wages"></span>
+            </p>
+            <p class="sign">
+                <span>个性签名 : </span><span id="sign"></span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">修改头像</h4>
+            </div>
+            <div class="modal-body form">
+                <div class="row">
+                    <div class="group">
+                        <label>选择文件</label>
+                        <div class="input-wrap">
+                            <input type="text" class="input" id="imgUrl" />
+                        </div>
+                        <button class="button button-action" id="upload">上传</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button" data-dismiss="modal">取 消</button>
+                <button type="button" class="button button-primary save disabled">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Frontend/assets/modal/js/bootstrap.min.js"></script>
+    <script>
+        let Admin =@Html.Raw(Json.Encode(ViewData["Admin"]));
+        $("#name").html(Admin.Name);
+        $("#account").html(Admin.Account);
+        $("#wages").html(Admin.Wages);
+        $("#sign").html(Admin.Sign);
+        $("#img").prop("src", Admin.ImgUrl);
+        $(".editImgUrl").on("click", function () {
+            $('#addModal').modal();
+        });
+    </script>
+}
+

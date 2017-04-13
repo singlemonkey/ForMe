@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using MyLife.Context;
 using MyLife.Models;
 using System.Data.Entity;
+using EntityFramework.Extensions;
 
 namespace MyLife.Controllers
 {
@@ -31,5 +32,10 @@ namespace MyLife.Controllers
             return Json(model);
         }
 
+        public JsonResult RemoveSyncState(int[] stateList)
+        {
+            db.SyncStates.Where(s => stateList.Contains(s.ID)).Delete();
+            return Json(stateList);
+        }
     }
 }

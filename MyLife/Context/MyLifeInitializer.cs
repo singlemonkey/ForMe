@@ -56,7 +56,10 @@ namespace MyLife.Context
                     Account="903012206",
                     Password="missyou?",
                     Name="日光倾城",
-                    Wages=3000
+                    Wages=3000,
+                    ImgUrl="/Frontend/images/Admin/admin.jpeg",
+                    Sign="我要怼死你"
+               
                 }
             };
             administrators.ForEach(a => context.Administrators.Add(a));

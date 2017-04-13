@@ -4,8 +4,21 @@
         this.lineHieght = 42;
         this.data = SyncStates;
         this.tmpl = $("#tableRow");
-
+        this.count = SyncStates.length;
         this.render();
+    }
+
+    get count() {
+        if (this._count == 0) {
+            this.removeNullRow();
+        }
+        return this._count;
+    }
+    set count(c) {
+        if (c == 0) {
+            this.addNullRow();
+        }
+        this._count = c;
     }
 
     render() {
@@ -27,6 +40,7 @@
             $("#tbody").empty();
         }
         let tr = $("<tr></tr>", {
+            "ID":"NullRow",
             "class": "nodata"
         });
         let td = $("<td></td>", {
@@ -35,17 +49,25 @@
         tr.append(td);
         $("#tbody").append(tr);
     }
+    removeNullRow() {
+        $("#NullRow").remove();
+    }
 
     addRow(rowData) {
         let self = this;
-        if (self.count == 0) {
-            $("#tbody").empty();
-        }
         if (rowData.SyncDate != null && rowData.SyncDate.indexOf("-") == -1 ) {
             rowData.SyncDate = $.formatDate(new Date(parseInt(rowData.SyncDate.substr(6, 13))));
         }
         let row = self.tmpl.render(rowData);
         $("#tbody").append(row);
+        this.count = this.count + 1;
+    }
+
+    removeRow() {
+        $(".selectItem:checked").each((i, e) => {
+            $(e).parents("tr").remove();
+            this.count = this.count - 1;
+        });
     }
 }
 jQuery(document).ready(function () {
@@ -59,6 +81,7 @@ jQuery(document).ready(function () {
     $("#addModal").on("hide.bs.modal", function () {
         $(".form .input:not(select)").val("");
         $(".form select").val("-1");
+        $(".save").addClass("disabled");
     });
     $(".form .input").on("keyup change", function () {
         let tableName = $("#TableName").val();
@@ -88,7 +111,29 @@ jQuery(document).ready(function () {
         };
         $.Ajaxobj(obj);
     });
+    $(".table").on("change", "input[type='checkbox']", function () {
+        if ($(".selectItem:checked").length == 0) {
+            $("#RemoveState").attr("disabled", true);
+        } else {
+            $("#RemoveState").attr("disabled", false);
+        }
+    });
     $("#RemoveState").on("click", function () {
-
+        let stateList = [];
+        $(".selectItem:checked").each((i, e) => {
+            stateList.push($(e).attr("data-id"));
+        });
+        var obj = {
+            url: "/SyncState/RemoveSyncState",
+            data: {
+                stateList: stateList
+            },
+            success: function (result) {
+                table.removeRow();
+                $("#RemoveState").attr("disabled", true);
+                $(".table .selectAll").prop("checked", false);
+            }
+        };
+        $.Ajaxobj(obj);
     });
 });

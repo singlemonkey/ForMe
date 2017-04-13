@@ -22,6 +22,14 @@ namespace MyLife.Controllers
             return Json(result);
         }
 
+        public ActionResult Admin()
+        {
+            AdminModel admin = db.Administrators.Where(a=>a.ID==1).SingleOrDefault();
+            ViewData["Admin"] = admin;
+            return View();
+            
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,5 +1,4 @@
 ﻿@import "compass/css3";
-@import "base";
 @import "compass/utilities/sprites";
 @import "blog/*.png";
 
@@ -150,7 +149,7 @@
                 }
             }
             &.droppable{
-                @include opacity(1,1) ;
+                @include opacity(1) ;
             }
             &.drophover{
                 .blog-folder{

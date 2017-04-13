@@ -6,6 +6,7 @@ using System.Web;
 using MyLife.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using EntityFramework.Extensions;
 
 namespace MyLife.Context
 {

@@ -48,6 +48,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
@@ -980,6 +983,7 @@
     <Content Include="Frontend\assets\raty\lib\jquery.raty.js" />
     <Content Include="Frontend\assets\raty\lib\jquery.raty.min.js" />
     <Content Include="Frontend\config.rb" />
+    <Content Include="Frontend\css\Admin.css" />
     <Content Include="Frontend\css\Blog.css" />
     <Content Include="Frontend\css\Cost.css" />
     <Content Include="Frontend\css\Dictonary.css" />
@@ -999,6 +1003,7 @@
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Frontend\images\Admin\admin.jpeg" />
     <Content Include="Frontend\images\blog\doc.png" />
     <Content Include="Frontend\images\blog\folder.png" />
     <Content Include="Frontend\images\blog\icon-setting.png" />
@@ -1035,6 +1040,7 @@
     <Content Include="Frontend\assets\icon\iconfont.ttf" />
     <Content Include="Frontend\assets\icon\iconfont.woff" />
     <Content Include="Frontend\assets\Highcharts\license.pdf" />
+    <Content Include="Frontend\scss\Admin.scss" />
     <None Include="Frontend\scss\base.scss" />
     <Content Include="Frontend\scss\Index.scss" />
     <Content Include="Frontend\scss\SyncState.scss" />
@@ -1055,11 +1061,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Dictionary\DictionaryIndex.cshtml" />
     <Content Include="Frontend\scss\Dictonary.scss" />
     <Content Include="Views\Cost\Index.cshtml" />
@@ -1067,6 +1068,7 @@
     <Content Include="Views\Wish\WishIndex.cshtml" />
     <Content Include="Frontend\scss\Wish.scss" />
     <Content Include="Views\SyncState\SyncStateIndex.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />

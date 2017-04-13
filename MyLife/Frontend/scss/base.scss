@@ -43,6 +43,10 @@ hr{
 	height:0;
 	@include box-sizing(content-box);
 }
+h5{
+    font-size:14px;
+    font-weight:400
+}
 .input{
     box-sizing:border-box;
 	display: block;
