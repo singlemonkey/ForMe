@@ -11,7 +11,7 @@ using MyLife.Models;
 
 namespace MyLife.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private MyLifeContext db = new MyLifeContext();
 
@@ -28,6 +28,19 @@ namespace MyLife.Controllers
             ViewData["Admin"] = admin;
             return View();
             
+        }
+
+        public JsonResult AvatarUpLoad()
+        {
+            HttpPostedFileBase file = Request.Files["img"];
+            AdminModel admin = db.Administrators.Find(1);
+            string fileName = DateTime.Now.ToString("yyyyMMddHHmmssms")+ file.FileName;
+            string filePath = Server.MapPath("/Frontend/images/admin/")+fileName;
+            file.SaveAs(filePath);
+            admin.ImgUrl = "/Frontend/images/admin/" + fileName;
+            db.Entry(admin).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(admin);
         }
 
         protected override void Dispose(bool disposing)

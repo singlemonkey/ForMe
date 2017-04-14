@@ -39,19 +39,22 @@
                 <h4 class="modal-title">修改头像</h4>
             </div>
             <div class="modal-body form">
-                <div class="row">
+                <div class="row" style="width:80%;position:relative">
                     <div class="group">
                         <label>选择文件</label>
                         <div class="input-wrap">
-                            <input type="text" class="input" id="imgUrl" />
+                            <input type="text" class="input disabled" id="imgUrl" disabled="disabled" />
                         </div>
-                        <button class="button button-action" id="upload">上传</button>
+                        <div class="fileupload button button-action">
+                            <span>上传</span>
+                            <input id="upload" type="file" value="上传" />
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="button" data-dismiss="modal">取 消</button>
-                <button type="button" class="button button-primary save disabled">保 存</button>
+                <button type="button" class="button button-primary save" disabled="disabled">保 存</button>
             </div>
         </div>
     </div>
@@ -67,6 +70,37 @@
         $("#img").prop("src", Admin.ImgUrl);
         $(".editImgUrl").on("click", function () {
             $('#addModal').modal();
+        });
+        $("#upload").on("change", function () {
+            var file = $(this)[0].files[0];
+            var type = file.type.split('/')[0];
+            if (type != "image") {
+                $("#imgUrl").val("文件格式不正确，请重新上传图片");
+            } else {
+                $("#imgUrl").val(file.name);
+                $(".save").prop("disabled", false);
+            }            
+        });
+        $("#addModal").on("hide.bs.modal", function () {
+            $("#imgUrl").val("");
+            $(".save").prop("disabled", true);
+        });
+        $(".save").on("click", function () {
+            var file = $(upload)[0].files[0];
+            var imgData = new FormData();
+            imgData.append("img", file);
+            $.ajax({
+                url: "/Admin/AvatarUpLoad/",
+                type: "POST",
+                data: imgData,
+                global: true,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    $("#img").prop("src", result.ImgUrl);
+                    $('#addModal').modal("hide");
+                }
+            });
         });
     </script>
 }
