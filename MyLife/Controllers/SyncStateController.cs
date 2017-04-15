@@ -23,10 +23,11 @@ namespace MyLife.Controllers
             ViewData["SyncStateList"] = SyncStates;
             return View();
         }
+        [HttpGet]
         public JsonResult GetSyncState()
         {
             List<SyncStateModel> SyncStates = db.SyncStates.ToList();
-            return Json(SyncStates);
+            return Json(SyncStates,JsonRequestBehavior.AllowGet);
         }
         public JsonResult AddSyncState(SyncStateModel model)
         {
