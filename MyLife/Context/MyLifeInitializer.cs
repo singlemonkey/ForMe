@@ -57,7 +57,7 @@ namespace MyLife.Context
                     Password="missyou?",
                     Name="日光倾城",
                     Wages=3000,
-                    ImgUrl="/Frontend/images/Admin/admin.jpeg",
+                    ImgUrl="/Frontend/images/admin/admin.jpeg",
                     Sign="我要怼死你"
                
                 }

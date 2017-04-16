@@ -1003,7 +1003,7 @@
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Frontend\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Frontend\images\Admin\admin.jpeg" />
+    <Content Include="Frontend\images\admin\admin.jpeg" />
     <Content Include="Frontend\images\blog\doc.png" />
     <Content Include="Frontend\images\blog\folder.png" />
     <Content Include="Frontend\images\blog\icon-setting.png" />
