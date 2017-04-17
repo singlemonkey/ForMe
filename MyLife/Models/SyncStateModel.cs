@@ -16,4 +16,9 @@ namespace MyLife.Models
         public int IsSync { get; set; }
         public DateTime? SyncDate { get; set; }
     }
+    public class SyncData
+    {
+        public AdminModel Admin { get; set; }
+        public List<MoodModel> Moods { get; set; }
+    }
 }

@@ -21,6 +21,7 @@ namespace MyLife.Context
         public DbSet<CostModel> Costs { get; set; }
         public DbSet<WishModel> Wishs { get; set; }
         public DbSet<SyncStateModel> SyncStates { get; set; }
+        public DbSet<MoodModel> Moods { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdminModel>().ToTable("Admin");
@@ -29,6 +30,7 @@ namespace MyLife.Context
             modelBuilder.Entity<CostModel>().ToTable("Cost");
             modelBuilder.Entity<WishModel>().ToTable("Wish");
             modelBuilder.Entity<SyncStateModel>().ToTable("SyncState");
+            modelBuilder.Entity<MoodModel>().ToTable("Mood");
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -11,13 +11,20 @@ namespace MyLife.Context
     {
         protected override void Seed(MyLifeContext context)
         {
+            //数据同步信息初始化
             var SyncStates = new List<SyncStateModel>{
                 new SyncStateModel{
                     Desc="用户信息数据更新",
                     IsSync=0,
                     TableName="Admin",
                     SyncDate=null
-                }
+                },
+                new SyncStateModel{
+                    Desc="心情信息数据更新",
+                    IsSync=1,
+                    TableName="Mood",
+                    SyncDate=null
+                }                
             };
             SyncStates.ForEach(s=>context.SyncStates.Add(s));
             context.SaveChanges();

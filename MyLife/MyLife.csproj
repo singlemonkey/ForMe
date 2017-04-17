@@ -152,6 +152,7 @@
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Models\DictionaryModel.cs" />
+    <Compile Include="Models\MoodModel.cs" />
     <Compile Include="Models\SyncStateModel.cs" />
     <Compile Include="Models\WishModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
