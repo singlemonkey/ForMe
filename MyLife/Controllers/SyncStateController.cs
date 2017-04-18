@@ -32,6 +32,12 @@ namespace MyLife.Controllers
             syncdata.Moods = GetMoods(moodSync);
             return Json(syncdata,JsonRequestBehavior.AllowGet);
         }
+        public String SetSyncState()
+        {
+            db.SyncStates.Where(s => s.IsSync == 0).Update(s=>new SyncStateModel{ IsSync=1 });
+            db.Moods.Where(m => m.SyncState != 0).Update(m=>new MoodModel { SyncState=0});
+            return "12345，上山打老虎";
+        }
         public AdminModel GetAdmin(int sync)
         {
             if (sync == 1)
