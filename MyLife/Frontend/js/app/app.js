@@ -67,6 +67,7 @@ class Table {
         this.count =0;
         this.init();
     }
+
     get count() {
         if (this._count == 0) {
             this.removeNullRow();
@@ -104,6 +105,25 @@ class Table {
             });
             $(".table .selectAll").prop("checked", flag);
         });
+    }
+
+    addNullRow() {
+        let self = this;
+        if (self.count == 0) {
+            $("#tbody").empty();
+        }
+        let tr = $("<tr></tr>", {
+            "ID": "NullRow",
+            "class": "nodata"
+        });
+        let td = $("<td></td>", {
+            text: "暂无相关数据"
+        });
+        tr.append(td);
+        $("#tbody").append(tr);
+    }
+    removeNullRow() {
+        $("#NullRow").remove();
     }
 }
 
