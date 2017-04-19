@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyLife.Context;
 using MyLife.Models;
+using EntityFramework.Extensions;
 
 namespace MyLife.Controllers
 {
@@ -40,8 +41,10 @@ namespace MyLife.Controllers
             admin.ImgUrl = "/Frontend/images/admin/" + fileName;
             db.Entry(admin).State = EntityState.Modified;
             db.SaveChanges();
+            SyncUpdate("Admin");
             return Json(admin);
         }
+
 
         protected override void Dispose(bool disposing)
         {
