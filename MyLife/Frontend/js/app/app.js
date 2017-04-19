@@ -56,12 +56,16 @@
 /**
  * table类参数说明
  * tmpl：表格行模板，必传项
- * data：需要渲染的数据，必传项
+ * url：服务器地址
+ * rows:行数，必填项
+ * isPaging:是否分也，默认为不分
  */
 class Table {
     constructor(props) {
         this.rows = props.rows || 8;
-        this.data = props.data;
+        this.isPaging = props.isPaging || false;
+        this.url = props.url;
+        this.data = null;
         this.tmpl = props.tmpl;
         this.lineHeight = 42;
         this.count =0;
@@ -82,6 +86,7 @@ class Table {
     }
 
     init() {
+        this.show();
         this.bindCheckBoxEventListener();
     }
 

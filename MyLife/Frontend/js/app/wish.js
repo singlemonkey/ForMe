@@ -1,6 +1,14 @@
-﻿jQuery(document).ready(function () {
-    let table = new Table({
-        rows:10,
+﻿class wishTable extends Table {
+    constructor(props) {
+        super(props);
+    }
+    show() {
+        alert(123);
+    }
+}
+jQuery(document).ready(function () {
+    let table = new wishTable({
+
     });
     $(".add").on("click", function () {
         $('#addModal').modal();

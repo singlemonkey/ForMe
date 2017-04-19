@@ -7,7 +7,7 @@ using MyLife.Models;
 
 namespace MyLife.Context
 {
-    public class MyLifeInitializer : System.Data.Entity.DropCreateDatabaseAlways<MyLifeContext>
+    public class MyLifeInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<MyLifeContext>
     {
         protected override void Seed(MyLifeContext context)
         {
