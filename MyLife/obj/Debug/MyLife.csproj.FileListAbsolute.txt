@@ -38,3 +38,4 @@ F:\GitHub\MyLife\MyLife\bin\EntityFramework.Extended.dll.config
 F:\MyLife\MyLife\bin\EntityFramework.Extended.dll
 F:\MyLife\MyLife\bin\EntityFramework.Extended.xml
 F:\MyLife\MyLife\bin\EntityFramework.Extended.dll.config
+F:\GitHub\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache

@@ -34,7 +34,10 @@ namespace MyLife.Controllers
         }
         public String SetSyncState()
         {
-            db.SyncStates.Where(s => s.IsSync == 0).Update(s=>new SyncStateModel{ IsSync=1 });
+            db.SyncStates.Where(s => s.IsSync == 0).Update(s=>new SyncStateModel{
+                IsSync =1,
+                SyncDate=DateTime.Now
+            });
             db.Moods.Where(m => m.SyncState != 0).Update(m=>new MoodModel { SyncState=0});
             return "12345，上山打老虎";
         }
