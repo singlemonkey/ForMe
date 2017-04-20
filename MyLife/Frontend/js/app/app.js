@@ -55,39 +55,104 @@
 }
 /**
  * table类参数说明
- * tmpl：表格行模板，必传项
  * url：服务器地址
- * rows:行数，必填项
- * isPaging:是否分也，默认为不分
+ * pageInfo:分页信息
+ * queryInfo:查询信息，初始化为null，点击查询按钮传入参数并查询。
+ * callback:获取数据之后的渲染回调
  */
 class Table {
     constructor(props) {
-        this.rows = props.rows || 8;
-        this.isPaging = props.isPaging || false;
+        this.pageInfo = {
+            isPaging: props.isPaging || false,
+            pageSize: props.rows || 8,
+            pageIndex: 1
+        };     
         this.url = props.url;
+        this.queryInfo = null;
         this.data = null;
-        this.tmpl = props.tmpl;
         this.lineHeight = 42;
         this.count =0;
         this.init();
     }
 
     get count() {
-        if (this._count == 0) {
-            this.removeNullRow();
-        }
         return this._count;
     }
     set count(c) {
         if (c == 0) {
             this.addNullRow();
+        } else {
+            this.removeNullRow();
         }
         this._count = c;
     }
-
+    //如果有只需要执行一次的函数，重写init，但要保持init的默认实现。
     init() {
-        this.show();
+        this.query();
+    }
+
+    query(queryInfo) {
+        this.queryInfo = queryInfo;
+        this.pageInfo.pageIndex = 1;
+        this.getData();
+    }
+
+    getData() {
+        let self = this;
+        let obj = {
+            url: self.url,
+            data: {
+                PageInfo: self.pageInfo,
+                QueryInfo: self.queryInfo
+            },
+            success: function (result) {
+                self.data = result.List;
+                self.count = result.Count;
+                self.renderTable();
+                self.callback();
+            }
+        }
+        $.Ajaxobj(obj);
+    }
+
+    setPage() {
+        let pages = Math.ceil(this.count / this.pageInfo.pageSize);
+        let pageindex = this.pageInfo.pageIndex;
+        let pagelist = $("<ul></ul>", {})
+        for (var i = 1; i <= pages; i++) {
+            let li = $("<li></li>", {
+                text: i,
+                "data-id": i,
+            })
+            pagelist.append(li);
+        }
+        $("#page-list").append(pagelist);
+    }
+
+    renderTable() {
+        let self = this;
+        let height = self.lineHieght * self.pageInfo.pageSize - 1;
+        $("#tbody").css("max-height", height);
+        for (var i = 0; i < self.data.length; i++) {
+            self.renderRow(self.data[i]);
+        }
         this.bindCheckBoxEventListener();
+        if (self.pageInfo.isPaging) {
+            self.setPage();
+        }
+    }
+
+    addRow(rowData) {
+        //在子类中重写
+        this.renderRow();
+        this.count = this.count + 1;
+    }
+
+    removeRow() {
+        $(".selectItem:checked").each((i, e) => {
+            $(e).parents("tr").remove();
+            this.count = this.count - 1;
+        });
     }
 
     bindCheckBoxEventListener() {
@@ -129,6 +194,9 @@ class Table {
     }
     removeNullRow() {
         $("#NullRow").remove();
+    }
+    //子类中重写执行回调
+    callback() {
     }
 }
 

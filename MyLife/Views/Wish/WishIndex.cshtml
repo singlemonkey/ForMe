@@ -27,12 +27,24 @@
                     <th style="width:40px;text-align:center">
                         <input type="checkbox" class="selectAll" />
                     </th>
-                    <th style="width:120px">表名</th>
+                    <th style="width:120px">名称</th>
+                    <th style="width:80px">价格</th>
                     <th>说明</th>
-                    <th style="width:80px">同步状态</th>
-                    <th style="width:180px">同步时间</th>
+                    <th style="width:180px">添加时间</th>
+                    <th style="width:180px">期望值</th>
+                    <th style="width:180px">状态</th>
                 </tr>
             </thead>
+            <tbody id="tbody"></tbody>
+            <tfoot>
+                <tr>
+                    <td style="width:150px;">合计</td>
+                    <td style="width:150px;"></td>
+                    <td colspan="5">
+                        <div id="page-list"></div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
@@ -88,6 +100,17 @@
     <script src="~/Frontend/assets/raty/lib/jquery.raty.js"></script>
     <script src="~/Frontend/js/app/wish.js"></script>
     <script src="~/Frontend/js/JsRender.js"></script>
+    <script id="tableRow" type="text/x-jsrender">
+        <tr>
+            <td style="width:40px;text-align:center"><input type="checkbox" class="selectItem" data-id="{{:ID}}" /></td>
+            <td style="width:120px">{{:Name}}</td>
+            <td style="width:80px">{{:Price}}</td>
+            <td>{{:Info}}</td>
+            <td style="width:180px">{{:CreateDate}}</td>
+            <td style="width:180px" data-degree="{{:Degree}}"></td>
+            <td style="width:180px" data-time="{{:EndDate}}"></td>
+        </tr>
+    </script>
     <script>
         let wishs=@Html.Raw(Json.Encode(ViewData["wishUnits"]));
     </script>

@@ -1,14 +1,26 @@
 ﻿class wishTable extends Table {
     constructor(props) {
         super(props);
+        this.tmpl = $("#tableRow");
     }
-    show() {
-        alert(123);
+
+    renderRow(rowData) {
+        let self = this;
+        if (rowData.CreateDate != null && rowData.CreateDate.indexOf("-") == -1) {
+            rowData.CreateDate = $.formatDate(new Date(parseInt(rowData.CreateDate.substr(6, 13))));
+        }
+        if (rowData.EndDate != null && rowData.EndDate.indexOf("-") == -1) {
+            rowData.EndDate = $.formatDate(new Date(parseInt(rowData.EndDate.substr(6, 13))));
+        }
+        let row = self.tmpl.render(rowData);
+        $("#tbody").append(row);
     }
 }
 jQuery(document).ready(function () {
     let table = new wishTable({
-
+        rows:1,
+        url: "/Wish/GetPageList",
+        isPaging: true
     });
     $(".add").on("click", function () {
         $('#addModal').modal();

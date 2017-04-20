@@ -31,4 +31,13 @@ namespace MyLife.Models
         /// </summary>
         public DateTime? EndDate { get; set; }
     }
+    public class WishQueryModel
+    {
+        public string Name { get; set; }
+    }
+    public class WishPageQuery
+    {
+        public PageInfo PageInfo { get; set; }
+        public WishQueryModel QueryInfo { get; set; }
+    }
 }

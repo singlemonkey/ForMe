@@ -38,3 +38,7 @@ F:\GitHub\MyLife\MyLife\bin\EntityFramework.Extended.dll.config
 F:\MyLife\MyLife\bin\EntityFramework.Extended.dll
 F:\MyLife\MyLife\bin\EntityFramework.Extended.xml
 F:\MyLife\MyLife\bin\EntityFramework.Extended.dll.config
+F:\GitHub\MyLife\MyLife\bin\PagedList.dll
+F:\GitHub\MyLife\MyLife\bin\PagedList.Mvc.dll
+F:\GitHub\MyLife\MyLife\bin\PagedList.xml
+F:\GitHub\MyLife\MyLife\bin\PagedList.Mvc.xml

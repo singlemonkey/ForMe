@@ -213,39 +213,39 @@ table {
   border: 1px solid #e1e6eb;
   width: 100%;
 }
-/* line 177, ../scss/base.scss */
+/* line 178, ../scss/base.scss */
 .table td, .table th {
   line-height: 1.428571429;
 }
-/* line 182, ../scss/base.scss */
+/* line 184, ../scss/base.scss */
 .table thead tr:first-child th {
   border-top: 0;
 }
-/* line 186, ../scss/base.scss */
+/* line 189, ../scss/base.scss */
 .table thead tr th {
-  padding: 8px 8px;
+  padding: 12px 8px;
   font-weight: normal;
   color: #999;
   border-bottom: 1px solid #e1e6eb;
   background-color: #F5F6FA;
   text-align: left;
 }
-/* line 195, ../scss/base.scss */
+/* line 199, ../scss/base.scss */
 .table > tbody {
   background-color: #fff;
 }
-/* line 199, ../scss/base.scss */
+/* line 204, ../scss/base.scss */
 .table > tbody > tr:last-child td {
   border-bottom: 0;
 }
-/* line 203, ../scss/base.scss */
+/* line 209, ../scss/base.scss */
 .table > tbody > tr td {
   padding: 12px 8px;
   border-top: 0px;
   border-bottom: 1px solid #e1e6eb;
   vertical-align: middle;
 }
-/* line 211, ../scss/base.scss */
+/* line 218, ../scss/base.scss */
 .table > tbody tr.nodata td {
   height: 100px;
   text-align: center;
@@ -253,11 +253,11 @@ table {
   vertical-align: middle;
   font-size: 22px;
 }
-/* line 219, ../scss/base.scss */
+/* line 227, ../scss/base.scss */
 .table > tbody tr.nodata:hover td {
   background-color: #FFF !important;
 }
-/* line 227, ../scss/base.scss */
+/* line 236, ../scss/base.scss */
 .table tfoot tr td {
   padding: 8px 8px;
   font-weight: normal;
@@ -266,19 +266,34 @@ table {
   background-color: #F5F6FA;
   text-align: left;
 }
+/* line 244, ../scss/base.scss */
+.table tfoot tr td ul {
+  float: right;
+  padding: 0 20px;
+  font-size: 14px;
+}
+/* line 249, ../scss/base.scss */
+.table tfoot tr td ul li {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #fff;
+  margin: 0 4px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
 
-/* line 238, ../scss/base.scss */
+/* line 262, ../scss/base.scss */
 .table-hover tbody tr:hover td {
   background-color: #F9F9FA;
 }
 
-/* line 241, ../scss/base.scss */
+/* line 265, ../scss/base.scss */
 .scroll tbody {
   display: block;
   overflow-y: auto;
 }
 
-/* line 245, ../scss/base.scss */
+/* line 269, ../scss/base.scss */
 .scroll thead, .scroll tbody tr, .scroll tfoot tr {
   display: table;
   width: 100%;

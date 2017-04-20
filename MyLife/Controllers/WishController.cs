@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using MyLife.Models;
 using MyLife.Context;
 using System.Data.Entity;
+using PagedList;
 
 namespace MyLife.Controllers
 {
@@ -32,6 +33,33 @@ namespace MyLife.Controllers
             db.Entry(wish).State = EntityState.Added;
             db.SaveChanges();
             return Json(wish);
+        }
+
+        public JsonResult GetPageList(WishPageQuery query)
+        {
+            var wishs = from w in db.Wishs
+                        select w;
+            if (query.QueryInfo != null)
+            {
+                if (!String.IsNullOrEmpty(query.QueryInfo.Name))
+                {
+                    wishs = wishs.Where(w => w.Name.Contains(query.QueryInfo.Name));
+                }
+            }
+            wishs = wishs.OrderBy(w=>w.Price);
+            int count = wishs.Count();
+            //如果不分页，则加载所有数据
+            if (!query.PageInfo.IsPaging)
+            {
+                return Json(wishs.ToList());   
+            }
+            else
+            {
+                return Json(new {
+                    List= wishs.ToPagedList(query.PageInfo.PageIndex, query.PageInfo.PageSize).ToList(),
+                    Count= count
+                });
+            }
         }
 
         //根据金额与期望值，随机计算出一个时间点
