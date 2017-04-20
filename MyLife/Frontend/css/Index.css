@@ -269,7 +269,7 @@ table {
 /* line 244, ../scss/base.scss */
 .table tfoot tr td ul {
   float: right;
-  padding: 0 20px;
+  padding: 0 10px;
   font-size: 14px;
 }
 /* line 249, ../scss/base.scss */
@@ -281,19 +281,29 @@ table {
   cursor: pointer;
   border: 1px solid #ddd;
 }
+/* line 257, ../scss/base.scss */
+.table tfoot tr td ul li:hover {
+  border-color: #a6a6a6;
+}
+/* line 261, ../scss/base.scss */
+.table tfoot tr td ul li.active {
+  background-color: #09C;
+  border-color: #09C;
+  color: #fff;
+}
 
-/* line 262, ../scss/base.scss */
+/* line 272, ../scss/base.scss */
 .table-hover tbody tr:hover td {
   background-color: #F9F9FA;
 }
 
-/* line 265, ../scss/base.scss */
+/* line 275, ../scss/base.scss */
 .scroll tbody {
   display: block;
   overflow-y: auto;
 }
 
-/* line 269, ../scss/base.scss */
+/* line 279, ../scss/base.scss */
 .scroll thead, .scroll tbody tr, .scroll tfoot tr {
   display: table;
   width: 100%;

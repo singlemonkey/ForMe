@@ -51,7 +51,10 @@ namespace MyLife.Controllers
             //如果不分页，则加载所有数据
             if (!query.PageInfo.IsPaging)
             {
-                return Json(wishs.ToList());   
+                return Json(new {
+                    List=wishs.ToList(),
+                    Count=count
+                });   
             }
             else
             {

@@ -42,3 +42,7 @@ F:\GitHub\MyLife\MyLife\bin\PagedList.dll
 F:\GitHub\MyLife\MyLife\bin\PagedList.Mvc.dll
 F:\GitHub\MyLife\MyLife\bin\PagedList.xml
 F:\GitHub\MyLife\MyLife\bin\PagedList.Mvc.xml
+F:\MyLife\MyLife\bin\PagedList.dll
+F:\MyLife\MyLife\bin\PagedList.Mvc.dll
+F:\MyLife\MyLife\bin\PagedList.xml
+F:\MyLife\MyLife\bin\PagedList.Mvc.xml

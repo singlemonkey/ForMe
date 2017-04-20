@@ -243,7 +243,7 @@ table{
 
                 ul {
                     float: right;
-                    padding: 0 20px;
+                    padding: 0 10px;
                     font-size: 14px;
 
                     li {
@@ -253,6 +253,16 @@ table{
                         margin: 0 4px;
                         cursor: pointer;
                         border: 1px solid #ddd;
+
+                        &:hover {
+                            border-color: #a6a6a6;
+                        }
+
+                        &.active {
+                            background-color: #09C;
+                            border-color: #09C;
+                            color:#fff;
+                        }
                     }
                 }
             }

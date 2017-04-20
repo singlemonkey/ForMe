@@ -89,6 +89,8 @@ class Table {
     //如果有只需要执行一次的函数，重写init，但要保持init的默认实现。
     init() {
         this.query();
+        this.bindCheckBoxEventListener();
+        this.bindPageEventListener();
     }
 
     query(queryInfo) {
@@ -115,7 +117,10 @@ class Table {
         $.Ajaxobj(obj);
     }
 
+
     setPage() {
+        $("#page-list").empty();
+        let self = this;
         let pages = Math.ceil(this.count / this.pageInfo.pageSize);
         let pageindex = this.pageInfo.pageIndex;
         let pagelist = $("<ul></ul>", {})
@@ -123,20 +128,22 @@ class Table {
             let li = $("<li></li>", {
                 text: i,
                 "data-id": i,
+                "class": i == pageindex ? "active" : "",
             })
             pagelist.append(li);
         }
         $("#page-list").append(pagelist);
-    }
+        
+    }    
 
     renderTable() {
+        $("#tbody").empty();
         let self = this;
-        let height = self.lineHieght * self.pageInfo.pageSize - 1;
+        let height = self.lineHeight * self.pageInfo.pageSize - 1;
         $("#tbody").css("max-height", height);
         for (var i = 0; i < self.data.length; i++) {
             self.renderRow(self.data[i]);
         }
-        this.bindCheckBoxEventListener();
         if (self.pageInfo.isPaging) {
             self.setPage();
         }
@@ -144,7 +151,7 @@ class Table {
 
     addRow(rowData) {
         //在子类中重写
-        this.renderRow();
+        this.renderRow(rowData);
         this.count = this.count + 1;
     }
 
@@ -175,6 +182,15 @@ class Table {
             });
             $(".table .selectAll").prop("checked", flag);
         });
+    }
+
+    bindPageEventListener() {
+        let self = this;
+        $(".table").on("click", "ul li", function () {
+            let index = $(this).attr("data-id");
+            self.pageInfo.pageIndex = index;
+            self.getData();
+        })
     }
 
     addNullRow() {

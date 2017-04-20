@@ -18,9 +18,9 @@
 }
 jQuery(document).ready(function () {
     let table = new wishTable({
-        rows:1,
+        rows:20,
         url: "/Wish/GetPageList",
-        isPaging: true
+        //isPaging: true
     });
     $(".add").on("click", function () {
         $('#addModal').modal();
@@ -56,6 +56,7 @@ jQuery(document).ready(function () {
             },
             success: function (result) {
                 $('#addModal').modal("hide");
+                table.addRow(result);
             }
         };
         $.Ajaxobj(obj);
