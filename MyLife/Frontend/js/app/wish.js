@@ -14,7 +14,14 @@
         }
         let row = self.tmpl.render(rowData);
         $("#tbody").append(row);
+        if (rowData["Flag"] == -1) {
+            self.setTime(rowData["ID"], rowData["EndDate"]);
+        }
     }
+
+    setTime() { }
+
+    setRaty() { }
 }
 jQuery(document).ready(function () {
     let table = new wishTable({
