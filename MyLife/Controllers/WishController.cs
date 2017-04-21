@@ -25,7 +25,7 @@ namespace MyLife.Controllers
             WishModel wish = new WishModel();
             wish.CreateDate = DateTime.Now;
             wish.Degree = model.Degree;
-            wish.EndDate = DateTime.Now.AddSeconds(GetSecond(model.Price, model.Degree));
+            wish.EndDate = DateTime.Now.AddMinutes(GetMinute(model.Price, model.Degree));
             wish.Flag = -1;
             wish.Info = model.Info;
             wish.Name = model.Name;
@@ -66,15 +66,15 @@ namespace MyLife.Controllers
         }
 
         //根据金额与期望值，随机计算出一个时间点
-        public int GetSecond(decimal price,int raty)
+        public int GetMinute(decimal price,int raty)
         {
             decimal?  money=db.Administrators.SingleOrDefault(a=>a.ID==1).Wages/10;
             decimal totalMoney = db.Wishs.Where(w => w.Flag == -1).Sum(w=>w.Price)+ price;
-            int totalSecond =Convert.ToInt32((totalMoney/money) * 30*24*6*6);
+            int totalMinutes=Convert.ToInt32((totalMoney/money) * 3*24*6);
             Random random = new Random();
             int degree= random.Next(100-raty*10,100);
-            int second =Convert.ToInt32(totalSecond * degree);
-            return second;
+            int minutes =Convert.ToInt32(totalMinutes * degree);
+            return minutes;
         }
     }
 }

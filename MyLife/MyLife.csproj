@@ -1021,7 +1021,6 @@
     <Content Include="Frontend\js\app\app.js" />
     <Content Include="Frontend\js\app\blog.js" />
     <Content Include="Frontend\js\app\cost.js" />
-    <Content Include="Frontend\js\app\demo.js" />
     <Content Include="Frontend\js\app\dictonary.js" />
     <Content Include="Frontend\js\app\index.js" />
     <Content Include="Frontend\js\app\SyncState.js" />

@@ -38,8 +38,8 @@
             <tbody id="tbody"></tbody>
             <tfoot>
                 <tr>
-                    <td style="width:150px;">合计</td>
-                    <td style="width:150px;"></td>
+                    <td style="width:80px;">合计金额</td>
+                    <td style="width:150px;" id="total"></td>
                     <td colspan="5">
                         <div id="page-list"></div>
                     </td>
@@ -107,8 +107,8 @@
             <td style="width:80px">{{:Price}}</td>
             <td>{{:Info}}</td>
             <td style="width:120px">{{:CreateDate}}</td>
-            <td style="width:180px" data-degree="{{:Degree}}"></td>
-            <td style="width:180px" data-time="{{:EndDate}}"></td>
+            <td style="width:180px" class="degree" data-id="{{:ID}}"><div ></div></td>
+            <td style="width:180px" class="timer" data-id="{{:ID}}" data-time="{{:EndDate}}"></td>
         </tr>
     </script>
     <script>

@@ -9,25 +9,59 @@
         if (rowData.CreateDate != null && rowData.CreateDate.indexOf("-") == -1) {
             rowData.CreateDate = $.formatDate(new Date(parseInt(rowData.CreateDate.substr(6, 13))));
         }
-        if (rowData.EndDate != null && rowData.EndDate.indexOf("-") == -1) {
-            rowData.EndDate = $.formatDate(new Date(parseInt(rowData.EndDate.substr(6, 13))));
-        }
         let row = self.tmpl.render(rowData);
         $("#tbody").append(row);
         if (rowData["Flag"] == -1) {
             self.setTime(rowData["ID"], rowData["EndDate"]);
         }
+        self.setRaty(rowData["ID"], rowData["Degree"]);
     }
 
-    setTime() { }
+    setTime(id, date) {
+        var interval = setInterval(function () {
+            var EndTime = new Date(parseInt(date.substr(6, 13)));
+            var NowTime = new Date();
+            var t = EndTime.getTime() - NowTime.getTime();
+            if (t <= 0) {
+                t = 0;
+                clearInterval(interval);
+                $(".countdown[data-id=" + id + "]").text('');
+            } else {
+                var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                var m = Math.floor(t / 1000 / 60 % 60);
+                var s = Math.floor(t / 1000 % 60);
+                $(".timer[data-id=" + id + "]").text(d + "天" + h + "时" + m + "分" + s + "秒");
+            }            
+        }, 1000, id, date);
+    }
 
-    setRaty() { }
+    setRaty(id, raty) {
+        let self = this;
+        let container = $(".degree[data-id=" + id + "] div");
+        container.raty({
+            score: raty,
+            path: '../Frontend/assets/raty/lib/img/',
+            readOnly: true
+        });
+    }
+
+    setTotal() {
+        var total = 0;
+        for (var i = 0; i < this.data.length; i++) {
+            total += this.data[i]["Price"];
+        }
+        $("#total").text(total);
+    }
 }
 jQuery(document).ready(function () {
     let table = new wishTable({
-        rows:20,
+        rows:100,
         url: "/Wish/GetPageList",
-        //isPaging: true
+        isPaging: true,
+        callback: function () {
+            this.setTotal();
+        }
     });
     $(".add").on("click", function () {
         $('#addModal').modal();

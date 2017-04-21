@@ -46,3 +46,4 @@ F:\MyLife\MyLife\bin\PagedList.dll
 F:\MyLife\MyLife\bin\PagedList.Mvc.dll
 F:\MyLife\MyLife\bin\PagedList.xml
 F:\MyLife\MyLife\bin\PagedList.Mvc.xml
+F:\MyLife\MyLife\obj\Debug\MyLife.csprojResolveAssemblyReference.cache

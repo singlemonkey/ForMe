@@ -68,6 +68,7 @@ class Table {
             pageIndex: 1
         };     
         this.url = props.url;
+        this.callback = props.callback;
         this.queryInfo = null;
         this.data = null;
         this.lineHeight = 42;
