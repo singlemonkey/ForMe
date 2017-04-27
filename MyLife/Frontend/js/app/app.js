@@ -68,7 +68,7 @@ class Table {
             pageIndex: 1
         };     
         this.url = props.url;
-        this.callback = props.callback;
+        this.callback = props.callback || function () { };
         this.queryInfo = null;
         this.data = null;
         this.lineHeight = 42;
@@ -97,6 +97,7 @@ class Table {
     query(queryInfo) {
         this.queryInfo = queryInfo;
         this.pageInfo.pageIndex = 1;
+        this.count = 0;
         this.getData();
     }
 
@@ -138,7 +139,6 @@ class Table {
     }    
 
     renderTable() {
-        $("#tbody").empty();
         let self = this;
         let height = self.lineHeight * self.pageInfo.pageSize - 1;
         $("#tbody").css("max-height", height);
@@ -196,9 +196,7 @@ class Table {
 
     addNullRow() {
         let self = this;
-        if (self.count == 0) {
-            $("#tbody").empty();
-        }
+        $("#tbody").empty();
         let tr = $("<tr></tr>", {
             "ID": "NullRow",
             "class": "nodata"

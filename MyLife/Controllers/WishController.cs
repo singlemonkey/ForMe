@@ -39,6 +39,15 @@ namespace MyLife.Controllers
         {
             var wishs = from w in db.Wishs
                         select w;
+            foreach (var wish in wishs)
+            {
+                if (wish.EndDate <= DateTime.Now)
+                {
+                    wish.Flag = 0;
+                    db.Entry(wish).State = EntityState.Modified;
+                }
+            }
+            db.SaveChanges();
             if (query.QueryInfo != null)
             {
                 if (!String.IsNullOrEmpty(query.QueryInfo.Name))
@@ -69,7 +78,15 @@ namespace MyLife.Controllers
         public int GetMinute(decimal price,int raty)
         {
             decimal?  money=db.Administrators.SingleOrDefault(a=>a.ID==1).Wages/10;
-            decimal totalMoney = db.Wishs.Where(w => w.Flag == -1).Sum(w=>w.Price)+ price;
+            decimal totalMoney;
+            List<WishModel> sum = db.Wishs.Where(w => w.Flag == -1).ToList();
+            if (sum.Count != 0) {
+                totalMoney = sum.Sum(w => w.Price) + price;
+            }
+            else
+            {
+                totalMoney =price;
+            }
             int totalMinutes=Convert.ToInt32((totalMoney/money) * 3*24*6);
             Random random = new Random();
             int degree= random.Next(100-raty*10,100);

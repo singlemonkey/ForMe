@@ -2,6 +2,16 @@
     constructor(props) {
         super(props);
         this.tmpl = $("#tableRow");
+        this.total = 0;
+    }
+
+    set total(total) {
+        $("#total").text(total);
+        this._total = total;
+    }
+
+    get total() {
+        return this._total;
     }
 
     renderRow(rowData) {
@@ -14,6 +24,8 @@
         if (rowData["Flag"] == -1) {
             self.setTime(rowData["ID"], rowData["EndDate"]);
         }
+        self.total = self.total+ rowData.Price;
+        $("#total").text(self.total);
         self.setRaty(rowData["ID"], rowData["Degree"]);
     }
 
@@ -59,8 +71,16 @@ jQuery(document).ready(function () {
         rows:100,
         url: "/Wish/GetPageList",
         isPaging: true,
-        callback: function () {
-            this.setTotal();
+    });
+    $(".search").on("click", function () {
+        let name = $(".wish-search").val().trim();
+        table.total = 0;
+        if (name.length != 0) {            
+            table.query({
+                Name: name
+            });
+        } else {
+            table.query();
         }
     });
     $(".add").on("click", function () {
@@ -68,6 +88,7 @@ jQuery(document).ready(function () {
     });
     $("#addModal").on("hide.bs.modal", function () {
         $(".form .input").val("");
+        $(".save").addClass("disabled");
         $("#raty").raty({
             score: 0,
         });
