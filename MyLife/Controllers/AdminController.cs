@@ -31,6 +31,26 @@ namespace MyLife.Controllers
             
         }
 
+        public JsonResult UpdataName(string name)
+        {
+            AdminModel admin = db.Administrators.Where(a => a.ID == 1).SingleOrDefault();
+            admin.Name = name;
+            db.Entry(admin).State = EntityState.Modified;
+            db.SaveChanges();
+            SyncUpdate("Admin");
+            return Json(admin);
+        }
+
+        public JsonResult UpdataSign(string sign)
+        {
+            AdminModel admin = db.Administrators.Where(a => a.ID == 1).SingleOrDefault();
+            admin.Sign = sign;
+            db.Entry(admin).State = EntityState.Modified;
+            db.SaveChanges();
+            SyncUpdate("Admin");
+            return Json(admin);
+        }
+
         public JsonResult AvatarUpLoad()
         {
             HttpPostedFileBase file = Request.Files["img"];
@@ -44,7 +64,6 @@ namespace MyLife.Controllers
             SyncUpdate("Admin");
             return Json(admin);
         }
-
 
         protected override void Dispose(bool disposing)
         {
